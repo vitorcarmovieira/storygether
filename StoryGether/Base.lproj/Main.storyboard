@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n0Z-qo-uNa">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="nW6-jk-b5G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n0Z-qo-uNa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eyk-d4-9Et">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gLb-xy-B3g" kind="relationship" relationship="rootViewController" id="85P-mz-20G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kA-LK-XFD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-153" y="263"/>
+        </scene>
+        <!--Storygether-->
+        <scene sceneID="wOp-eJ-sYu">
+            <objects>
+                <tableViewController id="gLb-xy-B3g" customClass="TimeLineTableViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="22" sectionFooterHeight="22" id="Jh2-y1-NVs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="142" id="kOz-Tn-Znr" customClass="HistoriaTableViewCell" customModule="StoryGether" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kOz-Tn-Znr" id="CCQ-hG-9vz">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" translatesAutoresizingMaskIntoConstraints="NO" id="ShM-vj-eC6">
+                                            <rect key="frame" x="8" y="48" width="359" height="53.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="perfil" translatesAutoresizingMaskIntoConstraints="NO" id="mrn-3G-IbK">
+                                            <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="III-3V-PJX">
+                                            <rect key="frame" x="56" y="6" width="95" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Criada em: 00/00/00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4U-zU-271">
+                                            <rect key="frame" x="72" y="22" width="96" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_quandofoicriada" translatesAutoresizingMaskIntoConstraints="NO" id="2gE-rO-x3d">
+                                            <rect key="frame" x="56" y="25" width="15" height="15"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_favoritar" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-jy-5HS">
+                                            <rect key="frame" x="326" y="103" width="30" height="30"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEH-Do-bUZ">
+                                            <rect key="frame" x="357" y="107" width="10" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_colaboradores" translatesAutoresizingMaskIntoConstraints="NO" id="l6D-8u-b5e">
+                                            <rect key="frame" x="272" y="103" width="30" height="30"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hA-Ns-9vL">
+                                            <rect key="frame" x="303" y="107" width="10" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dataCriacao" destination="C4U-zU-271" id="loe-bn-DPC"/>
+                                    <outlet property="historiaTextView" destination="ShM-vj-eC6" id="Wgr-eF-Ozo"/>
+                                    <outlet property="numEscritores" destination="7hA-Ns-9vL" id="9DE-bD-yOZ"/>
+                                    <outlet property="numFavoritos" destination="PEH-Do-bUZ" id="bq8-Ic-wKi"/>
+                                    <outlet property="tituloHistoria" destination="III-3V-PJX" id="93V-2m-D3H"/>
+                                    <outlet property="userImage" destination="mrn-3G-IbK" id="cxO-ST-HZg"/>
+                                    <segue destination="6Wg-5a-dy1" kind="show" identifier="viewHistoria" id="3Yy-6t-HTT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gLb-xy-B3g" id="Lbr-oh-u9C"/>
+                            <outlet property="delegate" destination="gLb-xy-B3g" id="NPo-jl-7tD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Storygether" id="lfB-h8-hcY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wia-0N-CWV">
+                            <connections>
+                                <segue destination="cv4-j3-LiI" kind="show" id="8lT-gH-EnV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kty-Nd-edW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="600.5" y="266.5"/>
+        </scene>
+        <!--Crie uma historia-->
+        <scene sceneID="lSC-uH-snm">
+            <objects>
+                <viewController id="cv4-j3-LiI" customClass="HistoriaViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pec-Gx-R9o"/>
+                        <viewControllerLayoutGuide type="bottom" id="GvT-eB-MlU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DKJ-iM-3vD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
+                                <rect key="frame" x="0.0" y="173" width="375" height="255"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titulo da historia" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
+                                <rect key="frame" x="77" y="104" width="220" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Escreva o trecho inicial da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaE-hC-h6E">
+                                <rect key="frame" x="56" y="144" width="262" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Crie uma historia" id="zVi-4k-HIk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ger-jQ-ktg">
+                            <connections>
+                                <action selector="saveHistoria:" destination="cv4-j3-LiI" id="m6e-O2-HwV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="historiaTextView" destination="uyd-wJ-jPh" id="Wq0-fv-ews"/>
+                        <outlet property="tituloTextField" destination="19U-l2-jNO" id="xC1-fT-MdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m7u-5f-hV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184.5" y="-145.5"/>
+        </scene>
+        <!--Historia Table View Controller-->
+        <scene sceneID="ifF-B2-tvY">
+            <objects>
+                <tableViewController id="6Wg-5a-dy1" customClass="HistoriaTableViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="880-Ed-uPi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="91" id="yTc-kx-usU" customClass="HeaderTableViewCell" customModule="StoryGether" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yTc-kx-usU" id="ezY-2n-YYd">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tes-5t-eyp">
+                                            <rect key="frame" x="0.0" y="0.0" width="303" height="90.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5p-uI-rka">
+                                            <rect key="frame" x="321" y="31" width="37" height="30"/>
+                                            <state key="normal" title="Done"/>
+                                            <connections>
+                                                <action selector="save:" destination="yTc-kx-usU" eventType="touchUpInside" id="2uo-5c-Nz5"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="trechoTextView" destination="tes-5t-eyp" id="Inx-f5-R19"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trechoCell" textLabel="heh-W3-2A0" style="IBUITableViewCellStyleDefault" id="gl9-Bi-lju">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gl9-Bi-lju" id="nV4-Bp-7E5">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="heh-W3-2A0">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6Wg-5a-dy1" id="kdX-oc-97O"/>
+                            <outlet property="delegate" destination="6Wg-5a-dy1" id="m2J-fv-2WX"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5b-z9-Kzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184.5" y="640.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_colaboradores" width="32" height="44"/>
+        <image name="icon_favoritar" width="36" height="40"/>
+        <image name="icon_quandofoicriada" width="22" height="22"/>
+        <image name="perfil" width="45" height="45"/>
+    </resources>
+</document>
