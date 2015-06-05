@@ -73,6 +73,20 @@ class TimeLineTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! UITableViewCell
+        
+        return header
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        let height = 40.0 as CGFloat
+        
+        return height
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
