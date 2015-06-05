@@ -54,6 +54,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="n0Z-qo-uNa" kind="relationship" relationship="viewControllers" id="WGX-qh-jDJ"/>
+                        <segue destination="cv4-j3-LiI" kind="relationship" relationship="viewControllers" id="kSd-Ig-UAx"/>
                         <segue destination="TVV-HX-Abe" kind="relationship" relationship="viewControllers" id="pgi-NV-TyO"/>
                     </connections>
                 </tabBarController>
@@ -180,6 +181,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" id="dBX-8V-Zpn"/>
                     <navigationItem key="navigationItem" title="Crie uma historia" id="zVi-4k-HIk">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ger-jQ-ktg">
                             <connections>
@@ -195,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7u-5f-hV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184.5" y="-145.5"/>
+            <point key="canvasLocation" x="94.5" y="-519.5"/>
         </scene>
         <!--Historia Table View Controller-->
         <scene sceneID="ifF-B2-tvY">
@@ -263,4 +265,7 @@
         <image name="icon_quandofoicriada" width="22" height="22"/>
         <image name="perfil" width="45" height="45"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8lT-gH-EnV"/>
+    </inferredMetricsTieBreakers>
 </document>
