@@ -54,7 +54,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="n0Z-qo-uNa" kind="relationship" relationship="viewControllers" id="WGX-qh-jDJ"/>
-                        <segue destination="cv4-j3-LiI" kind="relationship" relationship="viewControllers" id="kSd-Ig-UAx"/>
+                        <segue destination="vKD-rd-pSe" kind="relationship" relationship="viewControllers" id="E8i-KB-mVY"/>
                         <segue destination="TVV-HX-Abe" kind="relationship" relationship="viewControllers" id="pgi-NV-TyO"/>
                     </connections>
                 </tabBarController>
@@ -171,6 +171,24 @@
             </objects>
             <point key="canvasLocation" x="600.5" y="266.5"/>
         </scene>
+        <!-- -->
+        <scene sceneID="Aj6-TZ-dcz">
+            <objects>
+                <navigationController id="vKD-rd-pSe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title=" " id="WtK-Qo-Ikj"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DHY-OF-tAW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cv4-j3-LiI" kind="relationship" relationship="rootViewController" id="kW4-ep-Bnu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NcD-3v-XdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673.5" y="-519.5"/>
+        </scene>
         <!--Crie uma historia-->
         <scene sceneID="lSC-uH-snm">
             <objects>
@@ -180,9 +198,15 @@
                         <viewControllerLayoutGuide type="bottom" id="GvT-eB-MlU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DKJ-iM-3vD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
+                                <rect key="frame" x="0.0" y="173" width="375" height="255"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titulo da historia" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
                                 <rect key="frame" x="77" y="104" width="220" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -194,20 +218,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
-                                <rect key="frame" x="0.0" y="173" width="375" height="255"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="dBX-8V-Zpn"/>
-                    <navigationItem key="navigationItem" title="Crie uma historia" id="zVi-4k-HIk">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ger-jQ-ktg">
+                    <navigationItem key="navigationItem" title="Crie uma historia" id="YAJ-Jv-ese">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="DIZ-gM-cc8">
                             <connections>
-                                <action selector="saveHistoria:" destination="cv4-j3-LiI" id="m6e-O2-HwV"/>
+                                <action selector="saveHistoria:" destination="cv4-j3-LiI" id="NkN-dB-eZZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
