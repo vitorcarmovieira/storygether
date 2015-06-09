@@ -163,11 +163,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Storygether" id="lfB-h8-hcY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wia-0N-CWV">
-                            <connections>
-                                <segue destination="cv4-j3-LiI" kind="show" id="8lT-gH-EnV"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wia-0N-CWV"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
@@ -178,7 +174,7 @@
         <!--Crie uma historia-->
         <scene sceneID="lSC-uH-snm">
             <objects>
-                <viewController id="cv4-j3-LiI" customClass="HistoriaViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="criaHistoria" id="cv4-j3-LiI" customClass="HistoriaViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pec-Gx-R9o"/>
                         <viewControllerLayoutGuide type="bottom" id="GvT-eB-MlU"/>
@@ -187,12 +183,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
-                                <rect key="frame" x="0.0" y="173" width="375" height="255"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titulo da historia" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
                                 <rect key="frame" x="77" y="104" width="220" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -204,6 +194,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
+                                <rect key="frame" x="0.0" y="173" width="375" height="255"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -291,7 +287,4 @@
         <image name="icon_quandofoicriada" width="22" height="22"/>
         <image name="perfil" width="45" height="45"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8lT-gH-EnV"/>
-    </inferredMetricsTieBreakers>
 </document>

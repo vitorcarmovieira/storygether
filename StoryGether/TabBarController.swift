@@ -50,7 +50,7 @@ class TabBarController: UITabBarController {
             button.center = center;
         }
         
-        button.addTarget(self, action: nil, forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: "buttonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view.addSubview(button)
     }
@@ -60,6 +60,11 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    func buttonClicked(){
+        
+        var view: HistoriaViewController = storyboard?.instantiateViewControllerWithIdentifier("criaHistoria") as! HistoriaViewController
+        self.selectedIndex = 1
+    }
 
     /*
     // MARK: - Navigation
