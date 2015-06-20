@@ -32,6 +32,7 @@
 		4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533B1B189634004D346C /* HeaderTableViewCell.swift */; };
 		4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533D1B189696004D346C /* HistoriaTableViewController.swift */; };
 		4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FCE741B212C0E005ADCAA /* TabBarController.swift */; };
+		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		4E38533B1B189634004D346C /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4E38533D1B189696004D346C /* HistoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoriaTableViewController.swift; sourceTree = "<group>"; };
 		4E7FCE741B212C0E005ADCAA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				4E38533B1B189634004D346C /* HeaderTableViewCell.swift */,
+				4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */,
 				4E38533D1B189696004D346C /* HistoriaTableViewController.swift */,
 				4E38526B1B136848004D346C /* AppDelegate.swift */,
 				4E3852721B136848004D346C /* Main.storyboard */,
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,

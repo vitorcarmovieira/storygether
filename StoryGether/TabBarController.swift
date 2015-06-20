@@ -12,26 +12,6 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-//        button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-//        [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-//        [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-//        
-//        CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
-//        if (heightDifference < 0) {
-//            button.center = self.tabBar.center;
-//        } else {
-//            CGPoint center = self.tabBar.center;
-//            center.y = center.y - heightDifference/2.0;
-//            button.center = center;
-//        }
-//        
-//        [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-//        
-//        [self.view addSubview:button];
-//        self.centerButton = button;
         
         let buttonImage: UIImage? = UIImage(named: "tabbar_icon_criar")
         

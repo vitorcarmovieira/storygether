@@ -63,17 +63,26 @@ class HistoriaTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! UITableViewCell
-
-        cell.textLabel?.text = self.trechosList[indexPath.row].valueForKey("texto") as? String
+        
+        let trecho = self.trechosList[indexPath.row]
+        println("\(trecho)")
+        cell.textLabel?.text = trecho.valueForKey("texto") as? String
 
         return cell
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = tableView.dequeueReusableCellWithIdentifier("headerCell") as! HeaderTableViewCell
+        let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
         
         return header
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let footer = tableView.dequeueReusableCellWithIdentifier("footerCell") as! AddTrechoTableViewCell
+        
+        return footer
     }
 
     /*

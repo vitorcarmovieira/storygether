@@ -126,15 +126,12 @@ class TimeLineTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "viewHistoria"{
             
             var historiaTVC = segue.destinationViewController as! HistoriaTableViewController
             let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
             let historia: PFObject = self.timelineData.objectAtIndex(index.row) as! PFObject
             historiaTVC.idHistoria = historia.valueForKey("objectId") as? String
-        }
     }
 
 }
