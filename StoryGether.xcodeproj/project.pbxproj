@@ -31,8 +31,10 @@
 		4E3852B61B136E50004D346C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3852B41B136E50004D346C /* Parse.framework */; };
 		4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533B1B189634004D346C /* HeaderTableViewCell.swift */; };
 		4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533D1B189696004D346C /* HistoriaTableViewController.swift */; };
+		4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */; };
 		4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FCE741B212C0E005ADCAA /* TabBarController.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
+		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +76,10 @@
 		4E3852B41B136E50004D346C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		4E38533B1B189634004D346C /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4E38533D1B189696004D346C /* HistoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoriaTableViewController.swift; sourceTree = "<group>"; };
+		4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrechosViewController.swift; sourceTree = "<group>"; };
 		4E7FCE741B212C0E005ADCAA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
+		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,18 +135,14 @@
 		4E3852681B136848004D346C /* StoryGether */ = {
 			isa = PBXGroup;
 			children = (
-				4E38533B1B189634004D346C /* HeaderTableViewCell.swift */,
-				4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */,
 				4E38533D1B189696004D346C /* HistoriaTableViewController.swift */,
 				4E38526B1B136848004D346C /* AppDelegate.swift */,
-				4E3852721B136848004D346C /* Main.storyboard */,
-				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
 				4E3852941B136A42004D346C /* TimeLineTableViewController.swift */,
 				4E7FCE741B212C0E005ADCAA /* TabBarController.swift */,
 				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
-				4E3852751B136848004D346C /* Images.xcassets */,
-				4E3852771B136848004D346C /* LaunchScreen.xib */,
+				4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */,
 				4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */,
+				4E6AF2E71B372D4E00E671EA /* View */,
 				4E3852691B136848004D346C /* Supporting Files */,
 			);
 			path = StoryGether;
@@ -191,6 +191,20 @@
 				4E38529A1B136C67004D346C /* AudioToolbox.framework */,
 			);
 			name = framework;
+			sourceTree = "<group>";
+		};
+		4E6AF2E71B372D4E00E671EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E38533B1B189634004D346C /* HeaderTableViewCell.swift */,
+				4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */,
+				4E3852721B136848004D346C /* Main.storyboard */,
+				4E9130471B350D460023C73C /* trechoTableViewCell.swift */,
+				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
+				4E3852751B136848004D346C /* Images.xcassets */,
+				4E3852771B136848004D346C /* LaunchScreen.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +310,9 @@
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
+				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
+				4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */,
 				4E3852971B136B3E004D346C /* HistoriaViewController.swift in Sources */,
 				4E38526C1B136848004D346C /* AppDelegate.swift in Sources */,
 				4E3852951B136A42004D346C /* TimeLineTableViewController.swift in Sources */,

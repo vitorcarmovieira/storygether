@@ -29,17 +29,17 @@ class HistoriaTableViewController: UITableViewController {
                     
                     for trecho in trechos {
                         
-                        println("\(trecho)")
+                        println("Finded: \(trecho)")
                         
                         let t: PFObject = trecho as! PFObject
                         
                         self.trechosList.addObject(t)
                     }
                 }
+                
+                self.tableView.reloadData()
             }
         }
-        
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,27 +62,53 @@ class HistoriaTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! UITableViewCell
+        
+        if indexPath.row == 0{
+            
+            let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
+            
+            let trecho = self.trechosList[indexPath.row]
+            header.trechoTextView.text = trecho.valueForKey("texto") as? String
+            
+            return header
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
         let trecho = self.trechosList[indexPath.row]
         println("\(trecho)")
-        cell.textLabel?.text = trecho.valueForKey("texto") as? String
+        cell.trechoTextView.text = trecho.valueForKey("texto") as? String
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
-        
-        return header
-    }
+//    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
+//        
+////        let trecho = self.trechosList[0]
+////        header.trechoTextView.text = trecho.valueForKey("texto") as? String
+//        
+//        return header
+//    }
+//    
+//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        
+//        let height = 190 as CGFloat
+//        return height
+//    }
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footer = tableView.dequeueReusableCellWithIdentifier("footerCell") as! AddTrechoTableViewCell
         
         return footer
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        let height = 128 as CGFloat
+        return height
     }
 
     /*
