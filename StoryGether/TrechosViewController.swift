@@ -9,12 +9,13 @@
 import UIKit
 import Parse
 
-class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     var idHistoria: String?
     var trechosList: NSMutableArray = NSMutableArray()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var newTrechoTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,18 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addTrecho(sender: AnyObject) {
+        
+        var trecho: PFObject = PFObject(className: "Trechos")
+        trecho["texto"] = self.newTrechoTextView.text!
+        trecho["escritor"] = idHistoria!
+        
+        trecho.saveInBackground()
+        
+        trechosList.addObject(trecho)
+        self.tableView.reloadData()
+        self.newTrechoTextView.text = ""
+    }
     // MARK: - Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,5 +116,13 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 
 }

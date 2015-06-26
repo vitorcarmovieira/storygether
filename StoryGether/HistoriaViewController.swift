@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class HistoriaViewController: UIViewController {
+class HistoriaViewController: UIViewController, UITextViewDelegate {
 
     
     @IBOutlet weak var tituloTextField: UITextField!
@@ -73,5 +73,11 @@ class HistoriaViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
