@@ -13,6 +13,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var idHistoria: String?
     var trechosList: NSMutableArray = NSMutableArray()
+    var frameView: CGRect!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newTrechoTextView: UITextView!
@@ -43,6 +44,14 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.reloadData()
             }
         }
+        
+        self.frameView = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+        
+        
+        // Keyboard stuff.
+        var center: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        center.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        center.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,16 +115,41 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return "Titulo"
     }
+    
+    //---------------------- move up textView ---------------------
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func keyboardWillShow(notification: NSNotification) {
+        var info:NSDictionary = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        
+        var keyboardHeight:CGFloat = keyboardSize.height
+        
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height
+        
+        UIView.animateWithDuration(0.25, delay: 0.25, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            self.frameView = CGRectMake(0, (self.frameView.origin.y - keyboardHeight + tabBarHeight!), self.view.bounds.width, self.view.bounds.height)
+            }, completion: nil)
+        
+        self.view.frame = self.frameView
     }
-    */
+    
+    func keyboardWillHide(notification: NSNotification) {
+        var info:NSDictionary = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        
+        var keyboardHeight:CGFloat = keyboardSize.height
+        
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height
+        
+        UIView.animateWithDuration(0.25, delay: 0.25, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            self.frameView = CGRectMake(0, (self.frameView.origin.y + keyboardHeight - tabBarHeight!), self.view.bounds.width, self.view.bounds.height)
+            }, completion: nil)
+        
+        self.view.frame = self.frameView
+        
+    }
+    
+    //---------------------- move up textView ---------------------
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
