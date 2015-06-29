@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A92141B40A50000A8E647 /* LoginViewController.swift */; };
 		4E38526C1B136848004D346C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526B1B136848004D346C /* AppDelegate.swift */; };
 		4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */; };
 		4E3852741B136848004D346C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3852721B136848004D346C /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		245A92141B40A50000A8E647 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4E3852661B136848004D346C /* StoryGether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E38526A1B136848004D346C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E38526B1B136848004D346C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
 				4E3852751B136848004D346C /* Images.xcassets */,
 				4E3852771B136848004D346C /* LaunchScreen.xib */,
+				245A92141B40A50000A8E647 /* LoginViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				TargetAttributes = {
 					4E3852651B136848004D346C = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 983QSSP456;
 					};
 					4E38527D1B136848004D346C = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -307,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */,
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
@@ -445,7 +450,8 @@
 		4E3852891B136848004D346C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -453,13 +459,15 @@
 				INFOPLIST_FILE = StoryGether/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		4E38528A1B136848004D346C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -467,6 +475,7 @@
 				INFOPLIST_FILE = StoryGether/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
