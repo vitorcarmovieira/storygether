@@ -465,31 +465,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9WJ-hB-cUt">
-                                <rect key="frame" x="0.0" y="490" width="375" height="128"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-Ag-SKh">
-                                        <rect key="frame" x="16" y="18" width="303" height="90.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="wrj-tX-kg8" id="B2V-gH-qdD"/>
-                                        </connections>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-fY-XIs">
-                                        <rect key="frame" x="337" y="49.5" width="30" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Ok">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addTrecho:" destination="wrj-tX-kg8" eventType="touchUpInside" id="01v-yU-jMk"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-Ag-SKh">
+                                <rect key="frame" x="16" y="506" width="303" height="90.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wrj-tX-kg8" id="B2V-gH-qdD"/>
+                                </connections>
+                            </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yqj-0h-ByS">
                                 <rect key="frame" x="0.0" y="64" width="375" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -602,8 +586,18 @@
                                     <outlet property="delegate" destination="wrj-tX-kg8" id="se7-2K-1KR"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-fY-XIs">
+                                <rect key="frame" x="335" y="537" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Ok">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTrecho:" destination="wrj-tX-kg8" eventType="touchUpInside" id="01v-yU-jMk"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="newTrechoTextView" destination="hIy-Ag-SKh" id="Fpl-G8-6cj"/>
@@ -621,7 +615,7 @@
         <image name="icon_configuracao" width="45" height="45"/>
         <image name="icon_favoritar" width="36" height="40"/>
         <image name="icon_favoritar_clique" width="36" height="38"/>
-        <image name="icon_novahistoria_castelo" width="80" height="71"/>
+        <image name="icon_novahistoria_castelo" width="40" height="35"/>
         <image name="icon_quandofoicriada" width="22" height="22"/>
         <image name="perfil" width="45" height="45"/>
         <image name="perfil_capa" width="749" height="197"/>
