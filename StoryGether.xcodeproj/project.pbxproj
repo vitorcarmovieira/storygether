@@ -36,6 +36,9 @@
 		4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FCE741B212C0E005ADCAA /* TabBarController.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
+		4EEF869F1B43023D00A22534 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869C1B43023D00A22534 /* Bolts.framework */; };
+		4EEF86A01B43023D00A22534 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */; };
+		4EEF86A11B43023D00A22534 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,10 @@
 		4E7FCE741B212C0E005ADCAA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
+		4EEF869C1B43023D00A22534 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = StoryGether/Bolts.framework; sourceTree = "<group>"; };
+		4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = StoryGether/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = StoryGether/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		4EEF86A31B4302E900A22534 /* StoryGether-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StoryGether-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +106,12 @@
 				4E3852A51B136CA9004D346C /* QuartzCore.framework in Frameworks */,
 				4E3852A31B136C9D004D346C /* MobileCoreServices.framework in Frameworks */,
 				4E3852A11B136C93004D346C /* CoreLocation.framework in Frameworks */,
+				4EEF86A01B43023D00A22534 /* FBSDKCoreKit.framework in Frameworks */,
 				4E38529F1B136C84004D346C /* CoreGraphics.framework in Frameworks */,
 				4E38529D1B136C79004D346C /* CFNetwork.framework in Frameworks */,
 				4E38529B1B136C67004D346C /* AudioToolbox.framework in Frameworks */,
+				4EEF86A11B43023D00A22534 /* FBSDKLoginKit.framework in Frameworks */,
+				4EEF869F1B43023D00A22534 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +132,7 @@
 				4E3852681B136848004D346C /* StoryGether */,
 				4E3852811B136848004D346C /* StoryGetherTests */,
 				4E3852671B136848004D346C /* Products */,
+				4EEF86A31B4302E900A22534 /* StoryGether-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,6 +190,9 @@
 		4E3852B01B136CF4004D346C /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				4EEF869C1B43023D00A22534 /* Bolts.framework */,
+				4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */,
+				4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */,
 				4E3852B31B136E50004D346C /* Bolts.framework */,
 				4E3852B41B136E50004D346C /* Parse.framework */,
 				4E3852AE1B136CE2004D346C /* libsqlite3.dylib */,
@@ -259,7 +273,7 @@
 				TargetAttributes = {
 					4E3852651B136848004D346C = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 983QSSP456;
+						DevelopmentTeam = 7JS5STBL4T;
 					};
 					4E38527D1B136848004D346C = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -450,32 +464,41 @@
 		4E3852891B136848004D346C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/vitor/Documents/IOSProjects/pictrust,
+					"$(PROJECT_DIR)/StoryGether",
 				);
 				INFOPLIST_FILE = StoryGether/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "StoryGether-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		4E38528A1B136848004D346C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/vitor/Documents/IOSProjects/pictrust,
+					"$(PROJECT_DIR)/StoryGether",
 				);
 				INFOPLIST_FILE = StoryGether/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "StoryGether-Bridging-Header.h";
 			};
 			name = Release;
 		};

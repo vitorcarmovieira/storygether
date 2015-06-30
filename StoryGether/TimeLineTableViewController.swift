@@ -43,6 +43,13 @@ class TimeLineTableViewController: UITableViewController {
             }
             
         }
+        
+        let currentUser = NSUserDefaults.standardUserDefaults()
+        
+//        if (currentUser.valueForKey("nome") == nil){
+//            
+//            setUserData()
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,5 +140,7 @@ class TimeLineTableViewController: UITableViewController {
             let historia: PFObject = self.timelineData.objectAtIndex(index.row) as! PFObject
             historiaTVC.idHistoria = historia.valueForKey("objectId") as? String
     }
+    
+    
 
 }

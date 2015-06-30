@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Parse
 import Bolts
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +32,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = uicolorFromHex(0x007D9F)
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        return true
+        let currentUser = NSUserDefaults.standardUserDefaults()
+        
+        if (currentUser.valueForKey("nome") != nil){
+            
+            self.callMainScreen()
+        }
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject?) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(
+                application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
     
     func uicolorFromHex(rgbValue:UInt32)->UIColor{
@@ -39,6 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
+    }
+    
+    func callMainScreen(){
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let rootView = storyBoard.instantiateViewControllerWithIdentifier("rootTabBar") as! UITabBarController
+        self.window?.rootViewController = rootView
+        self.window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -57,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {

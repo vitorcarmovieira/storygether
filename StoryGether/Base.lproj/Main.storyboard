@@ -251,9 +251,6 @@
                                 <state key="normal" title="FB Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="hhJ-yz-8uf" kind="show" id="KB7-2K-tPN"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,7 +271,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="SNk-ni-CIb">
             <objects>
-                <tabBarController id="hhJ-yz-8uf" customClass="TabBarController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="rootTabBar" id="hhJ-yz-8uf" customClass="TabBarController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jqr-ps-AyX">

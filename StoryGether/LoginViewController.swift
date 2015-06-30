@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController,UIScrollViewDelegate {
+class LoginViewController: UIViewController,UIScrollViewDelegate, FBSDKLoginButtonDelegate {
     @IBOutlet weak var svTutorial: UIScrollView!
     
     @IBOutlet weak var lbTitle: UILabel!
@@ -53,6 +53,45 @@ class LoginViewController: UIViewController,UIScrollViewDelegate {
         self.svTutorial.contentSize =
             CGSizeMake(self.svTutorial.frame.size.width * CGFloat(self.images.count), self.svTutorial.frame.size.height)
         
+        if (FBSDKAccessToken.currentAccessToken() != nil){
+            println("logado")
+        }
+        else{
+            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            loginView.frame = self.btLogin.frame
+            self.view.addSubview(loginView)
+            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.delegate = self
+        }
+        
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        println("User Logged In")
+        
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+            
+            setUserData()
+            
+            let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! UITabBarController
+            self.presentViewController(rootView, animated: true, completion: nil)
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User Logged Out")
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -62,5 +101,52 @@ class LoginViewController: UIViewController,UIScrollViewDelegate {
         self.lbTitle.text = self.titles[page] as? String
         self.lbSub.text = self.subs[page] as? String
         self.pageControl.currentPage = page;
+    }
+    
+    func setUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                println("Error: \(error)")
+            }
+            else
+            {
+                let currentUser = NSUserDefaults.standardUserDefaults()
+                
+                println("fetched user: \(result)")
+                
+                let userName : NSString = result.valueForKey("name") as! NSString
+                println("User Name is: \(userName)")
+                currentUser.setObject(userName, forKey: "nome")
+                
+                //                let userEmail : NSString = result.valueForKey("email") as! NSString
+                //                println("User Email is: \(userEmail)")
+            }
+        })
+        
+        let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: nil)
+        pictureRequest.startWithCompletionHandler({
+            (connection, result, error: NSError!) -> Void in
+            if error == nil {
+                println("\(result)")
+                
+                var data = result.valueForKey("data")
+                var url = data?.valueForKey("url") as! String
+                var urlRequest = NSURLRequest(URL: NSURL(string: url)!)
+                if let url = NSURL(string: url) {
+                    if let data = NSData(contentsOfURL: url){
+                        
+                        
+                    }
+                }
+                
+            } else {
+                println("\(error)")
+            }
+        })
     }
 }
