@@ -143,6 +143,7 @@
 				4E7FCE741B212C0E005ADCAA /* TabBarController.swift */,
 				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
 				4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */,
+				245A92141B40A50000A8E647 /* LoginViewController.swift */,
 				4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */,
 				4E6AF2E71B372D4E00E671EA /* View */,
 				4E3852691B136848004D346C /* Supporting Files */,
@@ -205,7 +206,6 @@
 				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
 				4E3852751B136848004D346C /* Images.xcassets */,
 				4E3852771B136848004D346C /* LaunchScreen.xib */,
-				245A92141B40A50000A8E647 /* LoginViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";

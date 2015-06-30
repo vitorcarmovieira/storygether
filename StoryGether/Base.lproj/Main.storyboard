@@ -226,7 +226,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-0J-y1I">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-0J-y1I">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="P4Z-I2-7tM">
@@ -234,11 +234,26 @@
                                 <color key="pageIndicatorTintColor" red="0.86206280619999998" green="0.91788494600000003" blue="0.93981519189999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.2666666667" green="0.5450980392" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make stories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-7e-6WT">
+                                <rect key="frame" x="16" y="360" width="343" height="50"/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="38"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="with your friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-BH-9Jp">
+                                <rect key="frame" x="16" y="385" width="343" height="50"/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Qb-85Q">
                                 <rect key="frame" x="0.0" y="610" width="375" height="57"/>
                                 <state key="normal" title="FB Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="hhJ-yz-8uf" kind="show" id="KB7-2K-tPN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,6 +261,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="btLogin" destination="0CE-Qb-85Q" id="pB0-gJ-MCx"/>
+                        <outlet property="lbSub" destination="JN2-BH-9Jp" id="s5a-8O-4hj"/>
+                        <outlet property="lbTitle" destination="1xp-7e-6WT" id="vLn-G1-faT"/>
                         <outlet property="pageControl" destination="P4Z-I2-7tM" id="rTa-CS-IFB"/>
                         <outlet property="svTutorial" destination="h2v-0J-y1I" id="8Ds-rK-JkK"/>
                     </connections>
