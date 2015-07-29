@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Parse
 
-class LoginViewController: UIViewController,UIScrollViewDelegate, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate{
     @IBOutlet weak var svTutorial: UIScrollView!
     
     @IBOutlet weak var lbTitle: UILabel!
@@ -43,55 +44,49 @@ class LoginViewController: UIViewController,UIScrollViewDelegate, FBSDKLoginButt
             imageview.frame = frame
             
             self.svTutorial.addSubview(imageview)
-            
-            
-            
         }
-        
-        
         
         self.svTutorial.contentSize =
             CGSizeMake(self.svTutorial.frame.size.width * CGFloat(self.images.count), self.svTutorial.frame.size.height)
         
-        if (FBSDKAccessToken.currentAccessToken() != nil){
-            println("logado")
-        }
-        else{
+//        if (FBSDKAccessToken.currentAccessToken() != nil){
+//            println("logado")
+//        }
+//        else{
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            loginView.frame = self.btLogin.frame
-            self.view.addSubview(loginView)
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-        }
+            loginView.bounds.size = self.btLogin.bounds.size
+            loginView.center = self.btLogin.center
+            self.view.addSubview(loginView)
+//        }
         
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println("User Logged In")
         
-        if ((error) != nil)
-        {
+        print("User logged in.")
+        
+        if ((error) != nil){
             // Process error
         }
         else if result.isCancelled {
             // Handle cancellations
         }
         else {
-            
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email"){
+                
+                PFFacebookUtils.logInInBackgroundWithAccessToken(FBSDKAccessToken.currentAccessToken())
+                setUserData()
             }
-            
-            setUserData()
-            
-            let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! UITabBarController
-            self.presentViewController(rootView, animated: true, completion: nil)
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
+        
+        print("user logout")
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -105,7 +100,9 @@ class LoginViewController: UIViewController,UIScrollViewDelegate, FBSDKLoginButt
     
     func setUserData()
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let userData: NSMutableDictionary = NSMutableDictionary(capacity: 7)
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,picture", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil)
@@ -115,38 +112,38 @@ class LoginViewController: UIViewController,UIScrollViewDelegate, FBSDKLoginButt
             }
             else
             {
-                let currentUser = NSUserDefaults.standardUserDefaults()
-                
                 println("fetched user: \(result)")
                 
-                let userName : NSString = result.valueForKey("name") as! NSString
-                println("User Name is: \(userName)")
-                currentUser.setObject(userName, forKey: "nome")
+                if let name = result.valueForKey("name") as? NSString{
+                    
+                    userData.setValue(name, forKey: "name")
+                }
                 
-                //                let userEmail : NSString = result.valueForKey("email") as! NSString
-                //                println("User Email is: \(userEmail)")
+                if let id = result.valueForKey("id") as? NSString{
+                    
+                    userData.setValue(id, forKey: "id")
+                }
+                
+                var pic: AnyObject? = result.valueForKey("picture")
+                var data: AnyObject? = pic?.valueForKey("data")
+                var url = data?.valueForKey("url") as! String
+                
+                if let url = data?.valueForKey("url") as? NSString{
+                    
+                    userData.setValue(url, forKey: "urlFoto")
+                }
+//                var urlRequest = NSURLRequest(URL: NSURL(string: url)!)
+//                if let url = NSURL(string: url) {
+//                    if let imageData = NSData(contentsOfURL: url){
+//                        
+//                        userData.setValue(imageData, forKey: "image")
+//                    }
+//                }
+                
+                PFUser.currentUser()?.setObject(userData, forKey: "profile")
+                PFUser.currentUser()?.saveInBackground()
             }
         })
         
-        let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: nil)
-        pictureRequest.startWithCompletionHandler({
-            (connection, result, error: NSError!) -> Void in
-            if error == nil {
-                println("\(result)")
-                
-                var data = result.valueForKey("data")
-                var url = data?.valueForKey("url") as! String
-                var urlRequest = NSURLRequest(URL: NSURL(string: url)!)
-                if let url = NSURL(string: url) {
-                    if let data = NSData(contentsOfURL: url){
-                        
-                        
-                    }
-                }
-                
-            } else {
-                println("\(error)")
-            }
-        })
     }
 }

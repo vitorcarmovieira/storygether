@@ -13,14 +13,15 @@ class TimeLineTableViewController: UITableViewController {
 
     var timelineData:NSMutableArray! = NSMutableArray()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        activityIndicator.startAnimating()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
         
         var findTimelineData:PFQuery = PFQuery(className: "Historias")
         
@@ -28,28 +29,49 @@ class TimeLineTableViewController: UITableViewController {
             (objects:[AnyObject]?, error:NSError?)->Void in
             
             if error == nil{
-                if let historias = objects as? NSArray {
+                if let historias = objects as? [PFObject] {
                     
                     for historia in historias {
-                        
                         println("\(historia)")
                         self.timelineData.addObject(historia)
                     }
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
+                    self.tableView.reloadData()
                 }
-                
-                
-                self.tableView.reloadData()
-                
             }
-            
         }
+    }
+    
+    func update(){
         
-        let currentUser = NSUserDefaults.standardUserDefaults()
+        print("updating...\n")
+        updateData()
+        self.refreshControl?.endRefreshing()
+    }
+    
+    func updateData(){
         
-//        if (currentUser.valueForKey("nome") == nil){
-//            
-//            setUserData()
-//        }
+        var findTimelineData:PFQuery = PFQuery(className: "Historias")
+        let date = self.timelineData.lastObject?.createdAt
+        findTimelineData.whereKey("createdAt", greaterThan: date!!)
+        
+        findTimelineData.findObjectsInBackgroundWithBlock{
+            (objects:[AnyObject]?, error:NSError?)->Void in
+            
+            if error == nil{
+                if let historias = objects as? [PFObject] {
+                    
+                    for historia in historias {
+                        println("\(historia)")
+                        self.timelineData.addObject(historia)
+                    }
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,9 +95,16 @@ class TimeLineTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
-        let historia: PFObject = self.timelineData.objectAtIndex(indexPath.row) as! PFObject
         
-        cell.historiaTextView.text = historia.valueForKey("titulo") as! String
+        let historia = self.timelineData.objectAtIndex(indexPath.row) as! PFObject
+        let user:AnyObject = historia["criador"]!
+        let dateFormat = NSDateFormatter()
+        dateFormat.dateFormat = "dd/MM/yyyy"
+        
+        cell.userImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
+        cell.tituloHistoria.text = (historia["titulo"] as! String)
+        cell.dataCriacao.text = "Criada em: " + dateFormat.stringFromDate(historia.createdAt!)
+        cell.historiaTextView.text = historia["trechoInicial"] as! String
 
         return cell
     }
@@ -93,41 +122,6 @@ class TimeLineTableViewController: UITableViewController {
         
         return height
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
@@ -138,7 +132,7 @@ class TimeLineTableViewController: UITableViewController {
             let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
             let historia: PFObject = self.timelineData.objectAtIndex(index.row) as! PFObject
-            historiaTVC.idHistoria = historia.valueForKey("objectId") as? String
+            historiaTVC.Historia = historia
     }
     
     

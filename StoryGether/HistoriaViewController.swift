@@ -24,38 +24,32 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func saveHistoria(sender: AnyObject) {
         
-        var historias:PFObject = PFObject(className: "Historias")
-        historias["titulo"] = self.tituloTextField.text!
+        let className = PFUser.currentUser()?.parseClassName
         
-        historias.saveInBackground()
+        var trechos: PFObject = PFObject(className: "Trechos")
+        trechos["trecho"] = self.historiaTextView.text!
+        trechos["escritor"] = PFUser.currentUser()?.valueForKey("profile")
         
-        var query: PFQuery = PFQuery(className: "Historias")
+        var novahistoria:PFObject = PFObject(className: "Historias")
+        novahistoria["titulo"] = self.tituloTextField.text!
+        novahistoria["criador"] = PFUser.currentUser()?.valueForKey("profile")
+        novahistoria["trechoInicial"] = self.historiaTextView.text!
         
-        query.whereKey("titulo", equalTo: self.tituloTextField.text!)
-        
-        query.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?) ->Void in
-        
-            if error == nil{
-                if let historias = objects as? NSArray {
-                
-                    for historia in historias {
-                    
-                        println("\(historia)")
-                        
-                        let h: PFObject = historia as! PFObject
-                        
-                        var trechos: PFObject = PFObject(className: "Trechos")
-                        trechos["texto"] = self.historiaTextView.text!
-                        trechos["escritor"] = h.valueForKey("objectId") as! String
-                        
-                        trechos.saveInBackground()
-                    }
-                }
+        let user = PFUser.currentUser()!
+        user["historias"] = [novahistoria]
+        user.saveInBackgroundWithBlock({
+            (sucess, error) -> Void in
+            if error != nil {
+                // There was an error.
+                println("erro em salvar historia.")
+            }else {
+                println("historia salva. \(sucess)")
+                trechos["historia"] = novahistoria.objectId!
+                trechos.saveInBackground()
             }
-        }
+        })
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.tabBarController?.selectedIndex = 0
     }
     
     override func didReceiveMemoryWarning() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ks8-4S-mHS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ks8-4S-mHS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -8,8 +8,8 @@
         <scene sceneID="nW6-jk-b5G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n0Z-qo-uNa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="history" id="d1F-A5-dex">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    <tabBarItem key="tabBarItem" title="" id="d1F-A5-dex">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -30,7 +30,9 @@
         <scene sceneID="XiP-gG-xsu">
             <objects>
                 <navigationController id="TVV-HX-Abe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="bookmarks" id="d3C-gj-T2A"/>
+                    <tabBarItem key="tabBarItem" title="" id="d3C-gj-T2A">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lji-51-6m7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -47,7 +49,7 @@
         <!--Perfil-->
         <scene sceneID="Sho-4O-Okf">
             <objects>
-                <viewController id="tkj-fB-eFg" sceneMemberID="viewController">
+                <viewController id="tkj-fB-eFg" customClass="PerfilViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FgY-z6-ADN"/>
                         <viewControllerLayoutGuide type="bottom" id="chA-Fm-KyG"/>
@@ -209,6 +211,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Perfil" id="Kt2-Ds-TDm"/>
+                    <connections>
+                        <outlet property="imagemView" destination="fej-2C-yI6" id="w18-EH-Wfy"/>
+                        <outlet property="nomeLabel" destination="aer-Sz-R4d" id="sf0-oJ-vaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqq-So-dRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -297,6 +303,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="BGC-eX-fPO">
+                            <rect key="frame" x="0.0" y="268" width="375" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="40" id="kOz-Tn-Znr">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -327,23 +337,30 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAA-nU-IaJ" id="jc6-mr-HTG">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-MY-mrz">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-MY-mrz">
                                             <rect key="frame" x="8" y="48" width="359" height="53.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre">
+                                                    <attributes>
+                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="perfil" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-UU-b8U">
                                             <rect key="frame" x="8" y="5" width="40" height="40"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9y-a6-hca">
-                                            <rect key="frame" x="56" y="6" width="95" height="21"/>
+                                            <rect key="frame" x="56" y="6" width="311" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Criada em: 00/00/00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2U-ga-QYb">
-                                            <rect key="frame" x="72" y="22" width="96" height="21"/>
+                                            <rect key="frame" x="72" y="22" width="295" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -387,10 +404,11 @@
                             <outlet property="delegate" destination="gLb-xy-B3g" id="NPo-jl-7tD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Storygether" id="lfB-h8-hcY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wia-0N-CWV"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Storygether" id="lfB-h8-hcY"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BGC-eX-fPO" id="4H8-a7-w03"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kty-Nd-edW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -544,7 +562,7 @@
                                                     <rect key="frame" x="8" y="91" width="359" height="72"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-ZC-a3E">
@@ -560,6 +578,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imagemCriador" destination="WU7-UQ-361" id="mzw-V7-XFf"/>
+                                            <outlet property="nomeCriadorLabel" destination="rJV-pn-yGQ" id="GcS-W8-kCC"/>
+                                            <outlet property="numAmigos" destination="trO-6M-6pc" id="kgf-z5-iTC"/>
+                                            <outlet property="numFavoritos" destination="CIL-zp-ORF" id="ibP-pH-dic"/>
+                                            <outlet property="tituloHistoriaText" destination="Cae-Ai-grj" id="x5N-Bc-dw0"/>
                                             <outlet property="trechoTextView" destination="ap5-hR-vsd" id="udt-Q1-6sr"/>
                                         </connections>
                                     </tableViewCell>
@@ -575,7 +598,7 @@
                                                     <rect key="frame" x="51" y="4" width="316" height="72"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTr-xn-dX4">
@@ -591,6 +614,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imagemEscritorTrecho" destination="uYr-0P-rK3" id="2Lz-F3-ptX"/>
                                             <outlet property="trechoTextView" destination="Rkv-Hl-Ifj" id="Yef-nF-Xh4"/>
                                         </connections>
                                     </tableViewCell>

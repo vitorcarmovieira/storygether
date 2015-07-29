@@ -32,12 +32,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = uicolorFromHex(0x007D9F)
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        let currentUser = NSUserDefaults.standardUserDefaults()
+//        PFUser.logOut()
         
-        if (currentUser.valueForKey("nome") != nil){
+        if (PFUser.currentUser() != nil){
             
             self.callMainScreen()
         }
+        
+        
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        let tabBar = tabBarController.tabBar as UITabBar
+        
+        var tabBarItemTimeLine = tabBar.items![0] as! UITabBarItem
+        var tabBarItemPerfil = tabBar.items![2] as! UITabBarItem
+        
+        tabBarItemTimeLine.image = UIImage(named: "tabbar_icon_feed")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemTimeLine.selectedImage = UIImage(named: "tabbar_icon_feed_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemPerfil.image = UIImage(named: "tabbar_icon_perfil")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemPerfil.selectedImage = UIImage(named: "tabbar_icon_perfil_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+        
+        
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

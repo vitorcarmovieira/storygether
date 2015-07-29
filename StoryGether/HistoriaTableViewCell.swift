@@ -20,6 +20,8 @@ class HistoriaTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.userImage.circularImageView()
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

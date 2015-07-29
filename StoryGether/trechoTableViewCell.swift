@@ -11,10 +11,12 @@ import UIKit
 class trechoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trechoTextView: UITextView!
+    @IBOutlet weak var imagemEscritorTrecho: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.imagemEscritorTrecho.circularImageView()
     }
 
     @IBAction func curtir(sender: AnyObject) {

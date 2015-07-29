@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A92141B40A50000A8E647 /* LoginViewController.swift */; };
+		4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */; };
 		4E38526C1B136848004D346C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526B1B136848004D346C /* AppDelegate.swift */; };
 		4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */; };
 		4E3852741B136848004D346C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3852721B136848004D346C /* Main.storyboard */; };
@@ -34,8 +35,10 @@
 		4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533D1B189696004D346C /* HistoriaTableViewController.swift */; };
 		4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */; };
 		4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FCE741B212C0E005ADCAA /* TabBarController.swift */; };
+		4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAAD1B681B1100151656 /* Extensions.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
+		4EE5FAB71B4337F8006E636A /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */; };
 		4EEF869F1B43023D00A22534 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869C1B43023D00A22534 /* Bolts.framework */; };
 		4EEF86A01B43023D00A22534 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */; };
 		4EEF86A11B43023D00A22534 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */; };
@@ -53,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		245A92141B40A50000A8E647 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		4E3852661B136848004D346C /* StoryGether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E38526A1B136848004D346C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E38526B1B136848004D346C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,8 +87,10 @@
 		4E38533D1B189696004D346C /* HistoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoriaTableViewController.swift; sourceTree = "<group>"; };
 		4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrechosViewController.swift; sourceTree = "<group>"; };
 		4E7FCE741B212C0E005ADCAA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4E84AAAD1B681B1100151656 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
+		4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		4EEF869C1B43023D00A22534 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = StoryGether/Bolts.framework; sourceTree = "<group>"; };
 		4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = StoryGether/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = StoryGether/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EE5FAB71B4337F8006E636A /* ParseFacebookUtilsV4.framework in Frameworks */,
 				4E3852AF1B136CE2004D346C /* libsqlite3.dylib in Frameworks */,
 				4E3852AD1B136CD6004D346C /* libz.dylib in Frameworks */,
 				4E3852AB1B136CC7004D346C /* SystemConfiguration.framework in Frameworks */,
@@ -154,6 +161,8 @@
 				4E7FCE741B212C0E005ADCAA /* TabBarController.swift */,
 				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
 				4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */,
+				4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */,
+				4E84AAAD1B681B1100151656 /* Extensions.swift */,
 				245A92141B40A50000A8E647 /* LoginViewController.swift */,
 				4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */,
 				4E6AF2E71B372D4E00E671EA /* View */,
@@ -190,6 +199,7 @@
 		4E3852B01B136CF4004D346C /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */,
 				4EEF869C1B43023D00A22534 /* Bolts.framework */,
 				4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */,
 				4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */,
@@ -268,6 +278,7 @@
 		4E38525E1B136848004D346C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = BEPID;
 				TargetAttributes = {
@@ -329,6 +340,7 @@
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
+				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
 				4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */,
@@ -337,6 +349,7 @@
 				4E3852951B136A42004D346C /* TimeLineTableViewController.swift in Sources */,
 				4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */,
 				4E3852991B136B6C004D346C /* HistoriaTableViewCell.swift in Sources */,
+				4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

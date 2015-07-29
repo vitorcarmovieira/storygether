@@ -12,10 +12,16 @@ class HeaderTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var trechoTextView: UITextView!
+    @IBOutlet weak var tituloHistoriaText: UILabel!
+    @IBOutlet weak var nomeCriadorLabel: UILabel!
+    @IBOutlet weak var imagemCriador: UIImageView!
+    @IBOutlet weak var numAmigos: UILabel!
+    @IBOutlet weak var numFavoritos: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.imagemCriador.circularImageView()
     }
 
     @IBAction func finalizar(sender: AnyObject) {

@@ -11,8 +11,9 @@ import Parse
 
 class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
-    var idHistoria: String?
-    var trechosList: NSMutableArray = NSMutableArray()
+    var Historia: PFObject?
+    var id:String!
+    var trechosList:[PFObject]!
     var frameView: CGRect!
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,10 +21,12 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.trechosList = []
 
         var query: PFQuery = PFQuery(className: "Trechos")
-        
-        query.whereKey("escritor", equalTo: self.idHistoria!)
+        self.id = self.Historia?.objectId!
+        query.whereKey("historia", equalTo: id)
         
         query.findObjectsInBackgroundWithBlock{
             (objects:[AnyObject]?, error:NSError?) ->Void in
@@ -37,11 +40,10 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
                         
                         let t: PFObject = trecho as! PFObject
                         
-                        self.trechosList.addObject(t)
+                        self.trechosList.append(t)
                     }
+                    self.tableView.reloadData()
                 }
-                
-                self.tableView.reloadData()
             }
         }
         
@@ -62,12 +64,14 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func addTrecho(sender: AnyObject) {
         
         var trecho: PFObject = PFObject(className: "Trechos")
-        trecho["texto"] = self.newTrechoTextView.text!
-        trecho["escritor"] = idHistoria!
+        trecho["trecho"] = self.newTrechoTextView.text!
+        let className = PFUser.currentUser()?.parseClassName
+        trecho["escritor"] = PFUser.currentUser()?.valueForKey("profile")
+        trecho["historia"] = self.id
         
         trecho.saveInBackground()
         
-        trechosList.addObject(trecho)
+        trechosList.append(trecho)
         self.tableView.reloadData()
         self.newTrechoTextView.text = ""
     }
@@ -81,21 +85,29 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let user:AnyObject!
+        
         if indexPath.row == 0{
             
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
-            let trecho: AnyObject = self.trechosList[indexPath.row]
-            header.trechoTextView.text = trecho.valueForKey("texto") as? String
+            let trecho:PFObject = self.trechosList[indexPath.row]
+            header.trechoTextView.text = trecho["trecho"] as! String
+            header.tituloHistoriaText.text = (self.Historia!["titulo"] as! String)
+            user = trecho["escritor"]
+            println("\(user)")
+            header.imagemCriador.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
+            header.nomeCriadorLabel.text = user.valueForKey("name") as? String
             
             return header
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        let trecho: AnyObject = self.trechosList[indexPath.row]
-        println("\(trecho)")
-        cell.trechoTextView.text = trecho.valueForKey("texto") as? String
+        let trecho: PFObject = self.trechosList[indexPath.row]
+        user = trecho["escritor"]
+        cell.trechoTextView.text = trecho["trecho"] as! String
+        cell.imagemEscritorTrecho.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
         
         return cell
     }
