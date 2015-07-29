@@ -444,26 +444,25 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
-                                <rect key="frame" x="0.0" y="173" width="375" height="255"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Titulo" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
+                                <rect key="frame" x="16" y="110" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="   Comece a historia" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="GMU-as-BEa">
+                                <rect key="frame" x="16" y="148" width="343" height="180"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Comece a historia" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
+                                <rect key="frame" x="16" y="375" width="343" height="142"/>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="cv4-j3-LiI" id="8X4-pu-kCX"/>
                                 </connections>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titulo da historia" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
-                                <rect key="frame" x="77" y="104" width="220" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Escreva o trecho inicial da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaE-hC-h6E">
-                                <rect key="frame" x="56" y="144" width="262" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -648,6 +647,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="box_novahistoria_comeco" width="717" height="274"/>
         <image name="button_editarperfil" width="189" height="71"/>
         <image name="icon_colaboradores" width="32" height="44"/>
         <image name="icon_configuracao" width="45" height="45"/>
