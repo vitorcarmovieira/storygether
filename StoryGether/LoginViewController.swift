@@ -108,11 +108,11 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
             if ((error) != nil)
             {
                 // Process error
-                println("Error: \(error)")
+                print("Error: \(error)")
             }
             else
             {
-                println("fetched user: \(result)")
+                print("fetched user: \(result)")
                 
                 if let name = result.valueForKey("name") as? NSString{
                     
@@ -141,7 +141,15 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
 //                }
                 
                 PFUser.currentUser()?.setObject(userData, forKey: "profile")
-                PFUser.currentUser()?.saveInBackground()
+                PFUser.currentUser()?.saveInBackground().continueWithBlock({
+                    (task) -> AnyObject in
+                    if task.error != nil{
+                        return task
+                    }
+                    
+                    print("\(task)")
+                    return task
+                })
             }
         })
         

@@ -36,7 +36,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     for trecho in trechos {
                         
-                        println("Finded: \(trecho)")
+                        print("Finded: \(trecho)")
                         
                         let t: PFObject = trecho as! PFObject
                         
@@ -95,7 +95,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             header.trechoTextView.text = trecho["trecho"] as! String
             header.tituloHistoriaText.text = (self.Historia!["titulo"] as! String)
             user = trecho["escritor"]
-            println("\(user)")
+            print("\(user)")
             header.imagemCriador.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
             header.nomeCriadorLabel.text = user.valueForKey("name") as? String
             

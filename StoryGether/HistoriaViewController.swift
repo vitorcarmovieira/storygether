@@ -18,10 +18,23 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        historiaTextView.text = "Comece uma história"
+        historiaTextView.textColor = UIColor.lightGrayColor()
+        
     }
-
-    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        historiaTextView.text = ""
+        historiaTextView.textColor = UIColor.blackColor()
+        return true;
+    }
+    func textViewDidChange(textView: UITextView) {
+        var texto: String = textView.text
+        if(count(texto)==0){
+            historiaTextView.text = "Comece uma história"
+            historiaTextView.textColor = UIColor.lightGrayColor()
+            historiaTextView.resignFirstResponder()
+        }
+    }
     @IBAction func saveHistoria(sender: AnyObject) {
         
         let className = PFUser.currentUser()?.parseClassName
@@ -41,9 +54,9 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
             (sucess, error) -> Void in
             if error != nil {
                 // There was an error.
-                println("erro em salvar historia.")
+                print("erro em salvar historia.")
             }else {
-                println("historia salva. \(sucess)")
+                print("historia salva. \(sucess)")
                 trechos["historia"] = novahistoria.objectId!
                 trechos.saveInBackground()
             }

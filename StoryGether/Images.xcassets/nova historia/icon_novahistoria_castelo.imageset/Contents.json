@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "storygether vers2_castelo-23.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "icon_novahistoria_castelo.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
