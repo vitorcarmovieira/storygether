@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.callMainScreen()
         }
         
+        var navigationBarAppearace = UINavigationBar.appearance()
         
         
         
