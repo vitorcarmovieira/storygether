@@ -140,16 +140,9 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
                     userData.setValue(url, forKey: "urlFoto")
                 }
                 
-                PFUser.currentUser()?.setObject(userData, forKey: "profile")
-                PFUser.currentUser()?.saveInBackground().continueWithBlock({
-                    (task) -> AnyObject in
-                    if task.error != nil{
-                        return task
-                    }
-                    
-                    print("\(task)")
-                    return task
-                })
+                let user = PFUser.currentUser()
+                user!["profile"] = userData
+                user?.save()
             }
         })
         
