@@ -449,13 +449,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="   Comece a historia" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="GMU-as-BEa">
-                                <rect key="frame" x="16" y="148" width="343" height="180"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Comece a historia" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
-                                <rect key="frame" x="16" y="375" width="343" height="142"/>
+                                <rect key="frame" x="16" y="148" width="343" height="142"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -647,7 +642,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="box_novahistoria_comeco" width="717" height="274"/>
+        <image name="box_novahistoria_comeco" width="1455" height="534"/>
         <image name="button_editarperfil" width="189" height="71"/>
         <image name="icon_colaboradores" width="32" height="44"/>
         <image name="icon_configuracao" width="45" height="45"/>
