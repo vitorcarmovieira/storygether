@@ -26,12 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("2WJcoDOaxDLDHTIBZimCEaT4vSOGLn6lGKsT7Qql",
             clientKey: "lktTtOZU0p0Yd1tbxwrTDR2zQ4iRdZ56ZK0zM6WN")
         
-        var navigationBarAppearace = UINavigationBar.appearance()
-        
-        navigationBarAppearace.tintColor = UIColor.whiteColor()
-        navigationBarAppearace.barTintColor = uicolorFromHex(0x007D9F)
-        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
 //        PFUser.logOut()
         
         if (PFUser.currentUser() != nil){
@@ -39,17 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.callMainScreen()
         }
         
+        var navigationBarAppearace = UINavigationBar.appearance()
         
-        let tabBarController = self.window?.rootViewController as! UITabBarController
-        let tabBar = tabBarController.tabBar as UITabBar
-        
-        var tabBarItemTimeLine = tabBar.items![0] as! UITabBarItem
-        var tabBarItemPerfil = tabBar.items![2] as! UITabBarItem
-        
-        tabBarItemTimeLine.image = UIImage(named: "tabbar_icon_feed")!.imageWithRenderingMode(.AlwaysOriginal)
-        tabBarItemTimeLine.selectedImage = UIImage(named: "tabbar_icon_feed_clique")!.imageWithRenderingMode(.AlwaysOriginal)
-        tabBarItemPerfil.image = UIImage(named: "tabbar_icon_perfil")!.imageWithRenderingMode(.AlwaysOriginal)
-        tabBarItemPerfil.selectedImage = UIImage(named: "tabbar_icon_perfil_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+        navigationBarAppearace.tintColor = UIColor.whiteColor()
+        navigationBarAppearace.barTintColor = uicolorFromHex(0x007D9F)
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
@@ -85,6 +73,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootView = storyBoard.instantiateViewControllerWithIdentifier("rootTabBar") as! UITabBarController
         self.window?.rootViewController = rootView
         self.window?.makeKeyAndVisible()
+        
+        var tabBarAppearace = UITabBar.appearance()
+        
+        tabBarAppearace.tintColor = UIColor.whiteColor()
+        tabBarAppearace.barTintColor = self.uicolorFromHex(0xffffff)
+        
+        
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        let tabBar = tabBarController.tabBar as UITabBar
+        
+        var tabBarItemTimeLine = tabBar.items![0] as! UITabBarItem
+        var tabBarItemPerfil = tabBar.items![2] as! UITabBarItem
+        
+        tabBarItemTimeLine.image = UIImage(named: "tabbar_icon_feed")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemTimeLine.selectedImage = UIImage(named: "tabbar_icon_feed_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemPerfil.image = UIImage(named: "tabbar_icon_perfil")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemPerfil.selectedImage = UIImage(named: "tabbar_icon_perfil_clique")!.imageWithRenderingMode(.AlwaysOriginal)
     }
 
     func applicationWillResignActive(application: UIApplication) {

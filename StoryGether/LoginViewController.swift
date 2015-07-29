@@ -78,8 +78,16 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email"){
                 
-                PFFacebookUtils.logInInBackgroundWithAccessToken(FBSDKAccessToken.currentAccessToken())
-                setUserData()
+                let accessToken = FBSDKAccessToken.currentAccessToken()
+                PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block:{
+                    (user: PFUser?, error: NSError?) -> Void in
+                    if user != nil {
+                        println("User logged in through Facebook!")
+                        self.setUserData()
+                    } else {
+                        println("Uh oh. There was an error logging in.")
+                    }
+                })
             }
         }
     }
@@ -126,22 +134,15 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
                 
                 var pic: AnyObject? = result.valueForKey("picture")
                 var data: AnyObject? = pic?.valueForKey("data")
-                var url = data?.valueForKey("url") as! String
                 
                 if let url = data?.valueForKey("url") as? NSString{
                     
                     userData.setValue(url, forKey: "urlFoto")
                 }
-//                var urlRequest = NSURLRequest(URL: NSURL(string: url)!)
-//                if let url = NSURL(string: url) {
-//                    if let imageData = NSData(contentsOfURL: url){
-//                        
-//                        userData.setValue(imageData, forKey: "image")
-//                    }
-//                }
                 
-                PFUser.currentUser()?.setObject(userData, forKey: "profile")
-                PFUser.currentUser()?.saveInBackground()
+                let user = PFUser.currentUser()
+                user!["profile"] = userData
+                user?.save()
             }
         })
         
