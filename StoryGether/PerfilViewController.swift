@@ -9,8 +9,9 @@
 import UIKit
 import Parse
 
-class PerfilViewController: UIViewController {
+class PerfilViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imagemView: UIImageView!
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var numSeguidores: UILabel!
@@ -20,10 +21,14 @@ class PerfilViewController: UIViewController {
     @IBOutlet weak var buttonCoop: UIButton!
     @IBOutlet weak var buttonFavoritas: UIButton!
     var iAmSelected: Int = -1
+    var historias:[PFObject]!
     
     override func viewDidLoad() {
         
+        self.historias = []
         self.imagemView.circularImageView()
+        self.buttonHistorias.selected = true
+        self.tableView.delegate = self
         
         let currentUser: AnyObject? = PFUser.currentUser()?.valueForKey("profile")
         
@@ -34,7 +39,58 @@ class PerfilViewController: UIViewController {
         //async para pegar foto do usuario
         self.imagemView.getImageAssync(url!)
         
+        let user = PFUser.currentUser()
+        if let historias = user!["historias"] as? [PFObject]{
+            for historia in historias{
+                historia.fetchIfNeededInBackgroundWithBlock({
+                    (result) -> Void in
+                    self.historias.append(historia)
+                    self.tableView.reloadData()
+                })
+            }
+        }
     }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! PerfilHistoriaCell
+        
+        let historia = self.historias[indexPath.row]
+        cell.labelTitulo.text = historia["titulo"] as? String
+        cell.labelData.text = historia.createdAt?.historyCreatedAt()
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.historias.count
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = tableView.dequeueReusableCellWithIdentifier("HeaderCellQuatidades") as! PerfilNumeroHistorias
+        
+        header.labelNumHistorias.text = "\(self.historias.count)"
+        header.labelDescricao.text = "Historias criadas"
+        
+        return header
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        let height = 40.0 as CGFloat
+        
+        return height
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let height = 60.0 as CGFloat
+        
+        return height
+    }
+    
     
     @IBAction func changeToHistorias(sender: AnyObject) {
         

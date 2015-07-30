@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 BEPID. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 class PerfilHistoriaCell: UITableViewCell {
 

@@ -32,7 +32,6 @@ class TimeLineTableViewController: UITableViewController {
                 if let historias = objects as? [PFObject] {
                     
                     for historia in historias {
-                        println("\(historia)")
                         self.timelineData.addObject(historia)
                     }
                     self.activityIndicator.stopAnimating()
@@ -98,13 +97,11 @@ class TimeLineTableViewController: UITableViewController {
         
         let historia = self.timelineData.objectAtIndex(indexPath.row) as! PFObject
         let user:AnyObject = historia["criador"]!
-        let dateFormat = NSDateFormatter()
-        dateFormat.dateFormat = "dd/MM/yyyy"
         
         //async para pegar foto do usuario
         cell.userImage.getImageAssync(user.valueForKey("urlFoto") as! String)
         cell.tituloHistoria.text = (historia["titulo"] as! String)
-        cell.dataCriacao.text = "Criada em: " + dateFormat.stringFromDate(historia.createdAt!)
+        cell.dataCriacao.text = historia.createdAt?.historyCreatedAt()
         cell.historiaTextView.text = historia["trechoInicial"] as! String
 
         return cell
@@ -112,7 +109,7 @@ class TimeLineTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! UITableViewCell
+        let header = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! TimeLineHeaderCell
         
         return header
     }

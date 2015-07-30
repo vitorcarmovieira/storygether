@@ -63,7 +63,14 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
         novahistoria["trechoInicial"] = self.historiaTextView.text!
         
         let user = PFUser.currentUser()!
-        user["historias"] = [novahistoria]
+        if var historias = user["historias"] as? [PFObject]{
+            
+            historias.append(novahistoria)
+            user["historias"] = historias
+        } else { user["historias"] = [novahistoria] }
+            
+            
+//        user["historias"] = [novahistoria]
         user.saveInBackgroundWithBlock({
             (sucess, error) -> Void in
             if error != nil {

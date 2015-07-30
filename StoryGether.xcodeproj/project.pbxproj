@@ -38,6 +38,7 @@
 		4E84AAB01B6954E200151656 /* tipografia_sf in Resources */ = {isa = PBXBuildFile; fileRef = 4E84AAAF1B6954E200151656 /* tipografia_sf */; };
 		4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB21B69D37C00151656 /* PerfilHistoriaCell.swift */; };
 		4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */; };
+		4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB61B6A5FF300151656 /* TimeLineHeaderCell.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
 		4EE5FAB71B4337F8006E636A /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */; };
@@ -92,6 +93,7 @@
 		4E84AAAF1B6954E200151656 /* tipografia_sf */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tipografia_sf; sourceTree = "<group>"; };
 		4E84AAB21B69D37C00151656 /* PerfilHistoriaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilHistoriaCell.swift; sourceTree = "<group>"; };
 		4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilNumeroHistorias.swift; sourceTree = "<group>"; };
+		4E84AAB61B6A5FF300151656 /* TimeLineHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineHeaderCell.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
 		4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
 				4E84AAB21B69D37C00151656 /* PerfilHistoriaCell.swift */,
 				4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */,
+				4E84AAB61B6A5FF300151656 /* TimeLineHeaderCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				4E3852951B136A42004D346C /* TimeLineTableViewController.swift in Sources */,
 				4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */,
 				4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */,
+				4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */,
 				4E3852991B136B6C004D346C /* HistoriaTableViewCell.swift in Sources */,
 				4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */,
 			);
