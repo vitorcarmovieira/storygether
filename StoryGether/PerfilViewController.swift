@@ -55,9 +55,8 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! PerfilHistoriaCell
         
-        let historia = self.historias[indexPath.row]
-        cell.labelTitulo.text = historia["titulo"] as? String
-        cell.labelData.text = historia.createdAt?.historyCreatedAt()
+        cell.parseObject = self.historias[indexPath.row]
+        cell.awakeFromNib()
         
         return cell
     }

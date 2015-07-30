@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class HistoriaTableViewCell: UITableViewCell {
 
@@ -16,11 +17,23 @@ class HistoriaTableViewCell: UITableViewCell {
     @IBOutlet weak var tituloHistoria: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var historiaTextView: UITextView!
+    var parseObject:PFObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.userImage.circularImageView()
+        
+        if let historia = self.parseObject{
+            
+            let user:AnyObject = historia["criador"]!
+            
+            //async para pegar foto do usuario
+            self.userImage.getImageAssync(user.valueForKey("urlFoto") as? String)
+            self.tituloHistoria.text = (historia["titulo"] as! String)
+            self.dataCriacao.text = historia.createdAt?.historyCreatedAt()
+            self.historiaTextView.text = historia["trechoInicial"] as! String
+        }
         
     }
 

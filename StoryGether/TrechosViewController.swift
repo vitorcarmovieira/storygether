@@ -91,23 +91,17 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
-            let trecho:PFObject = self.trechosList[indexPath.row]
-            header.trechoTextView.text = trecho["trecho"] as! String
-            header.tituloHistoriaText.text = (self.Historia!["titulo"] as! String)
-            user = trecho["escritor"]
-            print("\(user)")
-            header.imagemCriador.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
-            header.nomeCriadorLabel.text = user.valueForKey("name") as? String
+            header.parseObject = self.trechosList[indexPath.row]
+            header.tituloHistoria = self.Historia?["titulo"] as? String
+            header.awakeFromNib()
             
             return header
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        let trecho: PFObject = self.trechosList[indexPath.row]
-        user = trecho["escritor"]
-        cell.trechoTextView.text = trecho["trecho"] as! String
-        cell.imagemEscritorTrecho.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
+        cell.parseObject = self.trechosList[indexPath.row]
+        cell.awakeFromNib()
         
         return cell
     }

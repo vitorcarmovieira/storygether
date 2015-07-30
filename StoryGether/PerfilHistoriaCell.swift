@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class PerfilHistoriaCell: UITableViewCell {
 
@@ -14,4 +15,15 @@ class PerfilHistoriaCell: UITableViewCell {
     @IBOutlet weak var labelData: UILabel!
     @IBOutlet weak var labelNumColaboradores: UILabel!
     @IBOutlet weak var labelNumFavoritos: UILabel!
+    var parseObject:PFObject?
+    
+    override func awakeFromNib() {
+        
+        if let historia = parseObject{
+            
+            self.labelTitulo.text = historia["titulo"] as? String
+            let str = historia["titulo"] as? String
+            self.labelData.text = historia.createdAt?.historyCreatedAt()
+        }
+    }
 }

@@ -95,14 +95,8 @@ class TimeLineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
-        let historia = self.timelineData.objectAtIndex(indexPath.row) as! PFObject
-        let user:AnyObject = historia["criador"]!
-        
-        //async para pegar foto do usuario
-        cell.userImage.getImageAssync(user.valueForKey("urlFoto") as! String)
-        cell.tituloHistoria.text = (historia["titulo"] as! String)
-        cell.dataCriacao.text = historia.createdAt?.historyCreatedAt()
-        cell.historiaTextView.text = historia["trechoInicial"] as! String
+        cell.parseObject = (self.timelineData.objectAtIndex(indexPath.row) as? PFObject)
+        cell.awakeFromNib()
 
         return cell
     }

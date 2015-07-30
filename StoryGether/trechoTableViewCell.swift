@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import Parse
 
 class trechoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trechoTextView: UITextView!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
+    var parseObject:PFObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.imagemEscritorTrecho.circularImageView()
+        
+        if let trecho = self.parseObject{
+            
+            let user:AnyObject? = trecho["escritor"]
+            self.trechoTextView.text = trecho["trecho"] as! String
+            self.imagemEscritorTrecho.getImageAssync(user?.valueForKey("urlFoto") as? String)
+        }
     }
 
     @IBAction func curtir(sender: AnyObject) {
+        
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

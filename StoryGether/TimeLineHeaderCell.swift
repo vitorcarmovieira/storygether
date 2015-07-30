@@ -15,7 +15,7 @@ class TimeLineHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         
-        self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.9)
     }
     
     @IBAction func changeToExplorar(sender: AnyObject) {
