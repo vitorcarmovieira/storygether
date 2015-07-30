@@ -10,13 +10,15 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
+    var button:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let buttonImage: UIImage? = UIImage(named: "tabbar_icon_criar")
         let buttonSelectedImage = UIImage(named: "tabbar_icon_clique_07")
         
-        var button: UIButton = UIButton(frame: CGRectMake(0.0, 0.0, buttonImage!.size.width - 75, buttonImage!.size.height - 75))
+        button = UIButton(frame: CGRectMake(0.0, 0.0, buttonImage!.size.width - 75, buttonImage!.size.height - 75))
         button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
         button.setBackgroundImage(buttonImage, forState: UIControlState.Normal)
         button.setBackgroundImage(buttonSelectedImage, forState: UIControlState.Selected)
@@ -46,6 +48,8 @@ class TabBarController: UITabBarController {
         
         var view: HistoriaViewController = storyboard?.instantiateViewControllerWithIdentifier("criaHistoria") as! HistoriaViewController
         self.selectedIndex = 1
+        self.tabBar.hidden = true
+        self.button.hidden = true
     }
 
     /*

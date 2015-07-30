@@ -35,6 +35,20 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
             historiaTextView.resignFirstResponder()
         }
     }
+    @IBAction func cancelarNovaHistoria(sender: AnyObject) {
+        
+        self.tabBarController?.selectedIndex = 0
+        self.tabBarController?.tabBar.hidden = false
+        let view = self.tabBarController?.view
+        if let subViews = view?.subviews{
+            for button in subViews{
+                if button is UIButton{
+                    (button as! UIButton).hidden = false
+                }
+            }
+        }
+    }
+    
     @IBAction func saveHistoria(sender: AnyObject) {
         
         let className = PFUser.currentUser()?.parseClassName

@@ -475,6 +475,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="dBX-8V-Zpn"/>
                     <navigationItem key="navigationItem" title="Crie uma historia" id="YAJ-Jv-ese">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="r7E-hu-wMT">
+                            <connections>
+                                <action selector="cancelarNovaHistoria:" destination="cv4-j3-LiI" id="Rpk-OY-Wmo"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="DIZ-gM-cc8">
                             <connections>
                                 <action selector="saveHistoria:" destination="cv4-j3-LiI" id="NkN-dB-eZZ"/>
