@@ -12,7 +12,7 @@ import Parse
 class HeaderTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var trechoTextView: UITextView!
+    @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var tituloHistoriaText: UILabel!
     @IBOutlet weak var nomeCriadorLabel: UILabel!
     @IBOutlet weak var imagemCriador: UIImageView!
@@ -28,7 +28,7 @@ class HeaderTableViewCell: UITableViewCell {
         
         if let trecho = parseObject{
             
-            self.trechoTextView.text = trecho["trecho"] as! String
+            self.trechoLabel.text = trecho["trecho"] as? String
             self.tituloHistoriaText.text = self.tituloHistoria
             let user:AnyObject? = trecho["escritor"]
             self.imagemCriador.getImageAssync(user?.valueForKey("urlFoto") as? String)

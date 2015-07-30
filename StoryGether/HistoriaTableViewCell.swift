@@ -17,7 +17,7 @@ class HistoriaTableViewCell: UITableViewCell {
     @IBOutlet weak var numEscritores: UILabel!
     @IBOutlet weak var tituloHistoria: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var historiaTextView: UITextView!
+    @IBOutlet weak var historiaLabel: UILabel!
     var parseObject:PFObject?
     
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ class HistoriaTableViewCell: UITableViewCell {
             self.userImage.getImageAssync(user.valueForKey("urlFoto") as? String)
             self.tituloHistoria.text = (historia["titulo"] as! String)
             self.dataCriacao.text = historia.createdAt?.historyCreatedAt()
-            self.historiaTextView.text = historia["trechoInicial"] as! String
+            self.historiaLabel.text = historia["trechoInicial"] as? String
             self.setNumTrechos()
             
             if let count = favoritadas?.count{

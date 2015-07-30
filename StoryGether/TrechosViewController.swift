@@ -32,10 +32,10 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             (objects:[AnyObject]?, error:NSError?) ->Void in
             
             if error == nil{
-                if let trechos = objects as? NSArray {
+                if let trechos = objects as? [PFObject] {
                     
                     for trecho in trechos {
-                        let t: PFObject = trecho as! PFObject
+                        let t: PFObject = trecho
                         
                         self.trechosList.append(t)
                     }

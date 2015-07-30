@@ -11,7 +11,7 @@ import Parse
 
 class trechoTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var trechoTextView: UITextView!
+    @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
     var parseObject:PFObject?
     
@@ -23,7 +23,7 @@ class trechoTableViewCell: UITableViewCell {
         if let trecho = self.parseObject{
             
             let user:AnyObject? = trecho["escritor"]
-            self.trechoTextView.text = trecho["trecho"] as! String
+            self.trechoLabel.text = trecho["trecho"] as? String
             self.imagemEscritorTrecho.getImageAssync(user?.valueForKey("urlFoto") as? String)
         }
     }

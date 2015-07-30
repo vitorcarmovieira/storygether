@@ -467,12 +467,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAA-nU-IaJ" id="jc6-mr-HTG">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-MY-mrz">
-                                            <rect key="frame" x="8" y="48" width="359" height="53.5"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-UU-b8U">
                                             <rect key="frame" x="8" y="5" width="40" height="40"/>
                                         </imageView>
@@ -516,12 +510,18 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXd-AO-gJa">
+                                            <rect key="frame" x="8" y="53" width="359" height="46"/>
+                                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="buttonFavoritar" destination="0JF-WP-xf3" id="jdU-Zi-np2"/>
                                     <outlet property="dataCriacao" destination="W2U-ga-QYb" id="eyG-bF-b1n"/>
-                                    <outlet property="historiaTextView" destination="Ge1-MY-mrz" id="ItO-sB-tuI"/>
+                                    <outlet property="historiaLabel" destination="bXd-AO-gJa" id="Ouc-RZ-sBb"/>
                                     <outlet property="numEscritores" destination="v2C-TW-srU" id="SFI-cP-kDC"/>
                                     <outlet property="numFavoritos" destination="Y3B-Gl-ety" id="1ZX-6S-IkP"/>
                                     <outlet property="tituloHistoria" destination="e9y-a6-hca" id="dGF-Au-Ix6"/>
@@ -730,13 +730,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-hR-vsd">
-                                                    <rect key="frame" x="8" y="91" width="359" height="72"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
-                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-ZC-a3E">
                                                     <rect key="frame" x="321" y="160" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
@@ -748,6 +741,12 @@
                                                         <action selector="curtir:" destination="Pdf-DY-FeX" eventType="touchUpInside" id="Ewx-Nn-Diz"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXu-EO-qyw">
+                                                    <rect key="frame" x="8" y="91" width="359" height="61"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -756,7 +755,7 @@
                                             <outlet property="numAmigos" destination="trO-6M-6pc" id="kgf-z5-iTC"/>
                                             <outlet property="numFavoritos" destination="CIL-zp-ORF" id="ibP-pH-dic"/>
                                             <outlet property="tituloHistoriaText" destination="Cae-Ai-grj" id="x5N-Bc-dw0"/>
-                                            <outlet property="trechoTextView" destination="ap5-hR-vsd" id="udt-Q1-6sr"/>
+                                            <outlet property="trechoLabel" destination="PXu-EO-qyw" id="zwR-K8-K7o"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trechoCell" rowHeight="100" id="kte-KM-EF5" customClass="trechoTableViewCell" customModule="StoryGether" customModuleProvider="target">
@@ -767,13 +766,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-0P-rK3">
                                                     <rect key="frame" x="8" y="8" width="35" height="35"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Rkv-Hl-Ifj">
-                                                    <rect key="frame" x="51" y="4" width="316" height="72"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
-                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTr-xn-dX4">
                                                     <rect key="frame" x="321" y="78" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
@@ -785,11 +777,17 @@
                                                         <action selector="curtir:" destination="kte-KM-EF5" eventType="touchUpInside" id="XkS-9B-XkV"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4a-cF-JwX">
+                                                    <rect key="frame" x="51" y="8" width="316" height="62"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imagemEscritorTrecho" destination="uYr-0P-rK3" id="2Lz-F3-ptX"/>
-                                            <outlet property="trechoTextView" destination="Rkv-Hl-Ifj" id="Yef-nF-Xh4"/>
+                                            <outlet property="trechoLabel" destination="x4a-cF-JwX" id="Jcg-n6-7J1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -25,14 +25,11 @@ class HistoriaTableViewController: UITableViewController {
             (objects:[AnyObject]?, error:NSError?) ->Void in
             
             if error == nil{
-                if let trechos = objects as? NSArray {
+                if let trechos = objects as? [PFObject] {
                     
                     for trecho in trechos {
                         
-                        println("Finded: \(trecho)")
-                        
-                        let t: PFObject = trecho as! PFObject
-                        
+                        let t: PFObject = trecho                        
                         self.trechosList.addObject(t)
                     }
                 }
@@ -63,21 +60,21 @@ class HistoriaTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0{
-            
-            let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
-            
-            let trecho = self.trechosList[indexPath.row]
-            header.trechoTextView.text = trecho.valueForKey("texto") as? String
-            
-            return header
-        }
+//        if indexPath.row == 0{
+//            
+//            let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
+//            
+//            header.parseObject = self.trechosList[indexPath.row] as? PFObject
+//            header.tituloHistoria = self.
+//            header.awakeFromNib()
+//            
+//            return header
+//        }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        let trecho = self.trechosList[indexPath.row]
-        println("\(trecho)")
-        cell.trechoTextView.text = trecho.valueForKey("texto") as? String
+        cell.parseObject = self.trechosList[indexPath.row] as? PFObject
+        cell.awakeFromNib()
 
         return cell
     }
