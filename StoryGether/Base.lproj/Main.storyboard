@@ -96,52 +96,75 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome sobrenome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aer-Sz-R4d">
-                                <rect key="frame" x="16" y="213" width="138" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="tji-KH-xRd">
-                                <rect key="frame" x="40" y="235" width="295" height="61"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbz-ZU-8TK">
-                                <rect key="frame" x="0.0" y="309" width="115" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Historias criadas">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbz-ZU-8TK">
+                                <rect key="frame" x="0.0" y="274" width="93" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
+                                <state key="normal" title="Historias criadas" image="icon_historiascriadas">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="icon_historiascriadas"/>
+                                <state key="selected" image="icon_historiascriadas_clique">
+                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeToHistorias:" destination="tkj-fB-eFg" eventType="touchUpInside" id="vjI-wA-GHU"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-vC-QgY">
-                                <rect key="frame" x="101" y="309" width="93" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Finalizadas">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-17-tft">
+                                <rect key="frame" x="93" y="274" width="93" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
+                                <state key="normal" title="Finalizadas" image="icon_historiasfinalizadas">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="icon_historiascriadas"/>
+                                <state key="selected" title="Finalizadas" image="icon_historiasfinaliadas_clique">
+                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeToFinalizadas:" destination="tkj-fB-eFg" eventType="touchUpInside" id="hbc-tW-sB2"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LL1-r5-H2i">
-                                <rect key="frame" x="177" y="309" width="95" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Colaborativas">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-Tt-N6e">
+                                <rect key="frame" x="189" y="274" width="93" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
+                                <state key="normal" title="Colaborativas" image="icon_historiascolaborativas">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="icon_historiascriadas"/>
+                                <state key="selected" title="Colaborativas" image="icon_historiascolaborativas_clique">
+                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeToCoop:" destination="tkj-fB-eFg" eventType="touchUpInside" id="7Eg-nV-usk"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdK-HU-hBm">
-                                <rect key="frame" x="276" y="309" width="93" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Favoritas">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWv-1x-93T">
+                                <rect key="frame" x="282" y="274" width="93" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
+                                <state key="normal" title="Favoritas" image="icon_historiasfavoritas">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" image="icon_historiascriadas"/>
+                                <state key="selected" title="Favoritas" image="icon_historiasfavoritas_clique">
+                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeToFavoritas:" destination="tkj-fB-eFg" eventType="touchUpInside" id="Lo7-6y-cdy"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-Rf-bWx">
                                 <rect key="frame" x="0.0" y="367" width="375" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jjp-xp-Hw4">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jjp-xp-Hw4" customClass="PerfilNumeroHistorias" customModule="StoryGether" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jjp-xp-Hw4" id="Yaj-mL-Yzf">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -160,8 +183,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelDescricao" destination="0fk-jv-KOH" id="HRL-06-Dqd"/>
+                                            <outlet property="labelNumHistorias" destination="TcI-96-A2H" id="M7K-Hd-sii"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="yVa-rY-SQD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="yVa-rY-SQD" customClass="PerfilHistoriaCell" customModule="StoryGether" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yVa-rY-SQD" id="u1Y-sK-NUR">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -201,19 +228,37 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelData" destination="p9d-zZ-wMf" id="O91-Cv-wLd"/>
+                                            <outlet property="labelNumColaboradores" destination="Pdb-vp-DJK" id="fiv-GI-dYd"/>
+                                            <outlet property="labelNumFavoritos" destination="aBn-LX-yd5" id="cOq-wT-cLX"/>
+                                            <outlet property="labelTitulo" destination="Llc-Ah-vuq" id="q0I-8p-2Sd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_configuracao" translatesAutoresizingMaskIntoConstraints="NO" id="VOW-ra-cwj">
                                 <rect key="frame" x="174" y="186" width="26" height="26"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome sobrenome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aer-Sz-R4d">
+                                <rect key="frame" x="3" y="213" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Perfil" id="Kt2-Ds-TDm"/>
                     <connections>
+                        <outlet property="buttonCoop" destination="K1F-Tt-N6e" id="8BG-a0-0jE"/>
+                        <outlet property="buttonFavoritas" destination="tWv-1x-93T" id="Xe2-nq-ikE"/>
+                        <outlet property="buttonFinalizadas" destination="0SJ-17-tft" id="WGM-tJ-Sc8"/>
+                        <outlet property="buttonHistorias" destination="fbz-ZU-8TK" id="Ofi-Jh-BRI"/>
                         <outlet property="imagemView" destination="fej-2C-yI6" id="w18-EH-Wfy"/>
                         <outlet property="nomeLabel" destination="aer-Sz-R4d" id="sf0-oJ-vaA"/>
+                        <outlet property="numSeguidores" destination="HKi-3T-H8b" id="3S1-xl-7Gt"/>
+                        <outlet property="numSeguindo" destination="0C0-Gu-ITn" id="ZOb-pb-YHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqq-So-dRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -350,7 +395,7 @@
                                             </attributedString>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="perfil" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-UU-b8U">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-UU-b8U">
                                             <rect key="frame" x="8" y="5" width="40" height="40"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9y-a6-hca">
@@ -526,7 +571,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pdf-DY-FeX" id="gP0-tB-mkK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="perfil" translatesAutoresizingMaskIntoConstraints="NO" id="WU7-UQ-361">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="WU7-UQ-361">
                                                     <rect key="frame" x="19" y="8" width="35" height="35"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nome do autor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJV-pn-yGQ">
@@ -539,6 +584,7 @@
                                                     <rect key="frame" x="303" y="4" width="57" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <state key="normal" title="Finalizar">
+                                                        <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -580,6 +626,7 @@
                                                     <rect key="frame" x="321" y="162" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <state key="normal" title="Curtir">
+                                                        <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -602,7 +649,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kte-KM-EF5" id="DKf-tV-wO6">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="perfil" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-0P-rK3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-0P-rK3">
                                                     <rect key="frame" x="8" y="8" width="35" height="35"/>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Rkv-Hl-Ifj">
@@ -616,6 +663,7 @@
                                                     <rect key="frame" x="321" y="78" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <state key="normal" title="Curtir">
+                                                        <color key="titleColor" red="0.062745098039215685" green="0.4823529411764706" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -665,10 +713,18 @@
         <image name="icon_configuracao" width="45" height="45"/>
         <image name="icon_favoritar" width="36" height="40"/>
         <image name="icon_favoritar_clique" width="36" height="38"/>
+        <image name="icon_historiascolaborativas" width="74" height="61"/>
+        <image name="icon_historiascolaborativas_clique" width="74" height="61"/>
+        <image name="icon_historiascriadas" width="78" height="61"/>
+        <image name="icon_historiascriadas_clique" width="78" height="61"/>
+        <image name="icon_historiasfavoritas" width="74" height="57"/>
+        <image name="icon_historiasfavoritas_clique" width="74" height="57"/>
+        <image name="icon_historiasfinaliadas_clique" width="81" height="65"/>
+        <image name="icon_historiasfinalizadas" width="81" height="65"/>
+        <image name="icon_novahistoria_amigos" width="38" height="51"/>
         <image name="icon_novahistoria_balao" width="626" height="86"/>
         <image name="icon_novahistoria_castelo" width="1047" height="938"/>
         <image name="icon_quandofoicriada" width="22" height="22"/>
-        <image name="perfil" width="45" height="45"/>
         <image name="perfil_capa" width="749" height="197"/>
     </resources>
 </document>

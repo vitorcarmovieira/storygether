@@ -36,6 +36,8 @@
 		4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FCE741B212C0E005ADCAA /* TabBarController.swift */; };
 		4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAAD1B681B1100151656 /* Extensions.swift */; };
 		4E84AAB01B6954E200151656 /* tipografia_sf in Resources */ = {isa = PBXBuildFile; fileRef = 4E84AAAF1B6954E200151656 /* tipografia_sf */; };
+		4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB21B69D37C00151656 /* PerfilHistoriaCell.swift */; };
+		4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
 		4EE5FAB71B4337F8006E636A /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */; };
@@ -88,6 +90,8 @@
 		4E7FCE741B212C0E005ADCAA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4E84AAAD1B681B1100151656 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4E84AAAF1B6954E200151656 /* tipografia_sf */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tipografia_sf; sourceTree = "<group>"; };
+		4E84AAB21B69D37C00151656 /* PerfilHistoriaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilHistoriaCell.swift; sourceTree = "<group>"; };
+		4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilNumeroHistorias.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
 		4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -222,15 +226,25 @@
 		4E6AF2E71B372D4E00E671EA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E38533B1B189634004D346C /* HeaderTableViewCell.swift */,
-				4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */,
+				4E84AAB11B69D31700151656 /* Cells */,
 				4E3852721B136848004D346C /* Main.storyboard */,
-				4E9130471B350D460023C73C /* trechoTableViewCell.swift */,
-				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
 				4E3852751B136848004D346C /* Images.xcassets */,
 				4E3852771B136848004D346C /* LaunchScreen.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		4E84AAB11B69D31700151656 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E38533B1B189634004D346C /* HeaderTableViewCell.swift */,
+				4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */,
+				4E9130471B350D460023C73C /* trechoTableViewCell.swift */,
+				4E3852981B136B6C004D346C /* HistoriaTableViewCell.swift */,
+				4E84AAB21B69D37C00151656 /* PerfilHistoriaCell.swift */,
+				4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +358,7 @@
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
+				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
@@ -352,6 +367,7 @@
 				4E38526C1B136848004D346C /* AppDelegate.swift in Sources */,
 				4E3852951B136A42004D346C /* TimeLineTableViewController.swift in Sources */,
 				4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */,
+				4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */,
 				4E3852991B136B6C004D346C /* HistoriaTableViewCell.swift in Sources */,
 				4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */,
 			);
