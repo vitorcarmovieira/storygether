@@ -35,9 +35,6 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
                 if let trechos = objects as? NSArray {
                     
                     for trecho in trechos {
-                        
-                        print("Finded: \(trecho)")
-                        
                         let t: PFObject = trecho as! PFObject
                         
                         self.trechosList.append(t)

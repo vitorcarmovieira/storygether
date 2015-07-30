@@ -35,11 +35,18 @@ class HistoriaTableViewCell: UITableViewCell {
             self.tituloHistoria.text = (historia["titulo"] as! String)
             self.dataCriacao.text = historia.createdAt?.historyCreatedAt()
             self.historiaTextView.text = historia["trechoInicial"] as! String
-            self.getNumTrechos()
+            self.setNumTrechos()
             
             if let count = favoritadas?.count{
                 self.numFavoritos.text = "\(count)"
-                self.buttonFavoritar.selected = true
+                if var favoritadas = self.parseObject?["favoritadas"] as? [NSDictionary]{
+                    if let user = PFUser.currentUser(){
+                        let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
+                        if let index = find(favoritadas, profile){
+                            self.buttonFavoritar.selected = true
+                        }
+                    }
+                }
             }else {
                 self.numFavoritos.text = "0"
                 self.buttonFavoritar.selected = false
@@ -49,15 +56,19 @@ class HistoriaTableViewCell: UITableViewCell {
     }
     @IBAction func favoritar(sender: AnyObject) {
         
-        if var favoritadas = self.parseObject?["favoritadas"] as? [AnyObject]{
+        if var favoritadas = self.parseObject?["favoritadas"] as? [NSDictionary]{
             if let user = PFUser.currentUser(){
-                for favoritada in favoritadas{
-                    if user.objectId == favoritada.valueForKey("id") as? String{
-                        
-                        let profile:AnyObject = user.valueForKey("profile")!
-                        favoritadas.append(profile)
-                        self.parseObject!["favoritadas"] = favoritadas
-                        self.parseObject!.saveInBackground()
+                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
+                if let index = find(favoritadas, profile){
+                    println("Já foi favoritada")
+                }else{
+                    favoritadas.append(profile)
+                    self.parseObject!["favoritadas"] = favoritadas
+                    self.parseObject!.saveInBackground()
+                    if var favoritas = user["favoritas"] as? [PFObject]{
+                        favoritas.append(self.parseObject!)
+                        user["favoritas"] = favoritas
+                        user.saveInBackground()
                     }
                 }
             }
@@ -66,6 +77,9 @@ class HistoriaTableViewCell: UITableViewCell {
                 let profile:AnyObject = user.valueForKey("profile")!
                 self.parseObject!["favoritadas"] = [profile]
                 self.parseObject!.saveInBackground()
+                
+                user["favoritas"] = [self.parseObject!]
+                user.saveInBackground()
                 self.buttonFavoritar.selected = true
             }
         }
@@ -77,7 +91,7 @@ class HistoriaTableViewCell: UITableViewCell {
         
     }
     
-    func getNumTrechos(){
+    func setNumTrechos(){
         
         var num:Int?
         var query: PFQuery = PFQuery(className: "Trechos")
