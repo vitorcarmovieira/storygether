@@ -30,7 +30,15 @@ class trechoTableViewCell: UITableViewCell {
 
     @IBAction func curtir(sender: AnyObject) {
         
-        
+        if var curtidas = self.parseObject?["curtidas"] as? [PFObject]{
+            
+        }else{
+            if let user = PFUser.currentUser(){
+                let profile:AnyObject = user.valueForKey("profile")!
+                self.parseObject!["curtidas"] = [profile]
+                self.parseObject!.saveInBackground()
+            }
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

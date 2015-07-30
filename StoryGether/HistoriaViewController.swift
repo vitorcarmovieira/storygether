@@ -68,9 +68,7 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
             historias.append(novahistoria)
             user["historias"] = historias
         } else { user["historias"] = [novahistoria] }
-            
-            
-//        user["historias"] = [novahistoria]
+        
         user.saveInBackgroundWithBlock({
             (sucess, error) -> Void in
             if error != nil {
