@@ -35,6 +35,7 @@ class HistoriaTableViewCell: UITableViewCell {
             self.tituloHistoria.text = (historia["titulo"] as! String)
             self.dataCriacao.text = historia.createdAt?.historyCreatedAt()
             self.historiaTextView.text = historia["trechoInicial"] as! String
+            self.getNumTrechos()
             
             if let count = favoritadas?.count{
                 self.numFavoritos.text = "\(count)"
@@ -75,5 +76,20 @@ class HistoriaTableViewCell: UITableViewCell {
 
         
     }
-
+    
+    func getNumTrechos(){
+        
+        var num:Int?
+        var query: PFQuery = PFQuery(className: "Trechos")
+        if let id = self.parseObject?.objectId{
+            query.whereKey("historia", equalTo: id)
+            query.countObjectsInBackgroundWithBlock{
+                (count:Int32, error:NSError?) ->Void in
+                
+                if error == nil{
+                    self.numEscritores.text = "\(count)"
+                }
+            }
+        }
+    }
 }
