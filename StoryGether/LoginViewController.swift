@@ -26,6 +26,8 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
         self.titles = NSArray(array: ["Make stories","Begin a story","Have fun"])
         self.subs = NSArray(array: ["with your friends","or continue one","and be creative"])
         
+        
+        
         self.svTutorial.delegate=self
         
         for (var i: Int = 0; i < self.images.count; i++) {
