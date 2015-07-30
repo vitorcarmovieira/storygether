@@ -23,13 +23,9 @@ class PerfilViewController: UIViewController {
         self.nomeLabel.text = currentUser?.valueForKey("name") as? String
         
         let url = currentUser?.valueForKey("urlFoto") as? String
-        var urlRequest = NSURLRequest(URL: NSURL(string: url!)!)
-        if let url = NSURL(string: url!) {
-            if let imageData = NSData(contentsOfURL: url){
         
-                self.imagemView.image = UIImage(data: imageData)
-            }
-        }
+        //async para pegar foto do usuario
+        self.imagemView.getImageAssync(url!)
     }
 
 }

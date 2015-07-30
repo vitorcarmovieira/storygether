@@ -101,7 +101,8 @@ class TimeLineTableViewController: UITableViewController {
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "dd/MM/yyyy"
         
-        cell.userImage.image = UIImage(data: NSData(contentsOfURL: NSURL(string: user.valueForKey("urlFoto") as! String)!)!)
+        //async para pegar foto do usuario
+        cell.userImage.getImageAssync(user.valueForKey("urlFoto") as! String)
         cell.tituloHistoria.text = (historia["titulo"] as! String)
         cell.dataCriacao.text = "Criada em: " + dateFormat.stringFromDate(historia.createdAt!)
         cell.historiaTextView.text = historia["trechoInicial"] as! String

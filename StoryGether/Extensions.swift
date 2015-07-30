@@ -16,4 +16,14 @@ extension UIImageView{
         self.layer.masksToBounds = true
         
     }
+    
+    func getImageAssync(url: String){
+        
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.image = image
+            }
+        }
+    }
 }
