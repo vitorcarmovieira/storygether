@@ -2,9 +2,29 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ks8-4S-mHS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-Compact-Display-Medium.otf">
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
+            <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
@@ -17,6 +37,14 @@
             <string>SFCompactDisplay-Regular</string>
             <string>SFCompactDisplay-Regular</string>
             <string>SFCompactDisplay-Regular</string>
+            <string>SFCompactDisplay-Regular</string>
+            <string>SFCompactDisplay-Regular</string>
+            <string>SFCompactDisplay-Regular</string>
+            <string>SFCompactDisplay-Regular</string>
+            <string>SFCompactDisplay-Regular</string>
+        </mutableArray>
+        <mutableArray key="SF-Compact-Display-Semibold.otf">
+            <string>SFCompactDisplay-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -82,31 +110,31 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seguidores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urb-Md-DNY">
                                 <rect key="frame" x="156" y="143" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKi-3T-H8b">
                                 <rect key="frame" x="177" y="126" width="20" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seguindo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOl-kF-D50">
                                 <rect key="frame" x="255" y="143" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-Gu-ITn">
                                 <rect key="frame" x="276" y="126" width="20" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeG-1a-mJW">
                                 <rect key="frame" x="208" y="180" width="101" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
                                 <state key="normal" title="editar perfil" backgroundImage="button_editarperfil">
                                     <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,7 +142,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbz-ZU-8TK">
                                 <rect key="frame" x="0.0" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
                                 <state key="normal" title="Historias criadas" image="icon_historiascriadas">
@@ -130,7 +158,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-17-tft">
                                 <rect key="frame" x="93" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
                                 <state key="normal" title="Finalizadas" image="icon_historiasfinalizadas">
@@ -146,7 +174,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-Tt-N6e">
                                 <rect key="frame" x="189" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
                                 <state key="normal" title="Colaborativas" image="icon_historiascolaborativas">
@@ -162,7 +190,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWv-1x-93T">
                                 <rect key="frame" x="282" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
                                 <state key="normal" title="Favoritas" image="icon_historiasfavoritas">
@@ -187,13 +215,13 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Historias favoritas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fk-jv-KOH">
                                                     <rect key="frame" x="145" y="18" width="85" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="10"/>
                                                     <color key="textColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcI-96-A2H">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcI-96-A2H">
                                                     <rect key="frame" x="177" y="4" width="20" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -214,7 +242,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBn-LX-yd5">
                                                     <rect key="frame" x="347" y="19" width="20" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.97647058819999999" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.97647058823529409" green="0.75686274509803919" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
@@ -223,19 +251,19 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdb-vp-DJK">
                                                     <rect key="frame" x="293" y="19" width="10" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llc-Ah-vuq">
                                                     <rect key="frame" x="21" y="10" width="233" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Criada em: 00/00/00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-zZ-wMf">
                                                     <rect key="frame" x="37" y="26" width="217" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -262,7 +290,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome sobrenome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aer-Sz-R4d">
                                 <rect key="frame" x="3" y="213" width="138" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -298,34 +326,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-0J-y1I">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-0J-y1I">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="P4Z-I2-7tM">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="P4Z-I2-7tM">
                                 <rect key="frame" x="168" y="565" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.86206280619999998" green="0.91788494600000003" blue="0.93981519189999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.2666666667" green="0.5450980392" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make stories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-7e-6WT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make stories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xp-7e-6WT">
                                 <rect key="frame" x="16" y="360" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wep-mM-Ri4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="with your friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-BH-9Jp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with your friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-BH-9Jp">
                                 <rect key="frame" x="16" y="385" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nZi-mk-aNC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Qb-85Q">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Qb-85Q">
                                 <rect key="frame" x="0.0" y="610" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="7Ne-20-zoY"/>
+                                </constraints>
                                 <state key="normal" title="FB Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1xp-7e-6WT" firstAttribute="leading" secondItem="VeF-Nk-db1" secondAttribute="leadingMargin" id="7Jh-ow-PA9"/>
+                            <constraint firstItem="0CE-Qb-85Q" firstAttribute="top" secondItem="P4Z-I2-7tM" secondAttribute="bottom" constant="8" symbolic="YES" id="9RA-Jn-bqa"/>
+                            <constraint firstItem="0CE-Qb-85Q" firstAttribute="bottom" secondItem="lmL-Q4-8bd" secondAttribute="top" id="AiI-3T-p2V"/>
+                            <constraint firstItem="h2v-0J-y1I" firstAttribute="trailing" secondItem="0CE-Qb-85Q" secondAttribute="trailing" id="GIo-1b-mZq"/>
+                            <constraint firstItem="1xp-7e-6WT" firstAttribute="top" secondItem="iYN-Jb-BOM" secondAttribute="bottom" constant="340" id="Nkz-62-4LF"/>
+                            <constraint firstAttribute="trailing" secondItem="0CE-Qb-85Q" secondAttribute="trailing" id="Pg3-4i-t4h"/>
+                            <constraint firstItem="0CE-Qb-85Q" firstAttribute="top" secondItem="h2v-0J-y1I" secondAttribute="bottom" id="QNy-Vw-VHm"/>
+                            <constraint firstItem="P4Z-I2-7tM" firstAttribute="centerX" secondItem="0CE-Qb-85Q" secondAttribute="centerX" id="Qv2-N0-Nq1"/>
+                            <constraint firstItem="JN2-BH-9Jp" firstAttribute="trailing" secondItem="1xp-7e-6WT" secondAttribute="trailing" id="RmE-xF-YHI"/>
+                            <constraint firstItem="JN2-BH-9Jp" firstAttribute="centerX" secondItem="P4Z-I2-7tM" secondAttribute="centerX" id="TuE-hH-6Ul"/>
+                            <constraint firstItem="0CE-Qb-85Q" firstAttribute="leading" secondItem="h2v-0J-y1I" secondAttribute="leading" id="Vph-OY-TB2"/>
+                            <constraint firstItem="JN2-BH-9Jp" firstAttribute="top" secondItem="iYN-Jb-BOM" secondAttribute="bottom" constant="365" id="Wao-6r-oQR"/>
+                            <constraint firstItem="h2v-0J-y1I" firstAttribute="top" secondItem="VeF-Nk-db1" secondAttribute="top" id="gEt-9L-nWi"/>
+                            <constraint firstItem="0CE-Qb-85Q" firstAttribute="leading" secondItem="VeF-Nk-db1" secondAttribute="leading" id="hOd-Ea-8tO"/>
+                            <constraint firstItem="1xp-7e-6WT" firstAttribute="leading" secondItem="JN2-BH-9Jp" secondAttribute="leading" id="m4X-KW-odQ"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -437,24 +491,31 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_quandofoicriada" translatesAutoresizingMaskIntoConstraints="NO" id="lJg-Rf-7Wi">
                                             <rect key="frame" x="56" y="25" width="15" height="15"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3B-Gl-ety">
-                                            <rect key="frame" x="357" y="107" width="10" height="21"/>
-                                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="16"/>
-                                            <color key="textColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_colaboradores" translatesAutoresizingMaskIntoConstraints="NO" id="yyZ-BJ-gnk">
-                                            <rect key="frame" x="272" y="103" width="30" height="30"/>
+                                            <rect key="frame" x="261" y="103" width="25" height="25"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2C-TW-srU">
-                                            <rect key="frame" x="303" y="107" width="10" height="21"/>
-                                            <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="16"/>
-                                            <color key="textColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                                            <rect key="frame" x="286" y="107" width="17" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_favoritar" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-NL-nGs">
-                                            <rect key="frame" x="321" y="103" width="30" height="30"/>
-                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JF-WP-xf3">
+                                            <rect key="frame" x="304" y="103" width="25" height="25"/>
+                                            <state key="normal" image="icon_favoritar">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="icon_favoritar_clique"/>
+                                            <connections>
+                                                <action selector="favoritar:" destination="dAA-nU-IaJ" eventType="touchUpInside" id="N9X-MH-jZh"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3B-Gl-ety">
+                                            <rect key="frame" x="332" y="107" width="35" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -514,34 +575,63 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_castelo" translatesAutoresizingMaskIntoConstraints="NO" id="577-TE-b06">
-                                <rect key="frame" x="16" y="72" width="60" height="52"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_balao" translatesAutoresizingMaskIntoConstraints="NO" id="sJU-I2-iv4">
-                                <rect key="frame" x="84" y="78" width="275" height="40"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="É sempre bom ter uma nova história" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nx-Z4-SKp">
-                                <rect key="frame" x="84" y="78" width="275" height="40"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
-                                <color key="textColor" red="0.050980392156862744" green="0.41176470588235292" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Titulo" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
-                                <rect key="frame" x="16" y="132" width="343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Titulo" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
+                                <rect key="frame" x="16" y="156" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7kR-sr-dBr"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
-                                <rect key="frame" x="16" y="170" width="343" height="142"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-wJ-jPh">
+                                <rect key="frame" x="16" y="194" width="343" height="142"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="cv4-j3-LiI" id="8X4-pu-kCX"/>
                                 </connections>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_novahistoria_castelo" translatesAutoresizingMaskIntoConstraints="NO" id="577-TE-b06">
+                                <rect key="frame" x="16" y="82" width="60" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Lit-9t-8P9"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_novahistoria_balao" translatesAutoresizingMaskIntoConstraints="NO" id="sJU-I2-iv4">
+                                <rect key="frame" x="84" y="88" width="275" height="40"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="É sempre bom ter uma nova história" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nx-Z4-SKp">
+                                <rect key="frame" x="84" y="88" width="275" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KJH-EB-Jj2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
+                                <color key="textColor" red="0.050980392156862744" green="0.41176470588235292" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uyd-wJ-jPh" firstAttribute="top" secondItem="19U-l2-jNO" secondAttribute="bottom" constant="8" symbolic="YES" id="89x-f9-HbE"/>
+                            <constraint firstItem="GvT-eB-MlU" firstAttribute="top" secondItem="uyd-wJ-jPh" secondAttribute="bottom" constant="282" id="A5q-cc-VZZ"/>
+                            <constraint firstItem="9Nx-Z4-SKp" firstAttribute="top" secondItem="Pec-Gx-R9o" secondAttribute="bottom" constant="24" id="HMV-4E-T1u"/>
+                            <constraint firstItem="19U-l2-jNO" firstAttribute="leading" secondItem="577-TE-b06" secondAttribute="leading" id="LtH-CC-0Kt"/>
+                            <constraint firstItem="9Nx-Z4-SKp" firstAttribute="trailing" secondItem="sJU-I2-iv4" secondAttribute="trailing" id="VZ5-nc-je3"/>
+                            <constraint firstItem="577-TE-b06" firstAttribute="leading" secondItem="DKJ-iM-3vD" secondAttribute="leadingMargin" id="YC1-J9-Mdp"/>
+                            <constraint firstItem="577-TE-b06" firstAttribute="centerY" secondItem="9Nx-Z4-SKp" secondAttribute="centerY" id="ZHm-tf-2DV"/>
+                            <constraint firstItem="9Nx-Z4-SKp" firstAttribute="leading" secondItem="sJU-I2-iv4" secondAttribute="leading" id="Zs8-Bx-EWH"/>
+                            <constraint firstItem="9Nx-Z4-SKp" firstAttribute="leading" secondItem="577-TE-b06" secondAttribute="trailing" constant="8" symbolic="YES" id="e9Z-KV-OXM"/>
+                            <constraint firstItem="uyd-wJ-jPh" firstAttribute="leading" secondItem="19U-l2-jNO" secondAttribute="leading" id="gbY-Z4-tFk"/>
+                            <constraint firstItem="577-TE-b06" firstAttribute="top" secondItem="Pec-Gx-R9o" secondAttribute="bottom" constant="18" id="hyD-G4-Gqf"/>
+                            <constraint firstItem="9Nx-Z4-SKp" firstAttribute="bottom" secondItem="sJU-I2-iv4" secondAttribute="bottom" id="isc-w9-civ"/>
+                            <constraint firstItem="uyd-wJ-jPh" firstAttribute="trailing" secondItem="19U-l2-jNO" secondAttribute="trailing" id="mqr-lf-ASx"/>
+                            <constraint firstItem="19U-l2-jNO" firstAttribute="trailing" secondItem="DKJ-iM-3vD" secondAttribute="trailingMargin" id="rKO-pQ-Org"/>
+                            <constraint firstItem="sJU-I2-iv4" firstAttribute="top" secondItem="9Nx-Z4-SKp" secondAttribute="top" id="udH-EE-Bww"/>
+                            <constraint firstItem="19U-l2-jNO" firstAttribute="trailing" secondItem="sJU-I2-iv4" secondAttribute="trailing" id="yjB-WX-Z9N"/>
+                            <constraint firstItem="19U-l2-jNO" firstAttribute="top" secondItem="577-TE-b06" secondAttribute="bottom" constant="22" id="zuO-fR-VxK"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="dBX-8V-Zpn"/>
                     <navigationItem key="navigationItem" title="Crie uma historia" id="YAJ-Jv-ese">
@@ -601,13 +691,13 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nome do autor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJV-pn-yGQ">
                                                     <rect key="frame" x="62" y="8" width="233" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-Wf-CHk">
                                                     <rect key="frame" x="303" y="4" width="57" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
                                                     <state key="normal" title="Finalizar">
                                                         <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -618,7 +708,7 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo da historia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cae-Ai-grj">
                                                     <rect key="frame" x="62" y="37" width="251" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Semibold" family="SF Compact Display" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -627,7 +717,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIL-zp-ORF">
                                                     <rect key="frame" x="227" y="62" width="10" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -636,7 +726,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trO-6M-6pc">
                                                     <rect key="frame" x="173" y="62" width="10" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -644,12 +734,12 @@
                                                     <rect key="frame" x="8" y="91" width="359" height="72"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-ZC-a3E">
                                                     <rect key="frame" x="321" y="160" width="46" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
                                                     <state key="normal" title="Curtir">
                                                         <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -681,12 +771,12 @@
                                                     <rect key="frame" x="51" y="4" width="316" height="72"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTr-xn-dX4">
                                                     <rect key="frame" x="321" y="78" width="46" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
                                                     <state key="normal" title="Curtir">
                                                         <color key="titleColor" red="0.062745098039215685" green="0.4823529411764706" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

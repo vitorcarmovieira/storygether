@@ -45,3 +45,12 @@ extension NSDate{
         return "Criada em: " + dateFormat.stringFromDate(self)
     }
 }
+
+extension UITextField{
+    
+    func espacoInicial(){
+        let paddingView = UIView(frame: CGRectMake(0, 0, 10, self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = UITextFieldViewMode.Always
+    }
+}

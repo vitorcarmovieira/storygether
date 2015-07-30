@@ -17,7 +17,7 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tituloTextField.espacoInicial();
         historiaTextView.text = "Comece uma história"
         historiaTextView.textColor = UIColor.lightGrayColor()
         
