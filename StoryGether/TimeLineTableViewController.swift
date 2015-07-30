@@ -24,7 +24,7 @@ class TimeLineTableViewController: UITableViewController {
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
         
         var findTimelineData:PFQuery = PFQuery(className: "Historias")
-        
+        findTimelineData.includeKey("favoritadas")
         findTimelineData.findObjectsInBackgroundWithBlock{
             (objects:[AnyObject]?, error:NSError?)->Void in
             
