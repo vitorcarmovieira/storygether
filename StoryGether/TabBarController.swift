@@ -47,11 +47,42 @@ class TabBarController: UITabBarController {
     func buttonClicked(){
         
         var view: HistoriaViewController = storyboard?.instantiateViewControllerWithIdentifier("criaHistoria") as! HistoriaViewController
-        self.selectedIndex = 1
-        self.tabBar.hidden = true
-        self.button.hidden = true
+        showTabBar(false)
     }
-
+    
+    func showTabBar(visible: Bool){
+        self.selectedIndex = visible ? 0 : 1
+        setTabBarVisible(visible, animated: true)
+    }
+    
+    func setTabBarVisible(visible:Bool, animated:Bool) {
+        
+        if (tabBarIsVisible() == visible) { return }
+        
+        // get a frame calculation ready
+        let frame = self.tabBar.frame
+        let height = frame.size.height
+        let offsetY = (visible ? -height : height)
+        let frameb = self.button.frame
+        let heightb = frameb.size.height+frame.size.height/2
+        let offsetYb = (visible ? -heightb : heightb)
+        
+        // zero duration means no animation
+        let duration:NSTimeInterval = (animated ? 0.3 : 0.0)
+        
+        //  animate the tabBar
+        if !frame.isNull {
+            UIView.animateWithDuration(duration) {
+                self.tabBar.frame = CGRectOffset(frame, 0, offsetY)
+                self.button.frame = CGRectOffset(frameb, 0, offsetYb)
+                return
+            }
+        }
+    }
+    
+    func tabBarIsVisible() ->Bool {
+        return self.tabBar.frame.origin.y < CGRectGetMaxY(self.view.frame)
+    }
     /*
     // MARK: - Navigation
 
