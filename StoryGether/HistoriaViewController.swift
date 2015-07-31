@@ -37,16 +37,7 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     }
     @IBAction func cancelarNovaHistoria(sender: AnyObject) {
         
-        self.tabBarController?.selectedIndex = 0
-        self.tabBarController?.tabBar.hidden = false
-        let view = self.tabBarController?.view
-        if let subViews = view?.subviews{
-            for button in subViews{
-                if button is UIButton{
-                    (button as! UIButton).hidden = false
-                }
-            }
-        }
+        (self.tabBarController as! TabBarController).showTabBar(true)
     }
     
     @IBAction func saveHistoria(sender: AnyObject) {
@@ -81,7 +72,7 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
             }
         })
         
-        self.tabBarController?.selectedIndex = 0
+        (self.tabBarController as! TabBarController).showTabBar(true)
     }
     
     override func didReceiveMemoryWarning() {
