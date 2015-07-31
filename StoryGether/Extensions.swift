@@ -54,3 +54,40 @@ extension UITextField{
         self.leftViewMode = UITextFieldViewMode.Always
     }
 }
+
+extension TimeLineTableViewController: UISearchBarDelegate{
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if let users = self.users{
+            self.filtered = users.filter({ (user) -> Bool in
+                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
+                let tmp: NSString = profile["name"] as! String
+                let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                return range.location != NSNotFound
+            })
+            if(self.filtered?.count == 0){
+                searchActive = false;
+            } else {
+                searchActive = true;
+            }
+            self.tableView.reloadData()
+        }
+    }
+}

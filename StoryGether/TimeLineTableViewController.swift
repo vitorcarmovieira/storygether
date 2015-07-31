@@ -12,11 +12,21 @@ import Parse
 class TimeLineTableViewController: UITableViewController {
 
     var timelineData:NSMutableArray! = NSMutableArray()
+    var searchBar:UISearchBar!
+    var filtered:[PFObject]?
+    var users:[PFObject]?
+    var searchActive: Bool = false
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.bounds.width-100, 20))
+        self.searchBar.delegate = self
+        
+        let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
+        self.navigationItem.rightBarButtonItem = rightButtonNavBar
         
         activityIndicator.startAnimating()
         
@@ -40,6 +50,24 @@ class TimeLineTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func searchButton(){
+        
+        self.fetchUsers()
+        self.navigationItem.title = nil
+        let leftButtonNavBar = UIBarButtonItem(customView: self.searchBar)
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButton")
+        self.navigationItem.setLeftBarButtonItem(leftButtonNavBar, animated: true)
+        self.navigationItem.setRightBarButtonItem(cancelButton, animated: true)
+    }
+    
+    func cancelButton(){
+        
+        self.navigationItem.title = "StoryGether"
+        let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
+        self.navigationItem.rightBarButtonItem = rightButtonNavBar
+        self.navigationItem.leftBarButtonItem = nil
     }
     
     func update(){
@@ -72,6 +100,22 @@ class TimeLineTableViewController: UITableViewController {
             }
         }
     }
+    
+    func fetchUsers(){
+        
+        let className = PFUser.currentUser()?.parseClassName
+        var users:PFQuery = PFQuery(className: className!)
+        users.findObjectsInBackgroundWithBlock{
+            (objects:[AnyObject]?, error:NSError?)->Void in
+            
+            if error == nil{
+                if let users = objects as? [PFObject] {
+                    self.users = []
+                    self.users = users
+                }
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -89,10 +133,26 @@ class TimeLineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+        if (self.searchActive) {
+            
+            return (self.filtered?.count)!
+        }
         return self.timelineData.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if (self.searchActive){
+            let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as! UserCell
+            if let user = self.filtered?[indexPath.row]{
+                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
+                cell.nomeUser.text = profile.valueForKey("name") as? String
+                cell.imagemUser.getImageAssync(profile["urlFoto"] as? String)
+            }
+            
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
         cell.parseObject = (self.timelineData.objectAtIndex(indexPath.row) as? PFObject)
@@ -103,6 +163,10 @@ class TimeLineTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        if self.searchActive{
+            return nil
+        }
+        
         let header = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as! TimeLineHeaderCell
         
         return header
@@ -110,11 +174,16 @@ class TimeLineTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
+        if self.searchActive{
+            return 0
+        }
+        
         let height = 40.0 as CGFloat
         
         return height
     }
 
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
