@@ -148,6 +148,7 @@ class TimeLineTableViewController: UITableViewController {
                 let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
                 cell.nomeUser.text = profile.valueForKey("name") as? String
                 cell.imagemUser.getImageAssync(profile["urlFoto"] as? String)
+                cell.parseObjects = user
             }
             
             return cell

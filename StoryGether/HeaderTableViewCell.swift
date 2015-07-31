@@ -25,7 +25,7 @@ class HeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.imagemCriador.circularImageView()
-        
+    
         if let trecho = parseObject{
             
             self.trechoLabel.text = trecho["trecho"] as? String
