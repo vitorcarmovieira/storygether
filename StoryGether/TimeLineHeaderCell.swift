@@ -15,7 +15,7 @@ class TimeLineHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         
-        self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.9)
+        self.backgroundColor = UIColor(patternImage: UIImage(named: "icon_sombra_friends_explorar")!)
     }
     
     @IBAction func changeToExplorar(sender: AnyObject) {

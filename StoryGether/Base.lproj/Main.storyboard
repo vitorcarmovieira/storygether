@@ -468,7 +468,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAA-nU-IaJ" id="jc6-mr-HTG">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-UU-b8U">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-UU-b8U">
                                             <rect key="frame" x="8" y="5" width="40" height="40"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo da historia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9y-a6-hca">
@@ -492,9 +492,6 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_colaboradores" translatesAutoresizingMaskIntoConstraints="NO" id="yyZ-BJ-gnk">
-                                            <rect key="frame" x="253" y="103" width="25" height="25"/>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JF-WP-xf3">
                                             <rect key="frame" x="304" y="103" width="25" height="25"/>
                                             <state key="normal" image="icon_favoritar">
@@ -517,6 +514,9 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_trecho" translatesAutoresizingMaskIntoConstraints="NO" id="yyZ-BJ-gnk">
+                                            <rect key="frame" x="251" y="103" width="25" height="25"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -536,7 +536,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BAf-52-ikg" id="ppg-em-dIT">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-XA-ZXU">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-XA-ZXU">
                                             <rect key="frame" x="8" y="10" width="40" height="40"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fulano" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SND-Oe-42b">
@@ -720,7 +720,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pdf-DY-FeX" id="gP0-tB-mkK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="WU7-UQ-361">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="WU7-UQ-361">
                                                     <rect key="frame" x="19" y="8" width="35" height="35"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nome do autor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJV-pn-yGQ">
@@ -797,7 +797,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kte-KM-EF5" id="DKf-tV-wO6">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_novahistoria_amigos" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-0P-rK3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-0P-rK3">
                                                     <rect key="frame" x="8" y="8" width="35" height="35"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTr-xn-dX4">
@@ -858,6 +858,7 @@
         <image name="button_editarperfil" width="189" height="71"/>
         <image name="button_seguindo" width="86" height="88"/>
         <image name="button_seguir" width="95" height="92"/>
+        <image name="icon_avatar" width="545" height="545"/>
         <image name="icon_colaboradores" width="32" height="44"/>
         <image name="icon_configuracao" width="45" height="45"/>
         <image name="icon_favoritar" width="36" height="40"/>
@@ -870,10 +871,10 @@
         <image name="icon_historiasfavoritas_clique" width="74" height="57"/>
         <image name="icon_historiasfinaliadas_clique" width="81" height="65"/>
         <image name="icon_historiasfinalizadas" width="81" height="65"/>
-        <image name="icon_novahistoria_amigos" width="38" height="51"/>
         <image name="icon_novahistoria_balao" width="626" height="86"/>
         <image name="icon_novahistoria_castelo" width="1047" height="938"/>
         <image name="icon_quandofoicriada" width="22" height="22"/>
+        <image name="icon_trecho" width="419" height="361"/>
         <image name="perfil_capa" width="749" height="197"/>
     </resources>
 </document>

@@ -35,6 +35,7 @@ class TimeLineTableViewController: UITableViewController {
         
         var findTimelineData:PFQuery = PFQuery(className: "Historias")
         findTimelineData.includeKey("favoritadas")
+        findTimelineData.orderByDescending("createdAt")
         findTimelineData.findObjectsInBackgroundWithBlock{
             (objects:[AnyObject]?, error:NSError?)->Void in
             
@@ -82,6 +83,7 @@ class TimeLineTableViewController: UITableViewController {
         var findTimelineData:PFQuery = PFQuery(className: "Historias")
         let date = self.timelineData.lastObject?.createdAt
         findTimelineData.whereKey("createdAt", greaterThan: date!!)
+        findTimelineData.orderByDescending("createdAt")
         
         findTimelineData.findObjectsInBackgroundWithBlock{
             (objects:[AnyObject]?, error:NSError?)->Void in
