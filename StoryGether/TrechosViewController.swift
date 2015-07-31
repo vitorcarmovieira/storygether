@@ -122,7 +122,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
 
     func keyboardWillShow(notification: NSNotification) {
         var info:NSDictionary = notification.userInfo!
-        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        var keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         
         var keyboardHeight:CGFloat = keyboardSize.height
         

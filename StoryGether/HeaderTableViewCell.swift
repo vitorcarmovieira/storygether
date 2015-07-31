@@ -47,5 +47,21 @@ class HeaderTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setNumTrechos(){
+        
+        var num:Int?
+        var query: PFQuery = PFQuery(className: "Trechos")
+        if let id = self.parseObject?.objectId{
+            query.whereKey("historia", equalTo: id)
+            query.countObjectsInBackgroundWithBlock{
+                (count:Int32, error:NSError?) ->Void in
+                
+                if error == nil{
+                    self.numAmigos.text = "\(count)"
+                }
+            }
+        }
+    }
 
 }
