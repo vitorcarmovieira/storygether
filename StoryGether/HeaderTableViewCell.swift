@@ -31,7 +31,7 @@ class HeaderTableViewCell: UITableViewCell {
             self.trechoLabel.text = trecho["trecho"] as? String
             self.tituloHistoriaText.text = self.tituloHistoria
             let user:AnyObject? = trecho["escritor"]
-            self.imagemCriador.getImageAssync(user?.valueForKey("urlFoto") as? String)
+            self.imagemCriador.setImageAssync(user?.valueForKey("urlFoto") as? String)
             self.nomeCriadorLabel.text = user?.valueForKey("name") as? String
         }
     }

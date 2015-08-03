@@ -24,7 +24,7 @@ class trechoTableViewCell: UITableViewCell {
             
             let user:AnyObject? = trecho["escritor"]
             self.trechoLabel.text = trecho["trecho"] as? String
-            self.imagemEscritorTrecho.getImageAssync(user?.valueForKey("urlFoto") as? String)
+            self.imagemEscritorTrecho.setImageAssync(user?.valueForKey("urlFoto") as? String)
         }
     }
 

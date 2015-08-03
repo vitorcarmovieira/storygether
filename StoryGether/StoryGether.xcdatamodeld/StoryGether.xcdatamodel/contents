@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="StoryGether.Historias" representedClassName="StoryGether.Historias" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trechoInicial" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="criador" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoryGether.Usuarios" inverseName="historias" inverseEntity="StoryGether.Usuarios" syncable="YES"/>
+        <relationship name="favoritadas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoryGether.Usuarios" inverseName="favoritas" inverseEntity="StoryGether.Usuarios" syncable="YES"/>
+    </entity>
+    <entity name="StoryGether.Usuarios" representedClassName="StoryGether.Usuarios" syncable="YES">
+        <attribute name="foto" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favoritas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoryGether.Historias" inverseName="favoritadas" inverseEntity="StoryGether.Historias" syncable="YES"/>
+        <relationship name="historias" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoryGether.Historias" inverseName="criador" inverseEntity="StoryGether.Historias" syncable="YES"/>
+        <relationship name="seguido" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StoryGether.Usuarios" inverseName="seguindo" inverseEntity="StoryGether.Usuarios" syncable="YES"/>
+        <relationship name="seguindo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoryGether.Usuarios" inverseName="seguido" inverseEntity="StoryGether.Usuarios" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="StoryGether.Historias" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="StoryGether.Usuarios" positionX="241" positionY="48" width="128" height="148"/>
+    </elements>
 </model>

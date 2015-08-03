@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import CoreData
 
 class PerfilViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -29,15 +30,16 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.imagemView.circularImageView()
         self.buttonHistorias.selected = true
         self.tableView.delegate = self
-        
-        let currentUser: AnyObject? = PFUser.currentUser()?.valueForKey("profile")
-        
-        self.nomeLabel.text = currentUser?.valueForKey("name") as? String
-        
-        let url = currentUser?.valueForKey("urlFoto") as? String
-        
-        //async para pegar foto do usuario
-        self.imagemView.getImageAssync(url!)
+      
+        if let user = Usuarios.getCurrent(){
+            if let image = UIImage(data: user.foto){
+                self.imagemView.image = image
+            }
+            
+            self.nomeLabel.text = user.nome
+            self.numSeguidores.text = user.seguido.count.description
+            self.numSeguindo.text = user.seguindo.count.description
+        }
         
         let user = PFUser.currentUser()
         if let historias = user!["historias"] as? [PFObject]{

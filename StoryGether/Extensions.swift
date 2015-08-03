@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import CoreData
 
 extension UIImageView{
     
@@ -18,7 +19,7 @@ extension UIImageView{
         
     }
     
-    func getImageAssync(url: String?){
+    func setImageAssync(url: String?){
         
         if let url = url{
             dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
@@ -90,5 +91,14 @@ extension TimeLineTableViewController: UISearchBarDelegate{
             }
             self.tableView.reloadData()
         }
+    }
+}
+
+extension NSManagedObject {
+    func addObject(value: NSManagedObject, forKey: String) {
+        self.willChangeValueForKey(forKey, withSetMutation: NSKeyValueSetMutationKind.UnionSetMutation, usingObjects: NSSet(object: value) as Set<NSObject>)
+        var items = self.mutableSetValueForKey(forKey);
+        items.addObject(value)
+        self.didChangeValueForKey(forKey, withSetMutation: NSKeyValueSetMutationKind.UnionSetMutation, usingObjects: NSSet(object: value) as Set<NSObject>)
     }
 }

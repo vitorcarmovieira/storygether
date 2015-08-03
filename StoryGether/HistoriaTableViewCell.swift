@@ -31,7 +31,9 @@ class HistoriaTableViewCell: UITableViewCell {
             let favoritadas = historia["favoritadas"] as? [AnyObject]
             
             //async para pegar foto do usuario
-            self.userImage.getImageAssync(user.valueForKey("urlFoto") as? String)
+            if let url = user["urlFoto"] as? String{
+                self.userImage.setImageAssync(url)
+            }
             self.tituloHistoria.text = (historia["titulo"] as! String)
             self.dataCriacao.text = historia.createdAt?.historyCreatedAt()
             self.historiaLabel.text = historia["trechoInicial"] as? String

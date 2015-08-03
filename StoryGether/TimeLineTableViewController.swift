@@ -8,19 +8,24 @@
 
 import UIKit
 import Parse
+import CoreData
 
-class TimeLineTableViewController: UITableViewController {
+class TimeLineTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    var timelineData:NSMutableArray! = NSMutableArray()
+    var timelineData:[PFObject]?
     var searchBar:UISearchBar!
     var filtered:[PFObject]?
     var users:[PFObject]?
     var searchActive: Bool = false
+    var fetchedResultsController: NSFetchedResultsController!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        fetchedResultsController = Historias.fetchedResultsController("createdAt", ascending: true)
+        fetchedResultsController.delegate = self
         
         self.searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.bounds.width-100, 20))
         self.searchBar.delegate = self
@@ -33,24 +38,16 @@ class TimeLineTableViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
         
-        var findTimelineData:PFQuery = PFQuery(className: "Historias")
-        findTimelineData.includeKey("favoritadas")
-        findTimelineData.orderByDescending("createdAt")
-        findTimelineData.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?)->Void in
-            
-            if error == nil{
-                if let historias = objects as? [PFObject] {
-                    
-                    for historia in historias {
-                        self.timelineData.addObject(historia)
-                    }
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.removeFromSuperview()
-                    self.tableView.reloadData()
-                }
+        Model.fetchParseObjectsWithClassName("Historia", completionHandler: {
+            array in
+            if let data = array{
+                self.timelineData = data
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.removeFromSuperview()
+                self.tableView.reloadData()
             }
-        }
+        })
+        
     }
     
     func searchButton(){
@@ -80,27 +77,27 @@ class TimeLineTableViewController: UITableViewController {
     
     func updateData(){
         
-        var findTimelineData:PFQuery = PFQuery(className: "Historias")
-        let date = self.timelineData.lastObject?.createdAt
-        findTimelineData.whereKey("createdAt", greaterThan: date!!)
-        findTimelineData.orderByDescending("createdAt")
-        
-        findTimelineData.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?)->Void in
-            
-            if error == nil{
-                if let historias = objects as? [PFObject] {
-                    
-                    for historia in historias {
-                        println("\(historia)")
-                        self.timelineData.addObject(historia)
-                    }
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.removeFromSuperview()
-                    self.tableView.reloadData()
-                }
-            }
-        }
+//        var findTimelineData:PFQuery = PFQuery(className: "Historias")
+//        let date = self.timelineData.lastObject?.createdAt
+//        findTimelineData.whereKey("createdAt", greaterThan: date!!)
+//        findTimelineData.orderByDescending("createdAt")
+//        
+//        findTimelineData.findObjectsInBackgroundWithBlock{
+//            (objects:[AnyObject]?, error:NSError?)->Void in
+//            
+//            if error == nil{
+//                if let historias = objects as? [PFObject] {
+//                    
+//                    for historia in historias {
+//                        println("\(historia)")
+//                        self.timelineData.addObject(historia)
+//                    }
+//                    self.activityIndicator.stopAnimating()
+//                    self.activityIndicator.removeFromSuperview()
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
     }
     
     func fetchUsers(){
@@ -139,7 +136,10 @@ class TimeLineTableViewController: UITableViewController {
             
             return (self.filtered?.count)!
         }
-        return self.timelineData.count
+        if let count = self.timelineData?.count{
+            return count
+        }
+        return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -149,7 +149,7 @@ class TimeLineTableViewController: UITableViewController {
             if let user = self.filtered?[indexPath.row]{
                 let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
                 cell.nomeUser.text = profile.valueForKey("name") as? String
-                cell.imagemUser.getImageAssync(profile["urlFoto"] as? String)
+                cell.imagemUser.setImageAssync(profile["urlFoto"] as? String)
                 cell.parseObjects = user
             }
             
@@ -158,7 +158,7 @@ class TimeLineTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
-        cell.parseObject = (self.timelineData.objectAtIndex(indexPath.row) as? PFObject)
+        cell.parseObject = self.timelineData?[indexPath.row]
         cell.awakeFromNib()
 
         return cell
@@ -195,7 +195,7 @@ class TimeLineTableViewController: UITableViewController {
             var historiaTVC = segue.destinationViewController as! TrechosViewController
             let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
-            let historia: PFObject = self.timelineData.objectAtIndex(index.row) as! PFObject
+            let historia: PFObject = self.timelineData![index.row]
             historiaTVC.Historia = historia
     }
     
