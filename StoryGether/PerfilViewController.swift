@@ -71,7 +71,7 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         let header = tableView.dequeueReusableCellWithIdentifier("HeaderCellQuatidades") as! PerfilNumeroHistorias
         
         header.labelNumHistorias.text = "\(self.historias.count)"
-        header.labelDescricao.text = "Historias criadas"
+        header.labelDescricao.text = NSLocalizedString("Stories created",comment: "title to show story created by you")
         
         return header
     }

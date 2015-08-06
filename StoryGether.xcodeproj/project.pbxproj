@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A92141B40A50000A8E647 /* LoginViewController.swift */; };
+		24B3B2CC1B72E0D300A805B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2CE1B72E0D300A805B9 /* InfoPlist.strings */; };
+		24B3B2D11B72E0D300A805B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2D31B72E0D300A805B9 /* InfoPlist.strings */; };
+		24B3B2D71B72E0D300A805B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2D91B72E0D300A805B9 /* Localizable.strings */; };
 		4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */; };
 		4E38526C1B136848004D346C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526B1B136848004D346C /* AppDelegate.swift */; };
 		4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */; };
@@ -60,6 +63,11 @@
 
 /* Begin PBXFileReference section */
 		245A92141B40A50000A8E647 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		24B3B2C91B72DB3B00A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		24B3B2CD1B72E0D300A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		24B3B2D21B72E0D300A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		24B3B2D41B72E0D300A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		24B3B2D81B72E0D300A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		4E3852661B136848004D346C /* StoryGether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E38526A1B136848004D346C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,6 +190,8 @@
 		4E3852691B136848004D346C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24B3B2D91B72E0D300A805B9 /* Localizable.strings */,
+				24B3B2CE1B72E0D300A805B9 /* InfoPlist.strings */,
 				4E38526A1B136848004D346C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -199,6 +209,7 @@
 		4E3852821B136848004D346C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24B3B2D31B72E0D300A805B9 /* InfoPlist.strings */,
 				4E3852831B136848004D346C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -340,9 +351,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3852741B136848004D346C /* Main.storyboard in Resources */,
+				24B3B2D71B72E0D300A805B9 /* Localizable.strings in Resources */,
 				4E3852791B136848004D346C /* LaunchScreen.xib in Resources */,
 				4E3852761B136848004D346C /* Images.xcassets in Resources */,
 				4E84AAB01B6954E200151656 /* tipografia_sf in Resources */,
+				24B3B2CC1B72E0D300A805B9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B3B2D11B72E0D300A805B9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,10 +414,35 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		24B3B2CE1B72E0D300A805B9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B3B2CD1B72E0D300A805B9 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		24B3B2D31B72E0D300A805B9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B3B2D21B72E0D300A805B9 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		24B3B2D91B72E0D300A805B9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24B3B2D81B72E0D300A805B9 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4E3852721B136848004D346C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4E3852731B136848004D346C /* Base */,
+				24B3B2C91B72DB3B00A805B9 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -412,6 +451,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E3852781B136848004D346C /* Base */,
+				24B3B2D41B72E0D300A805B9 /* pt-BR */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

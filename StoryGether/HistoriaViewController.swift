@@ -18,7 +18,7 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tituloTextField.espacoInicial();
-        historiaTextView.text = "Comece uma história"
+        historiaTextView.text = NSLocalizedString("Begin a story", comment: "placeholder for textfield to new story")
         historiaTextView.textColor = UIColor.lightGrayColor()
         
     }
@@ -30,7 +30,7 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         var texto: String = textView.text
         if(count(texto)==0){
-            historiaTextView.text = "Comece uma história"
+            historiaTextView.text = NSLocalizedString("Begin a story", comment: "placeholder for textfield to new story")
             historiaTextView.textColor = UIColor.lightGrayColor()
             historiaTextView.resignFirstResponder()
         }
