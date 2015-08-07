@@ -247,11 +247,8 @@
                                                     <color key="textColor" red="0.97647058819999999" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.97647058823529409" green="0.75686274509803919" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_colaboradores" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-jS-HDZ">
-                                                    <rect key="frame" x="262" y="15" width="30" height="30"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdb-vp-DJK">
-                                                    <rect key="frame" x="293" y="19" width="10" height="21"/>
+                                                    <rect key="frame" x="293" y="19" width="19" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -270,6 +267,9 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_quandofoicriada" translatesAutoresizingMaskIntoConstraints="NO" id="38z-o6-d3c">
                                                     <rect key="frame" x="21" y="29" width="15" height="15"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_trecho" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-jS-HDZ">
+                                                    <rect key="frame" x="255" y="15" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -416,7 +416,7 @@
             </objects>
             <point key="canvasLocation" x="-673.5" y="266.5"/>
         </scene>
-        <!--Storygether-->
+        <!--storygether-->
         <scene sceneID="wOp-eJ-sYu">
             <objects>
                 <tableViewController id="gLb-xy-B3g" customClass="TimeLineTableViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
@@ -424,10 +424,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="BGC-eX-fPO">
-                            <rect key="frame" x="0.0" y="268" width="375" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="40" id="kOz-Tn-Znr" customClass="TimeLineHeaderCell" customModule="StoryGether" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -569,11 +565,8 @@
                             <outlet property="delegate" destination="gLb-xy-B3g" id="NPo-jl-7tD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Storygether" id="lfB-h8-hcY"/>
+                    <navigationItem key="navigationItem" title="storygether" id="lfB-h8-hcY"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="BGC-eX-fPO" id="4H8-a7-w03"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kty-Nd-edW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,7 +696,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-Ag-SKh">
-                                <rect key="frame" x="16" y="506" width="303" height="90.5"/>
+                                <rect key="frame" x="16" y="506" width="303" height="91"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -861,7 +854,6 @@
         <image name="castelo_perfil" width="545" height="545"/>
         <image name="cover" width="1562" height="383"/>
         <image name="icon_avatar" width="545" height="545"/>
-        <image name="icon_colaboradores" width="32" height="44"/>
         <image name="icon_configuracao" width="45" height="45"/>
         <image name="icon_favoritar" width="36" height="40"/>
         <image name="icon_favoritar_clique" width="36" height="38"/>

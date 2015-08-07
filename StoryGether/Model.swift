@@ -16,99 +16,256 @@ class Model {
         case Usuario
     }
     
+    class func update(){
+        
+        hasNewHistory{
+            bool in
+            if bool{
+                if let lastObject = Historias.arrayObject("createdAt", ascending: false).last as? Historias{
+                    let predicate = NSPredicate(format: "createdAt > %@", lastObject.createdAt)
+                    self.fetchParseObjectsWithClassName("Historia", predicate: predicate)
+                }else{
+                    println("Nenhuma historia.")
+                    self.fetchParseObjectsWithClassName("Historia")
+                }
+            }
+        }
+    }
+    
+    class func updateTrecho(historia: Historias){
+        
+        let parseHistoria:PFObject = PFObject(withoutDataWithClassName: "Historias", objectId: historia.objectId)
+        hasNewTrecho(parseHistoria, historia: historia, completion:{
+            bool in
+            if bool{
+                if let lastObject = historia.trechos?.allObjects.last as? Trechos{
+                    let predicate = NSPredicate(format: "(createdAt > %@) AND (historia == %@)", lastObject.createdAt, parseHistoria)
+                    self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
+                }else{
+                    println("Nenhuma historia.")
+                    self.fetchParseObjectsWithClassName("Trechos", historia: historia)
+                }
+            }
+        })
+    }
+    
     class func hasNewHistory(completion: (bool: Bool) -> ()){
         
         var query:PFQuery = PFQuery(className: "Historias")
         query.countObjectsInBackgroundWithBlock{
             (count:Int32, error:NSError?)->Void in
-            
             if error == nil{
                 if let numberLocalObjects = Historias.countObjects(){
-                    completion(bool: count == Int32(numberLocalObjects))
+                    completion(bool: !(count == Int32(numberLocalObjects)))
                 }
             }
         }
     }
     
-    class func fetchParseObjectsWithClassName(className:String, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completionHandler: (array: [PFObject]?) -> ()){
+    class func hasNewTrecho(parseHistoria:PFObject, historia: Historias, completion: (bool: Bool) -> ()){
         
-        var query:PFQuery = PFQuery(className: "Historias", predicate: predicate)
-        query.orderByDescending("createdAt")
-        query.includeKey("criador")
-        
-        query.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?)->Void in
+        var query:PFQuery = PFQuery(className: "Trechos")
+        query.whereKey("historia", equalTo: parseHistoria)
+        query.countObjectsInBackgroundWithBlock{
+            (count:Int32, error:NSError?)->Void in
             if error == nil{
-                if let objects = objects as? [PFObject]{
-                    completionHandler(array: objects)
-                    print("\(objects)")
-//                    self.saveInLocalObjects(objects)
+                if let numberLocalObjects = historia.trechos?.count{
+                    completion(bool: !(count == Int32(numberLocalObjects)))
                 }
             }
+        }
+    }
+    
+    class func fetchParseObjectsWithClassName(className:String, historia: Historias? = nil, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123")){
+        
+        var query:PFQuery
+        
+        func queryParse(query: PFQuery){
+            
+            query.findObjectsInBackgroundWithBlock{
+                (objects:[AnyObject]?, error:NSError?)->Void in
+                if error == nil{
+                    if let objects = objects as? [PFObject]{
+                        if let className = objects.first?.parseClassName{
+                            switch className{
+                            case "Historias":
+                                self.saveInLocalObjects(objects)
+                            case "Trechos":
+                                self.saveInLocalObjectsTrecho(objects, historia: historia!)
+                            default:
+                                println("error in className \(className)")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if className == "Historias"{
+            var query:PFQuery = PFQuery(className: className, predicate: predicate)
+            query.orderByDescending("createdAt")
+            query.includeKey("criador")
+            query.includeKey("trechos")
+            queryParse(query)
+            
+        }else if className == "Trechos"{
+            var query:PFQuery = PFQuery(className: className, predicate: predicate)
+            query.orderByDescending("createdAt")
+            query.includeKey("escritor")
+            query.includeKey("historia")
+            queryParse(query)
+        }
+        
+        
+    }
+    
+    class func saveInLocalObjectsTrecho(objects:[PFObject], historia: Historias){
+        
+        for object in objects{
+            
+            let trechoText = object["trecho"] as! String
+            let user = object["escritor"] as! PFObject
+            saveUserWithParse(user, completition: {
+                user in
+                if let user = user{
+                    println("user : \(user)")
+                    Trechos.createWithTrecho(trechoText, escritor: user, historia: historia, createdAt: NSDate())
+                    Trechos.saveOrUpdate()
+                }
+            })
         }
     }
     
     class func saveInLocalObjects(objects:[PFObject]){
         
-//        for object in objects{
-//            let dictionary = parseObjectToDictionary(object, ofType: .Historia)
-//            let profile: AnyObject? = dictionary["criador"]
-//            let nome = profile!.valueForKey("name") as? String
-////            let urlFoto = profile.valueForKey("urlFoto") as? String
-////            let image = getImageAssync(urlFoto)
-////            let imageData = UIImageJPEGRepresentation(image, 0.7)
-//            let id = profile.valueForKey("id") as? String
-//            let user = Usuarios.createWithName(nome!, foto: NSData(), id: id!, historias: NSSet(), seguindo: NSSet(), seguido: NSSet())
-//            let historia = Historias.createWithTitle(dictionary["titulo"] as! String, objectId: object.objectId!, createdAt: object.createdAt!, trechoInicial: dictionary["trechoInicial"] as! String, criador: user, favoritadas: NSSet())
-//        }
+        for object in objects{
+            println("\(object)")
+            if let criador = object["criador"] as? PFObject{
+                let idFace = criador["idFace"] as! String
+                
+                if let user = Usuarios.hasValue(idFace, InColum: "id"){
+                    
+                    let titulo = object["titulo"] as! String
+                    let objectId = object.objectId!
+                    let createdAt = object.createdAt!
+                    let trechoInicial = object["trechoInicial"] as! String
+                    
+                    let historia = Historias.createWithTitle(titulo, createdAt: createdAt, objectId: objectId,trechoInicial: trechoInicial, criador: user, trechos: nil, favoritada: nil)
+                    if let trechos = object["trechos"] as? [PFObject]{
+                        for trecho in trechos{
+                            let trechoText = trecho["trecho"] as! String
+                            Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, createdAt: NSDate())
+                        }
+                    }
+                    
+                }else{
+                    if let urlFoto = criador["urlFoto"] as? String{
+                        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+                            if let nsurl = NSURL(string: urlFoto){
+                                if let data = NSData(contentsOfURL: nsurl){
+                                    dispatch_async(dispatch_get_main_queue()){
+                                        let user = Usuarios.createWithName(criador["name"] as! String, foto: data, id: criador["idFace"] as! String, historias: NSSet(), trechos: NSSet(), favoritas: NSSet())
+                                        
+                                        let titulo = object["titulo"] as! String
+                                        let objectId = object.objectId!
+                                        let createdAt = object.createdAt!
+                                        let trechoInicial = object["trechoInicial"] as! String
+                                        
+                                        let historia = Historias.createWithTitle(titulo, createdAt: createdAt, objectId: objectId,trechoInicial: trechoInicial, criador: user, trechos: nil, favoritada: nil)
+                                        if let trechos = object["trechos"] as? [PFObject]{
+                                            for trecho in trechos{
+                                                let trechoText = trecho["trecho"] as! String
+                                                Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, createdAt: NSDate())
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }else{ println("falha em pegar criador") }
+        }
     }
     
     class func saveParseObjectHistory(titulo: String, trecho: String){
         
         let className = PFUser.currentUser()?.parseClassName
         
-        var trechoInicial: PFObject = PFObject(className: "Trechos")
-        trechoInicial["trecho"] = trecho
-        trechoInicial["escritor"] = PFUser.currentUser()!
-        
         var novahistoria:PFObject = PFObject(className: "Historias")
         novahistoria["titulo"] = titulo
-        novahistoria["criador"] = PFUser.currentUser()
+        novahistoria["criador"] = PFUser.currentUser()!
         novahistoria["trechoInicial"] = trecho
-        
-        let user = PFUser.currentUser()!
-        if var historias = user["historias"] as? [PFObject]{
-            
-            historias.append(novahistoria)
-            user["historias"] = historias
-        } else { user["historias"] = [novahistoria] }
-        
-        user.saveInBackgroundWithBlock({
-            (sucess, error) -> Void in
-            if error != nil {
-                // There was an error.
-                print("erro em salvar historia.")
-            }else {
-                print("historia salva. \(sucess)")
+        novahistoria.saveInBackgroundWithBlock{
+            (succeeded, error) in
+            if error == nil{
+                println("salvando historia \(titulo)")
+                var novoTrecho: PFObject = PFObject(className: "Trechos")
+                novoTrecho["trecho"] = trecho
+                novoTrecho["escritor"] = PFUser.currentUser()!
+                novoTrecho["historia"] = novahistoria
+                novoTrecho.saveInBackgroundWithBlock{
+                    (succeeded, error) in
+                    if error == nil{
+                        println("salvando trecho \(trecho)")
+                        novahistoria["trechos"] = [novoTrecho]
+                        novahistoria.saveInBackgroundWithBlock{
+                            (succeeded, error) in
+                            if error == nil{
+                                println("salvando historia no user")
+                                let currentUser = PFUser.currentUser()!
+                                if var historias = currentUser["historias"] as? [PFObject]{
+                                    historias.append(novahistoria)
+                                    currentUser["historias"] = historias
+                                    currentUser.saveInBackgroundWithBlock{
+                                        (succeeded, error) in
+                                        if error == nil{
+                                            Model.update()
+                                        }
+                                    }
+                                }else{
+                                    currentUser["historias"] = [novahistoria]
+                                    currentUser.saveInBackgroundWithBlock{
+                                        (succeeded, error) in
+                                        if error == nil{
+                                            Model.update()
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                        
+                    }
+                }
                 
-                trechoInicial["historia"] = novahistoria
-                trechoInicial.saveInBackgroundWithBlock{
-                    (sucess, error) in
-                    if error != nil{
-                        print("erro em salvar trecho")
-                    }else {
-                        print("trecho salvo. \(sucess)")
-                        if let currentUser = Usuarios.getCurrent(){
-                            if let historia = Historias.createWithTitle(titulo, objectId: novahistoria.objectId!, createdAt: NSDate(), trechoInicial: trecho, criador: currentUser, favoritadas: NSSet()){
-                                currentUser.addObject(historia, forKey: "historias")
-                                print("\(currentUser.historias)")
-                                Usuarios.saveOrUpdate()
+            }
+        }
+    }
+    
+    class func saveUserWithParse(object:PFObject, completition: (Usuarios?) -> ()){
+        
+        let idFace = object["idFace"] as! String
+        
+        if let user = Usuarios.hasValue(idFace, InColum: "id"){
+            
+            println("Usuario já está no local date store.")
+            completition(user)
+            
+        }else{
+            if let urlFoto = object["urlFoto"] as? String{
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+                    if let nsurl = NSURL(string: urlFoto){
+                        if let data = NSData(contentsOfURL: nsurl){
+                            dispatch_async(dispatch_get_main_queue()){
+                                let user = Usuarios.createWithName(object["name"] as! String, foto: data, id: object["idFace"] as! String, historias: NSSet(), trechos: NSSet(), favoritas: NSSet())
+                                completition(user)
                             }
                         }
                     }
                 }
             }
-        })
+        }
     }
     
     class func parseObjectToDictionary(object:PFObject, ofType:ClassTypes) -> [ String : AnyObject ]{

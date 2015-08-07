@@ -19,6 +19,10 @@ class UserCell: UITableViewCell {
     override func awakeFromNib() {
         
         self.imagemUser.circularImageView()
+        if let user = parseObjects{
+            self.imagemUser.setImageAssync(user["urlFoto"] as? String)
+            self.nomeUser.text = user["name"] as? String
+        }
     }
     
     @IBAction func seguir(sender: AnyObject) {

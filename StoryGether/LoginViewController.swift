@@ -87,8 +87,6 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
                     if user != nil {
                         println("User logged in through Facebook!")
                         self.setUserData()
-                        let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! TabBarController
-                        self.presentViewController(rootView, animated: true, completion: nil)
                     } else {
                         println("Uh oh. There was an error logging in.")
                     }
@@ -147,15 +145,21 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
                 let user = PFUser.currentUser()!
                 user["name"] = name
                 user["urlFoto"] = urlFoto
-                user["id"] = id
-                user.saveInBackground()
+                user["idFace"] = id
+                user.saveInBackgroundWithBlock{
+                    (successed, error) in
+                    if error == nil{
+                        let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! TabBarController
+                        self.presentViewController(rootView, animated: true, completion: nil)
+                    }
+                }
                 
                 if (urlFoto != nil){
                     dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
                         if let nsurl = NSURL(string: urlFoto as String){
                             if let data = NSData(contentsOfURL: nsurl){
                                 dispatch_async(dispatch_get_main_queue()){
-                                    let user = Usuarios.createWithName(name as String, foto: data, id: id as String, historias: NSSet(), seguindo: NSSet(), seguido: NSSet())
+                                    let user = Usuarios.createWithName(name as String, foto: data, id: id as String, historias: NSSet(), trechos: NSSet(), favoritas: NSSet())
                                     let currentUser = NSUserDefaults.standardUserDefaults()
                                     let uri = user.objectID.URIRepresentation()
                                     let data = NSKeyedArchiver.archivedDataWithRootObject(uri)

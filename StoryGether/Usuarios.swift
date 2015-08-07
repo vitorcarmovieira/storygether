@@ -2,7 +2,7 @@
 //  Usuarios.swift
 //  StoryGether
 //
-//  Created by Vitor on 8/1/15.
+//  Created by Vitor on 8/4/15.
 //  Copyright (c) 2015 BEPID. All rights reserved.
 //
 
@@ -10,17 +10,16 @@ import Foundation
 import CoreData
 
 @objc(Usuarios)
-class Usuarios: NSManagedObject{
+class Usuarios: NSManagedObject {
 
     @NSManaged var foto: NSData
     @NSManaged var id: String
     @NSManaged var nome: String
-    @NSManaged var favoritas: NSSet
     @NSManaged var historias: NSSet
-    @NSManaged var seguido: NSSet
-    @NSManaged var seguindo: NSSet
-    
-    class func createWithName(nome: String, foto: NSData, id: String, historias: NSSet, seguindo: NSSet, seguido: NSSet) ->Usuarios{
+    @NSManaged var favoritas: NSSet
+    @NSManaged var trechos: NSSet
+
+    class func createWithName(nome: String, foto: NSData, id: String, historias: NSSet, trechos: NSSet, favoritas: NSSet) ->Usuarios{
         
         let usuario = NSEntityDescription.insertNewObjectForEntityForName("Usuarios") as! Usuarios
         
@@ -28,8 +27,8 @@ class Usuarios: NSManagedObject{
         usuario.foto = foto
         usuario.id = id
         usuario.historias = historias
-        usuario.seguido = seguido
-        usuario.seguindo = seguindo
+        usuario.trechos = trechos
+        usuario.favoritas = favoritas
         
         saveOrUpdate()
         
@@ -52,5 +51,4 @@ class Usuarios: NSManagedObject{
         }
         return object
     }
-
 }

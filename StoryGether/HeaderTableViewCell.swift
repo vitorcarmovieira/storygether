@@ -18,7 +18,7 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var imagemCriador: UIImageView!
     @IBOutlet weak var numAmigos: UILabel!
     @IBOutlet weak var numFavoritos: UILabel!
-    var parseObject:PFObject?
+    var trecho:Trechos?
     var tituloHistoria:String?
     
     override func awakeFromNib() {
@@ -26,13 +26,13 @@ class HeaderTableViewCell: UITableViewCell {
         
         self.imagemCriador.circularImageView()
     
-        if let trecho = parseObject{
+        if let trecho = trecho{
             
-            self.trechoLabel.text = trecho["trecho"] as? String
+            self.trechoLabel.text = trecho.trecho
             self.tituloHistoriaText.text = self.tituloHistoria
-            let user:AnyObject? = trecho["escritor"]
-            self.imagemCriador.setImageAssync(user?.valueForKey("urlFoto") as? String)
-            self.nomeCriadorLabel.text = user?.valueForKey("name") as? String
+            let user:Usuarios = trecho.escritor
+            self.imagemCriador.image = UIImage(data: user.foto)
+            self.nomeCriadorLabel.text = user.nome
         }
     }
 
@@ -50,18 +50,18 @@ class HeaderTableViewCell: UITableViewCell {
     
     func setNumTrechos(){
         
-        var num:Int?
-        var query: PFQuery = PFQuery(className: "Trechos")
-        if let id = self.parseObject?.objectId{
-            query.whereKey("historia", equalTo: id)
-            query.countObjectsInBackgroundWithBlock{
-                (count:Int32, error:NSError?) ->Void in
-                
-                if error == nil{
-                    self.numAmigos.text = "\(count)"
-                }
-            }
-        }
+//        var num:Int?
+//        var query: PFQuery = PFQuery(className: "Trechos")
+//        if let id = self.parseObject?.objectId{
+//            query.whereKey("historia", equalTo: id)
+//            query.countObjectsInBackgroundWithBlock{
+//                (count:Int32, error:NSError?) ->Void in
+//                
+//                if error == nil{
+//                    self.numAmigos.text = "\(count)"
+//                }
+//            }
+//        }
     }
 
 }

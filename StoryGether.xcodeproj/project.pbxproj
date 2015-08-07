@@ -48,8 +48,9 @@
 		4EEF869F1B43023D00A22534 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869C1B43023D00A22534 /* Bolts.framework */; };
 		4EEF86A01B43023D00A22534 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */; };
 		4EEF86A11B43023D00A22534 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */; };
-		4EFFC5951B6D1BF5009BED55 /* Usuarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFFC5941B6D1BF5009BED55 /* Usuarios.swift */; };
-		4EFFC5971B6D1BF6009BED55 /* Historias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFFC5961B6D1BF6009BED55 /* Historias.swift */; };
+		4EF6DF111B7132C70068390F /* Usuarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6DF101B7132C70068390F /* Usuarios.swift */; };
+		4EF6DF131B7132C70068390F /* Historias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6DF121B7132C70068390F /* Historias.swift */; };
+		4EF6DF151B7132C70068390F /* Trechos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6DF141B7132C70068390F /* Trechos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,9 +110,10 @@
 		4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = StoryGether/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = StoryGether/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4EEF86A31B4302E900A22534 /* StoryGether-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StoryGether-Bridging-Header.h"; sourceTree = "<group>"; };
+		4EF6DF101B7132C70068390F /* Usuarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuarios.swift; sourceTree = "<group>"; };
+		4EF6DF121B7132C70068390F /* Historias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historias.swift; sourceTree = "<group>"; };
+		4EF6DF141B7132C70068390F /* Trechos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trechos.swift; sourceTree = "<group>"; };
 		4EFFC5931B6D0C0B009BED55 /* StoryGether 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StoryGether 1.xcdatamodel"; sourceTree = "<group>"; };
-		4EFFC5941B6D1BF5009BED55 /* Usuarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuarios.swift; sourceTree = "<group>"; };
-		4EFFC5961B6D1BF6009BED55 /* Historias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historias.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,8 +262,9 @@
 			isa = PBXGroup;
 			children = (
 				4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */,
-				4EFFC5961B6D1BF6009BED55 /* Historias.swift */,
-				4EFFC5941B6D1BF5009BED55 /* Usuarios.swift */,
+				4EF6DF141B7132C70068390F /* Trechos.swift */,
+				4EF6DF121B7132C70068390F /* Historias.swift */,
+				4EF6DF101B7132C70068390F /* Usuarios.swift */,
 				4E84AABA1B6C4E6800151656 /* Model.swift */,
 				4E84AABF1B6C566D00151656 /* DAO.swift */,
 			);
@@ -332,6 +335,7 @@
 				TargetAttributes = {
 					4E3852651B136848004D346C = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 7JS5STBL4T;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -390,18 +394,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */,
-				4EFFC5951B6D1BF5009BED55 /* Usuarios.swift in Sources */,
+				4EF6DF151B7132C70068390F /* Trechos.swift in Sources */,
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
 				4E84AAC01B6C566D00151656 /* DAO.swift in Sources */,
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
+				4EF6DF131B7132C70068390F /* Historias.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
-				4EFFC5971B6D1BF6009BED55 /* Historias.swift in Sources */,
 				4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */,
 				4E3852971B136B3E004D346C /* HistoriaViewController.swift in Sources */,
+				4EF6DF111B7132C70068390F /* Usuarios.swift in Sources */,
 				4E38526C1B136848004D346C /* AppDelegate.swift in Sources */,
 				4E3852951B136A42004D346C /* TimeLineTableViewController.swift in Sources */,
 				4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */,

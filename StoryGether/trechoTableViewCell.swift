@@ -13,18 +13,18 @@ class trechoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
-    var parseObject:PFObject?
+    var trecho: Trechos?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.imagemEscritorTrecho.circularImageView()
         
-        if let trecho = self.parseObject{
+        if let trecho = self.trecho{
             
-            let user:AnyObject? = trecho["escritor"]
-            self.trechoLabel.text = trecho["trecho"] as? String
-            self.imagemEscritorTrecho.setImageAssync(user?.valueForKey("urlFoto") as? String)
+            let user:Usuarios = trecho.escritor
+            self.trechoLabel.text = trecho.trecho
+            self.imagemEscritorTrecho.image = UIImage(data: user.foto)
         }
     }
 

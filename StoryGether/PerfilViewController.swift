@@ -22,7 +22,7 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var buttonCoop: UIButton!
     @IBOutlet weak var buttonFavoritas: UIButton!
     var iAmSelected: Int = -1
-    var historias:[PFObject]!
+    var historias:[Historias]!
     
     override func viewDidLoad() {
         
@@ -32,24 +32,11 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableView.delegate = self
       
         if let user = Usuarios.getCurrent(){
-            if let image = UIImage(data: user.foto){
-                self.imagemView.image = image
-            }
             
+            self.imagemView.image = UIImage(data: user.foto)
             self.nomeLabel.text = user.nome
-            self.numSeguidores.text = user.seguido.count.description
-            self.numSeguindo.text = user.seguindo.count.description
-        }
-        
-        let user = PFUser.currentUser()
-        if let historias = user!["historias"] as? [PFObject]{
-            for historia in historias{
-                historia.fetchIfNeededInBackgroundWithBlock({
-                    (result) -> Void in
-                    self.historias.append(historia)
-                    self.tableView.reloadData()
-                })
-            }
+            
+            self.historias = user.historias.allObjects as! [Historias]
         }
     }
     
@@ -57,7 +44,7 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! PerfilHistoriaCell
         
-        cell.parseObject = self.historias[indexPath.row]
+        cell.historia = self.historias[indexPath.row]
         cell.awakeFromNib()
         
         return cell
@@ -105,6 +92,10 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.isSomeButtonSelected(self.iAmSelected)
         self.iAmSelected = 3;
         self.buttonFavoritas.selected = true
+        
+        self.historias = Usuarios.getCurrent()?.favoritas.allObjects as! [Historias]
+        println("\(self.historias)")
+        self.tableView.reloadData()
     }
     
     @IBAction func changeToFinalizadas(sender: AnyObject) {

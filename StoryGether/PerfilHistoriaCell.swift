@@ -15,15 +15,32 @@ class PerfilHistoriaCell: UITableViewCell {
     @IBOutlet weak var labelData: UILabel!
     @IBOutlet weak var labelNumColaboradores: UILabel!
     @IBOutlet weak var labelNumFavoritos: UILabel!
-    var parseObject:PFObject?
+    var historia:Historias?
     
     override func awakeFromNib() {
         
-        if let historia = parseObject{
+        if let historia = historia{
             
-            self.labelTitulo.text = historia["titulo"] as? String
-            let str = historia["titulo"] as? String
-            self.labelData.text = historia.createdAt?.historyCreatedAt()
+            self.labelTitulo.text = historia.titulo
+            self.labelData.text = historia.createdAt.historyCreatedAt()
+            self.labelNumColaboradores.text = historia.trechos?.count.description
+            countFavoritadas()
+            
+        }
+    }
+    
+    func countFavoritadas(){
+        
+        let parseHistoria:PFObject = PFObject(withoutDataWithClassName: "Historias", objectId: self.historia?.objectId)
+        parseHistoria.fetchIfNeededInBackgroundWithBlock{
+            (object, error) in
+            if error == nil{
+                if let historia = object{
+                    if var favoritadas = historia["favoritadas"] as? [PFObject]{
+                        self.labelNumFavoritos.text = favoritadas.count.description
+                    }
+                }
+            }
         }
     }
 }

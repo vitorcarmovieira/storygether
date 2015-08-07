@@ -19,13 +19,12 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     var searchActive: Bool = false
     var fetchedResultsController: NSFetchedResultsController!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         fetchedResultsController = Historias.fetchedResultsController("createdAt", ascending: true)
         fetchedResultsController.delegate = self
+        fetchedResultsController.performFetch(nil)
         
         self.searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.bounds.width-100, 20))
         self.searchBar.delegate = self
@@ -33,20 +32,9 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
         self.navigationItem.rightBarButtonItem = rightButtonNavBar
         
-        activityIndicator.startAnimating()
-        
+        Model.update()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
-        
-        Model.fetchParseObjectsWithClassName("Historia", completionHandler: {
-            array in
-            if let data = array{
-                self.timelineData = data
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.removeFromSuperview()
-                self.tableView.reloadData()
-            }
-        })
         
     }
     
@@ -62,7 +50,7 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     
     func cancelButton(){
         
-        self.navigationItem.title = "StoryGether"
+        self.navigationItem.title = "storygether"
         let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
         self.navigationItem.rightBarButtonItem = rightButtonNavBar
         self.navigationItem.leftBarButtonItem = nil
@@ -71,33 +59,8 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     func update(){
         
         print("updating...\n")
-        updateData()
+        Model.update()
         self.refreshControl?.endRefreshing()
-    }
-    
-    func updateData(){
-        
-//        var findTimelineData:PFQuery = PFQuery(className: "Historias")
-//        let date = self.timelineData.lastObject?.createdAt
-//        findTimelineData.whereKey("createdAt", greaterThan: date!!)
-//        findTimelineData.orderByDescending("createdAt")
-//        
-//        findTimelineData.findObjectsInBackgroundWithBlock{
-//            (objects:[AnyObject]?, error:NSError?)->Void in
-//            
-//            if error == nil{
-//                if let historias = objects as? [PFObject] {
-//                    
-//                    for historia in historias {
-//                        println("\(historia)")
-//                        self.timelineData.addObject(historia)
-//                    }
-//                    self.activityIndicator.stopAnimating()
-//                    self.activityIndicator.removeFromSuperview()
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
     }
     
     func fetchUsers(){
@@ -123,23 +86,18 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         if (self.searchActive) {
             
             return (self.filtered?.count)!
+        }else{
+            let sec = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
+            
+            return sec[section].numberOfObjects
         }
-        if let count = self.timelineData?.count{
-            return count
-        }
-        return 0
+        
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -147,10 +105,8 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         if (self.searchActive){
             let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as! UserCell
             if let user = self.filtered?[indexPath.row]{
-                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
-                cell.nomeUser.text = profile.valueForKey("name") as? String
-                cell.imagemUser.setImageAssync(profile["urlFoto"] as? String)
                 cell.parseObjects = user
+                cell.awakeFromNib()
             }
             
             return cell
@@ -158,9 +114,11 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
-        cell.parseObject = self.timelineData?[indexPath.row]
+        let historia = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Historias
+        
+        cell.historia = historia
         cell.awakeFromNib()
-
+        
         return cell
     }
 
@@ -195,10 +153,27 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
             var historiaTVC = segue.destinationViewController as! TrechosViewController
             let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
-            let historia: PFObject = self.timelineData![index.row]
+            let historia = self.fetchedResultsController.objectAtIndexPath(index) as! Historias
             historiaTVC.Historia = historia
     }
     
-    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type{
+            
+        case .Insert:
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            print("Item inserido")
+            
+        case .Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Top)
+            print("Item deletado")
+        
+        case .Update:
+            print("Item atualizado")
+            
+        default:
+            print("Tipo desconhecido")
+        }
+    }
 
 }

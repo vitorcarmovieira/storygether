@@ -2,14 +2,14 @@
 <model userDefinedModelVersionIdentifier="version1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Historias" representedClassName="Historias" syncable="YES">
         <attribute name="createdAt" attributeType="Date" syncable="YES"/>
-        <attribute name="objectId" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titulo" attributeType="String" syncable="YES"/>
         <attribute name="trechoInicial" attributeType="String" syncable="YES"/>
         <relationship name="criador" maxCount="1" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="historias" inverseEntity="Usuarios" syncable="YES"/>
-        <relationship name="favoritadas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="favoritas" inverseEntity="Usuarios" syncable="YES"/>
-        <relationship name="trechos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trechos" inverseName="historia" inverseEntity="Trechos" syncable="YES"/>
+        <relationship name="favoritada" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="favoritas" inverseEntity="Usuarios" syncable="YES"/>
+        <relationship name="trechos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Trechos" inverseName="historia" inverseEntity="Trechos" syncable="YES"/>
     </entity>
-    <entity name="Trechos" syncable="YES">
+    <entity name="Trechos" representedClassName="Trechos" syncable="YES">
         <attribute name="createdAt" attributeType="Date" syncable="YES"/>
         <attribute name="trecho" attributeType="String" syncable="YES"/>
         <relationship name="escritor" maxCount="1" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="trechos" inverseEntity="Usuarios" syncable="YES"/>
@@ -19,15 +19,13 @@
         <attribute name="foto" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="nome" attributeType="String" syncable="YES"/>
-        <relationship name="favoritas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Historias" inverseName="favoritadas" inverseEntity="Historias" syncable="YES"/>
+        <relationship name="favoritas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Historias" inverseName="favoritada" inverseEntity="Historias" syncable="YES"/>
         <relationship name="historias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Historias" inverseName="criador" inverseEntity="Historias" syncable="YES"/>
-        <relationship name="seguido" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="seguindo" inverseEntity="Usuarios" syncable="YES"/>
-        <relationship name="seguindo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="seguido" inverseEntity="Usuarios" syncable="YES"/>
         <relationship name="trechos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trechos" inverseName="escritor" inverseEntity="Trechos" syncable="YES"/>
     </entity>
     <elements>
         <element name="Historias" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Usuarios" positionX="-405" positionY="-3" width="128" height="165"/>
         <element name="Trechos" positionX="-234" positionY="-216" width="128" height="105"/>
+        <element name="Usuarios" positionX="-405" positionY="-3" width="128" height="135"/>
     </elements>
 </model>
