@@ -13,6 +13,7 @@ class trechoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
+    @IBOutlet weak var numFavoritadas: UILabel!
     var trecho: Trechos?
     
     override func awakeFromNib() {
@@ -25,20 +26,32 @@ class trechoTableViewCell: UITableViewCell {
             let user:Usuarios = trecho.escritor
             self.trechoLabel.text = trecho.trecho
             self.imagemEscritorTrecho.image = UIImage(data: user.foto)
+            countFavoritadas(trecho.objectId)
         }
     }
-
-    @IBAction func curtir(sender: AnyObject) {
+    
+    @IBAction func favoritar(sender: AnyObject) {
         
-//        if var curtidas = self.parseObject?["curtidas"] as? [PFObject]{
-//            
-//        }else{
-//            if let user = PFUser.currentUser(){
-//                let profile:AnyObject = user.valueForKey("profile")!
-//                self.parseObject!["curtidas"] = [profile]
-//                self.parseObject!.saveInBackground()
-//            }
-//        }
+        if let objectId = self.trecho?.objectId{
+            Model.favoritar(objectId, block: {
+                bool in
+                if bool{
+                    
+                }
+            })
+        }
+    }
+    
+    func countFavoritadas(objectId: String){
+        
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("historiaId", equalTo: objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (num, error) in
+            if error == nil{
+                self.numFavoritadas.text = num.description
+            }
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

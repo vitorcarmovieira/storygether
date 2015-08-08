@@ -43,7 +43,7 @@ class Model {
                     self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
                 }else{
                     println("Nenhuma historia.")
-                    self.fetchParseObjectsWithClassName("Trechos", historia: historia)
+//                    self.fetchParseObjectsWithClassName("Trechos", historia: historia)
                 }
             }
         })
@@ -124,12 +124,13 @@ class Model {
         for object in objects{
             
             let trechoText = object["trecho"] as! String
+            let objectId = object.objectId!
             let user = object["escritor"] as! PFObject
             saveUserWithParse(user, completition: {
                 user in
                 if let user = user{
                     println("user : \(user)")
-                    Trechos.createWithTrecho(trechoText, escritor: user, historia: historia, createdAt: NSDate())
+                    Trechos.createWithTrecho(trechoText, escritor: user, historia: historia, objectId: objectId, createdAt: NSDate())
                     Trechos.saveOrUpdate()
                 }
             })
@@ -154,7 +155,8 @@ class Model {
                     if let trechos = object["trechos"] as? [PFObject]{
                         for trecho in trechos{
                             let trechoText = trecho["trecho"] as! String
-                            Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, createdAt: NSDate())
+                            let trechoObjectId = trecho.objectId!
+                            Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, objectId: trechoObjectId, createdAt: NSDate())
                         }
                     }
                     
@@ -175,7 +177,8 @@ class Model {
                                         if let trechos = object["trechos"] as? [PFObject]{
                                             for trecho in trechos{
                                                 let trechoText = trecho["trecho"] as! String
-                                                Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, createdAt: NSDate())
+                                                let trechoObjectId = trecho.objectId!
+                                                Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, objectId: trechoObjectId, createdAt: NSDate())
                                             }
                                         }
                                     }
@@ -265,6 +268,83 @@ class Model {
                     }
                 }
             }
+        }
+    }
+    
+    class func wasFavoritada(objectId: String, userObjectId: String, block: (Bool) -> ()){
+        
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("userId", equalTo: userObjectId)
+        query.whereKey("historiaId", equalTo: objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (count, error) in
+            if error == nil{
+                if count == 0{
+                    block(false)
+                }else { block(true) }
+            }
+        }
+    }
+    
+    class func hasValueInClass(className: String ,dictionary: [String : String], block: (Bool) -> ()){
+        
+        let query = PFQuery(className: className)
+        for (key, value) in dictionary{
+            query.whereKey(key, equalTo: value)
+        }
+        query.countObjectsInBackgroundWithBlock{
+            (count, error) in
+            if error == nil{
+                if count == 0{
+                    block(false)
+                }else { block(true) }
+            }
+        }
+    }
+    
+    class func favoritar(objectId: String, block: (Bool) -> ()){
+        
+        if let userObjectId = PFUser.currentUser()?.objectId{
+            var dictionary = [String : String]()
+            dictionary["userId"] = userObjectId
+            dictionary["historiaId"] = objectId
+            
+            self.hasValueInClass("favoritadas", dictionary: dictionary, block: {
+                bool in
+                if !bool{
+                    let favoritada = PFObject(className: "favoritadas")
+                    for (key, value) in dictionary{
+                        favoritada[key] = value
+                    }
+                    
+                    favoritada.saveInBackgroundWithBlock{
+                        (succeeded, error) in
+                        if error == nil{
+                            block(succeeded)
+                        }else { block(succeeded) }
+                    }
+                }
+            })
+        }
+    }
+    
+    class func seguir(id: String){
+        
+        if let userId = PFUser.currentUser()?.objectId{
+            var dictionary = [String : String]()
+            dictionary["seguindoId"] = userId
+            dictionary["seguidoId"] = id
+            
+            self.hasValueInClass("seguidores", dictionary: dictionary, block: {
+                bool in
+                if !bool{
+                    let seguidor = PFObject(className: "seguidores")
+                    for (key, value) in dictionary{
+                        seguidor[key] = value
+                    }
+                    seguidor.saveInBackground()
+                }
+            })
         }
     }
     

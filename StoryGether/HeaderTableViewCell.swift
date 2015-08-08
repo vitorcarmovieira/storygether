@@ -18,8 +18,8 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var imagemCriador: UIImageView!
     @IBOutlet weak var numAmigos: UILabel!
     @IBOutlet weak var numFavoritos: UILabel!
+    @IBOutlet weak var numFavoritadasTrecho: UILabel!
     var trecho:Trechos?
-    var tituloHistoria:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,17 +29,20 @@ class HeaderTableViewCell: UITableViewCell {
         if let trecho = trecho{
             
             self.trechoLabel.text = trecho.trecho
-            self.tituloHistoriaText.text = self.tituloHistoria
             let user:Usuarios = trecho.escritor
             self.imagemCriador.image = UIImage(data: user.foto)
             self.nomeCriadorLabel.text = user.nome
+            countFavoritadasTrecho(trecho.objectId)
         }
+    }
+    @IBAction func favoritar(sender: AnyObject) {
+        
+        
     }
 
     @IBAction func finalizar(sender: AnyObject) {
-    }
-    
-    @IBAction func curtir(sender: AnyObject) {
+        
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -48,20 +51,27 @@ class HeaderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setNumTrechos(){
+    func countFavoritadasTrecho(objectId: String){
         
-//        var num:Int?
-//        var query: PFQuery = PFQuery(className: "Trechos")
-//        if let id = self.parseObject?.objectId{
-//            query.whereKey("historia", equalTo: id)
-//            query.countObjectsInBackgroundWithBlock{
-//                (count:Int32, error:NSError?) ->Void in
-//                
-//                if error == nil{
-//                    self.numAmigos.text = "\(count)"
-//                }
-//            }
-//        }
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("historiaId", equalTo: objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (num, error) in
+            if error == nil{
+                self.numFavoritadasTrecho.text = num.description
+            }
+        }
     }
-
+    
+    func countFavoritadasHistoria(objectId: String){
+        
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("historiaId", equalTo: objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (num, error) in
+            if error == nil{
+                self.numFavoritos.text = num.description
+            }
+        }
+    }
 }

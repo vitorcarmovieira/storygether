@@ -11,6 +11,7 @@
     </entity>
     <entity name="Trechos" representedClassName="Trechos" syncable="YES">
         <attribute name="createdAt" attributeType="Date" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trecho" attributeType="String" syncable="YES"/>
         <relationship name="escritor" maxCount="1" deletionRule="Nullify" destinationEntity="Usuarios" inverseName="trechos" inverseEntity="Usuarios" syncable="YES"/>
         <relationship name="historia" maxCount="1" deletionRule="Nullify" destinationEntity="Historias" inverseName="trechos" inverseEntity="Historias" syncable="YES"/>
@@ -25,7 +26,7 @@
     </entity>
     <elements>
         <element name="Historias" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Trechos" positionX="-234" positionY="-216" width="128" height="105"/>
+        <element name="Trechos" positionX="-234" positionY="-216" width="128" height="120"/>
         <element name="Usuarios" positionX="-405" positionY="-3" width="128" height="135"/>
     </elements>
 </model>

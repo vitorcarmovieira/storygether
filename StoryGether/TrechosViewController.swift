@@ -51,8 +51,6 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         let trechoText = self.newTrechoTextView.text!
         let user = Usuarios.getCurrent()!
         
-        Trechos.createWithTrecho(trechoText, escritor: user, historia: self.Historia!, createdAt: NSDate())
-        
         var trecho: PFObject = PFObject(className: "Trechos")
         trecho["trecho"] = self.newTrechoTextView.text!
         let className = PFUser.currentUser()?.parseClassName
@@ -61,6 +59,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         trecho["historia"] = historia
         trecho.saveInBackgroundWithBlock{
             (succeeded, error) in
+            Trechos.createWithTrecho(trechoText, escritor: user, historia: self.Historia!, objectId: trecho.objectId!, createdAt: NSDate())
             historia.fetchIfNeededInBackgroundWithBlock{
                 (object, error) in
                 if error == nil{
@@ -84,9 +83,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-//        return self.trechosList.count
+        
         let sec = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
         
         return sec[section].numberOfObjects
@@ -101,7 +98,9 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
             header.trecho = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Trechos
-            header.tituloHistoria = self.Historia?.titulo
+            header.tituloHistoriaText.text = self.Historia?.titulo
+            header.numAmigos.text = self.Historia?.trechos?.count.description
+            header.countFavoritadasHistoria(self.Historia!.objectId)
             header.awakeFromNib()
             
             return header

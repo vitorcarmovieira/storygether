@@ -50,6 +50,8 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     
     func cancelButton(){
         
+        self.searchActive = false
+        self.tableView.reloadData()
         self.navigationItem.title = "storygether"
         let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
         self.navigationItem.rightBarButtonItem = rightButtonNavBar

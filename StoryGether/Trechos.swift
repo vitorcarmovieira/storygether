@@ -14,10 +14,11 @@ class Trechos: NSManagedObject {
 
     @NSManaged var createdAt: NSDate
     @NSManaged var trecho: String
+    @NSManaged var objectId: String
     @NSManaged var escritor: Usuarios
     @NSManaged var historia: Historias
 
-    class func createWithTrecho(trecho: String, escritor: Usuarios, historia: Historias, createdAt: NSDate) ->Trechos{
+    class func createWithTrecho(trecho: String, escritor: Usuarios, historia: Historias, objectId: String, createdAt: NSDate) ->Trechos{
         
         let novoTrecho = NSEntityDescription.insertNewObjectForEntityForName("Trechos") as! Trechos
         
@@ -25,10 +26,11 @@ class Trechos: NSManagedObject {
         novoTrecho.escritor = escritor
         novoTrecho.historia = historia
         novoTrecho.createdAt = createdAt
+        novoTrecho.objectId = objectId
         
         saveOrUpdate()
         
-        print("Usuario \(novoTrecho) salvo.")
+        print("Trecho \(novoTrecho) salvo.")
         return novoTrecho
     }
 }

@@ -39,52 +39,27 @@ class HistoriaTableViewCell: UITableViewCell {
             if let favoritada = historia.favoritada{
                 self.buttonFavoritar.selected = true
             }
-            
-            countFavoritadas()
+            countFavoritadas(historia.objectId)
         }
         
     }
     @IBAction func favoritar(sender: AnyObject) {
         
+        if let numString = self.numFavoritos.text{
+            let num = (numString as NSString).integerValue
+            self.numFavoritos.text = (num + 1).description
+        }
+        
         self.historia?.favoritada = Usuarios.getCurrent()!
         Historias.saveOrUpdate()
         
-        let parseHistoria:PFObject = PFObject(withoutDataWithClassName: "Historias", objectId: self.historia?.objectId)
-        parseHistoria.fetchIfNeededInBackgroundWithBlock{
-            (object, error) in
-            if error == nil{
-                if var historia = object{
-                    if var favoritadas = historia["favoritadas"] as? [PFUser]{
-                        println("\(favoritadas)")
-                        for favoritada in favoritadas{
-                            if let user = PFUser.currentUser(){
-                                let objectId = favoritada.objectId!
-                                if objectId == user.objectId!{
-                                    println("Já foi favoritada")
-                                }else{
-                                    favoritadas.append(user)
-                                    historia["favoritadas"] = favoritadas
-                                    historia.saveInBackground()
-                                    if var favoritas = user["favoritas"] as? [PFObject]{
-                                        favoritas.append(historia)
-                                        user["favoritas"] = favoritas
-                                        user.saveInBackground()
-                                    }
-                                }
-                            }
-                        }
-                    }else{
-                        if let user = PFUser.currentUser(){
-                            historia["favoritadas"] = [user]
-                            historia.saveInBackground()
-                            
-                            user["favoritas"] = [historia]
-                            user.saveInBackground()
-                            self.buttonFavoritar.selected = true
-                        }
-                    }
+        if let objectId = self.historia?.objectId{
+            Model.favoritar(objectId, block: {
+                bool in
+                if bool{
+                    
                 }
-            }
+            })
         }
     }
 
@@ -92,17 +67,14 @@ class HistoriaTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func countFavoritadas(){
+    func countFavoritadas(objectId: String){
         
-        let parseHistoria:PFObject = PFObject(withoutDataWithClassName: "Historias", objectId: self.historia?.objectId)
-        parseHistoria.fetchIfNeededInBackgroundWithBlock{
-            (object, error) in
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("historiaId", equalTo: objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (num, error) in
             if error == nil{
-                if let historia = object{
-                    if var favoritadas = historia["favoritadas"] as? [PFObject]{
-                        self.numFavoritos.text = favoritadas.count.description
-                    }
-                }
+                self.numFavoritos.text = num.description
             }
         }
     }
