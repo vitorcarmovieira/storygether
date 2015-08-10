@@ -43,12 +43,17 @@
 		4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */; };
 		4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB61B6A5FF300151656 /* TimeLineHeaderCell.swift */; };
 		4E84AAB91B6BB50100151656 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB81B6BB50100151656 /* UserCell.swift */; };
+		4E84AABB1B6C4E6800151656 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AABA1B6C4E6800151656 /* Model.swift */; };
+		4E84AAC01B6C566D00151656 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AABF1B6C566D00151656 /* DAO.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
 		4EE5FAB71B4337F8006E636A /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */; };
 		4EEF869F1B43023D00A22534 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869C1B43023D00A22534 /* Bolts.framework */; };
 		4EEF86A01B43023D00A22534 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */; };
 		4EEF86A11B43023D00A22534 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */; };
+		4EF6DF111B7132C70068390F /* Usuarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6DF101B7132C70068390F /* Usuarios.swift */; };
+		4EF6DF131B7132C70068390F /* Historias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6DF121B7132C70068390F /* Historias.swift */; };
+		4EF6DF151B7132C70068390F /* Trechos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6DF141B7132C70068390F /* Trechos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +109,8 @@
 		4E84AAB41B69D3DC00151656 /* PerfilNumeroHistorias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilNumeroHistorias.swift; sourceTree = "<group>"; };
 		4E84AAB61B6A5FF300151656 /* TimeLineHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineHeaderCell.swift; sourceTree = "<group>"; };
 		4E84AAB81B6BB50100151656 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		4E84AABA1B6C4E6800151656 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4E84AABF1B6C566D00151656 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
 		4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -111,6 +118,10 @@
 		4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = StoryGether/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = StoryGether/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4EEF86A31B4302E900A22534 /* StoryGether-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StoryGether-Bridging-Header.h"; sourceTree = "<group>"; };
+		4EF6DF101B7132C70068390F /* Usuarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuarios.swift; sourceTree = "<group>"; };
+		4EF6DF121B7132C70068390F /* Historias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historias.swift; sourceTree = "<group>"; };
+		4EF6DF141B7132C70068390F /* Trechos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trechos.swift; sourceTree = "<group>"; };
+		4EFFC5931B6D0C0B009BED55 /* StoryGether 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StoryGether 1.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,16 +182,8 @@
 		4E3852681B136848004D346C /* StoryGether */ = {
 			isa = PBXGroup;
 			children = (
-				4E38533D1B189696004D346C /* HistoriaTableViewController.swift */,
-				4E38526B1B136848004D346C /* AppDelegate.swift */,
-				4E3852941B136A42004D346C /* TimeLineTableViewController.swift */,
-				4E7FCE741B212C0E005ADCAA /* TabBarController.swift */,
-				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
-				4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */,
-				4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */,
-				4E84AAAD1B681B1100151656 /* Extensions.swift */,
-				245A92141B40A50000A8E647 /* LoginViewController.swift */,
-				4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */,
+				4E84AABD1B6C4E8400151656 /* Controller */,
+				4E84AABC1B6C4E6D00151656 /* Model */,
 				4E6AF2E71B372D4E00E671EA /* View */,
 				4E3852691B136848004D346C /* Supporting Files */,
 			);
@@ -192,6 +195,8 @@
 			children = (
 				24B3B2D91B72E0D300A805B9 /* Localizable.strings */,
 				24B3B2CE1B72E0D300A805B9 /* InfoPlist.strings */,
+				4E84AAAD1B681B1100151656 /* Extensions.swift */,
+				4E38526B1B136848004D346C /* AppDelegate.swift */,
 				4E38526A1B136848004D346C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -264,6 +269,33 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		4E84AABC1B6C4E6D00151656 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */,
+				4EF6DF141B7132C70068390F /* Trechos.swift */,
+				4EF6DF121B7132C70068390F /* Historias.swift */,
+				4EF6DF101B7132C70068390F /* Usuarios.swift */,
+				4E84AABA1B6C4E6800151656 /* Model.swift */,
+				4E84AABF1B6C566D00151656 /* DAO.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4E84AABD1B6C4E8400151656 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E38533D1B189696004D346C /* HistoriaTableViewController.swift */,
+				4E3852941B136A42004D346C /* TimeLineTableViewController.swift */,
+				4E7FCE741B212C0E005ADCAA /* TabBarController.swift */,
+				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
+				4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */,
+				4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */,
+				245A92141B40A50000A8E647 /* LoginViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +346,7 @@
 				TargetAttributes = {
 					4E3852651B136848004D346C = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 7JS5STBL4T;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -375,21 +408,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */,
+				4EF6DF151B7132C70068390F /* Trechos.swift in Sources */,
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
+				4E84AAC01B6C566D00151656 /* DAO.swift in Sources */,
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
+				4EF6DF131B7132C70068390F /* Historias.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
 				4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */,
 				4E3852971B136B3E004D346C /* HistoriaViewController.swift in Sources */,
+				4EF6DF111B7132C70068390F /* Usuarios.swift in Sources */,
 				4E38526C1B136848004D346C /* AppDelegate.swift in Sources */,
 				4E3852951B136A42004D346C /* TimeLineTableViewController.swift in Sources */,
 				4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */,
 				4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */,
 				4E84AAB91B6BB50100151656 /* UserCell.swift in Sources */,
 				4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */,
+				4E84AABB1B6C4E6800151656 /* Model.swift in Sources */,
 				4E3852991B136B6C004D346C /* HistoriaTableViewCell.swift in Sources */,
 				4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */,
 			);
@@ -657,9 +695,10 @@
 		4E38526D1B136848004D346C /* StoryGether.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4EFFC5931B6D0C0B009BED55 /* StoryGether 1.xcdatamodel */,
 				4E38526E1B136848004D346C /* StoryGether.xcdatamodel */,
 			);
-			currentVersion = 4E38526E1B136848004D346C /* StoryGether.xcdatamodel */;
+			currentVersion = 4EFFC5931B6D0C0B009BED55 /* StoryGether 1.xcdatamodel */;
 			path = StoryGether.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

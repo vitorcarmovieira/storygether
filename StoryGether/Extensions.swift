@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import CoreData
 
 extension UIImageView{
     
@@ -18,7 +19,7 @@ extension UIImageView{
         
     }
     
-    func getImageAssync(url: String?){
+    func setImageAssync(url: String?){
         
         if let url = url{
             dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
@@ -76,19 +77,45 @@ extension TimeLineTableViewController: UISearchBarDelegate{
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if let users = self.users{
-            self.filtered = users.filter({ (user) -> Bool in
-                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
-                let tmp: NSString = profile["name"] as! String
-                let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-                return range.location != NSNotFound
-            })
-            if(self.filtered?.count == 0){
-                searchActive = false;
-            } else {
-                searchActive = true;
+        let query:PFQuery = PFQuery(className: "_User")
+        query.whereKey("name", containsString: searchText)
+        query.findObjectsInBackgroundWithBlock{
+            (objects, error) in
+            if error == nil{
+                if let user = objects as? [PFObject]{
+                    self.filtered = user
+                    if(self.filtered?.count == 0){
+                        self.searchActive = false;
+                    } else {
+                        self.searchActive = true;
+                    }
+                    self.tableView.reloadData()
+                }
             }
-            self.tableView.reloadData()
         }
+        
+//        if let users = self.users{
+//            self.filtered = users.filter({ (user) -> Bool in
+//                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
+//                let tmp: NSString = profile["name"] as! String
+//                let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+//                return range.location != NSNotFound
+//            })
+//            if(self.filtered?.count == 0){
+//                searchActive = false;
+//            } else {
+//                searchActive = true;
+//            }
+//            self.tableView.reloadData()
+//        }
+    }
+}
+
+extension NSManagedObject {
+    func addObject(value: NSManagedObject, forKey: String) {
+        self.willChangeValueForKey(forKey, withSetMutation: NSKeyValueSetMutationKind.UnionSetMutation, usingObjects: NSSet(object: value) as Set<NSObject>)
+        var items = self.mutableSetValueForKey(forKey);
+        items.addObject(value)
+        self.didChangeValueForKey(forKey, withSetMutation: NSKeyValueSetMutationKind.UnionSetMutation, usingObjects: NSSet(object: value) as Set<NSObject>)
     }
 }

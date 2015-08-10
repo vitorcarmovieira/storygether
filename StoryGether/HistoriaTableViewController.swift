@@ -73,7 +73,7 @@ class HistoriaTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        cell.parseObject = self.trechosList[indexPath.row] as? PFObject
+        cell.trecho = self.trechosList[indexPath.row] as? Trechos
         cell.awakeFromNib()
 
         return cell

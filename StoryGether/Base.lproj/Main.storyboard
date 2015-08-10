@@ -33,8 +33,6 @@
             <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
-            <string>SFCompactDisplay-Medium</string>
-            <string>SFCompactDisplay-Medium</string>
         </mutableArray>
         <mutableArray key="SF-Compact-Display-Regular.otf">
             <string>SFCompactDisplay-Regular</string>
@@ -254,11 +252,8 @@
                                                     <color key="textColor" red="0.97647058819999999" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.97647058823529409" green="0.75686274509803919" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_colaboradores" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-jS-HDZ">
-                                                    <rect key="frame" x="262" y="15" width="30" height="30"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdb-vp-DJK">
-                                                    <rect key="frame" x="293" y="19" width="10" height="21"/>
+                                                    <rect key="frame" x="293" y="19" width="19" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -277,6 +272,9 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_quandofoicriada" translatesAutoresizingMaskIntoConstraints="NO" id="38z-o6-d3c">
                                                     <rect key="frame" x="21" y="29" width="15" height="15"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_trecho" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-jS-HDZ">
+                                                    <rect key="frame" x="255" y="15" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -423,7 +421,7 @@
             </objects>
             <point key="canvasLocation" x="-673.5" y="266.5"/>
         </scene>
-        <!--Storygether-->
+        <!--storygether-->
         <scene sceneID="wOp-eJ-sYu">
             <objects>
                 <tableViewController id="gLb-xy-B3g" customClass="TimeLineTableViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
@@ -513,13 +511,13 @@
                                                 <action selector="favoritar:" destination="dAA-nU-IaJ" eventType="touchUpInside" id="N9X-MH-jZh"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2C-TW-srU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2C-TW-srU">
                                             <rect key="frame" x="279" y="107" width="22" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXd-AO-gJa">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXd-AO-gJa">
                                             <rect key="frame" x="8" y="53" width="359" height="46"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -541,24 +539,32 @@
                                     <segue destination="wrj-tX-kg8" kind="show" id="yur-co-RiE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="62" id="BAf-52-ikg" customClass="UserCell" customModule="StoryGether" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="268" width="375" height="62"/>
+                            <tableViewCell contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="60" id="BAf-52-ikg" customClass="UserCell" customModule="StoryGether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BAf-52-ikg" id="ppg-em-dIT">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-XA-ZXU">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-XA-ZXU">
                                             <rect key="frame" x="8" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="8EY-zc-b3x"/>
+                                                <constraint firstAttribute="height" constant="40" id="xvX-Nl-gYs"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fulano" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SND-Oe-42b">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fulano" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SND-Oe-42b">
                                             <rect key="frame" x="56" y="19" width="244" height="21"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTM-3Y-Wja">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTM-3Y-Wja">
                                             <rect key="frame" x="318" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="BGU-Ze-fWq"/>
+                                                <constraint firstAttribute="height" constant="40" id="gE0-Xs-LRE"/>
+                                            </constraints>
                                             <state key="normal" backgroundImage="button_seguir">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -568,6 +574,18 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Vnn-XA-ZXU" firstAttribute="top" secondItem="ppg-em-dIT" secondAttribute="topMargin" constant="2" id="1o8-hb-0JL"/>
+                                        <constraint firstItem="SND-Oe-42b" firstAttribute="leading" secondItem="Vnn-XA-ZXU" secondAttribute="trailing" constant="8" id="2WK-DE-Arl"/>
+                                        <constraint firstItem="SND-Oe-42b" firstAttribute="bottom" secondItem="ppg-em-dIT" secondAttribute="bottomMargin" constant="-11.5" id="2u9-ji-Szc"/>
+                                        <constraint firstItem="Vnn-XA-ZXU" firstAttribute="leading" secondItem="ppg-em-dIT" secondAttribute="leadingMargin" id="Hmv-Xt-Y12"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WTM-3Y-Wja" secondAttribute="bottom" constant="2.5" id="KXZ-6R-de8"/>
+                                        <constraint firstItem="WTM-3Y-Wja" firstAttribute="leading" secondItem="SND-Oe-42b" secondAttribute="trailing" constant="18" id="Yl8-1q-Ozm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WTM-3Y-Wja" secondAttribute="trailing" constant="9" id="hEb-tx-Iof"/>
+                                        <constraint firstItem="WTM-3Y-Wja" firstAttribute="top" secondItem="ppg-em-dIT" secondAttribute="topMargin" constant="2" id="hfL-Nq-uBk"/>
+                                        <constraint firstItem="SND-Oe-42b" firstAttribute="top" secondItem="ppg-em-dIT" secondAttribute="topMargin" constant="11" id="rtv-OL-AkG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Vnn-XA-ZXU" secondAttribute="bottom" constant="2.5" id="zOH-eL-GdN"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="buttonSeguindo" destination="WTM-3Y-Wja" id="w00-bA-eK2"/>
@@ -581,11 +599,8 @@
                             <outlet property="delegate" destination="gLb-xy-B3g" id="NPo-jl-7tD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Storygether" id="lfB-h8-hcY"/>
+                    <navigationItem key="navigationItem" title="storygether" id="lfB-h8-hcY"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="BGC-eX-fPO" id="4H8-a7-w03"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kty-Nd-edW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -772,7 +787,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_trecho" translatesAutoresizingMaskIntoConstraints="NO" id="wVT-Wx-1FY">
                                                     <rect key="frame" x="140" y="60" width="25" height="25"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trO-6M-6pc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trO-6M-6pc">
                                                     <rect key="frame" x="173" y="62" width="22" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -795,12 +810,30 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWg-jm-JEP">
+                                                    <rect key="frame" x="340" y="152" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ2-om-unm">
+                                                    <rect key="frame" x="312" y="148" width="25" height="25"/>
+                                                    <state key="normal" image="icon_favoritar">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="icon_favoritar_clique"/>
+                                                    <connections>
+                                                        <action selector="favoritar:" destination="Pdf-DY-FeX" eventType="touchUpInside" id="QpR-eL-4WF"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonFavoritar" destination="UJ2-om-unm" id="tKW-Nj-Fbv"/>
                                             <outlet property="imagemCriador" destination="WU7-UQ-361" id="mzw-V7-XFf"/>
                                             <outlet property="nomeCriadorLabel" destination="rJV-pn-yGQ" id="GcS-W8-kCC"/>
                                             <outlet property="numAmigos" destination="trO-6M-6pc" id="kgf-z5-iTC"/>
+                                            <outlet property="numFavoritadasTrecho" destination="jWg-jm-JEP" id="TnT-R8-Wn7"/>
                                             <outlet property="numFavoritos" destination="CIL-zp-ORF" id="ibP-pH-dic"/>
                                             <outlet property="tituloHistoriaText" destination="Cae-Ai-grj" id="x5N-Bc-dw0"/>
                                             <outlet property="trechoLabel" destination="PXu-EO-qyw" id="zwR-K8-K7o"/>
@@ -833,10 +866,28 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2j-va-Y8B">
+                                                    <rect key="frame" x="340" y="70" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyb-XN-z6T">
+                                                    <rect key="frame" x="312" y="66" width="25" height="25"/>
+                                                    <state key="normal" image="icon_favoritar">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="icon_favoritar_clique"/>
+                                                    <connections>
+                                                        <action selector="favoritar:" destination="kte-KM-EF5" eventType="touchUpInside" id="GUm-c6-Qss"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonFavoritar" destination="Eyb-XN-z6T" id="c2a-rb-WVU"/>
                                             <outlet property="imagemEscritorTrecho" destination="uYr-0P-rK3" id="2Lz-F3-ptX"/>
+                                            <outlet property="numFavoritadas" destination="d2j-va-Y8B" id="wJh-HP-O9z"/>
                                             <outlet property="trechoLabel" destination="x4a-cF-JwX" id="Jcg-n6-7J1"/>
                                         </connections>
                                     </tableViewCell>
@@ -877,7 +928,6 @@
         <image name="castelo_perfil" width="545" height="545"/>
         <image name="cover" width="1562" height="383"/>
         <image name="icon_avatar" width="545" height="545"/>
-        <image name="icon_colaboradores" width="32" height="44"/>
         <image name="icon_configuracao" width="45" height="45"/>
         <image name="icon_favoritar" width="36" height="40"/>
         <image name="icon_favoritar_clique" width="36" height="38"/>

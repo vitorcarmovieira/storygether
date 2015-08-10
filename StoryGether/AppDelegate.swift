@@ -74,22 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = rootView
         self.window?.makeKeyAndVisible()
         
-        var tabBarAppearace = UITabBar.appearance()
-        
-        tabBarAppearace.tintColor = UIColor.whiteColor()
-        tabBarAppearace.barTintColor = self.uicolorFromHex(0xffffff)
-        
-        
-        let tabBarController = self.window?.rootViewController as! UITabBarController
-        let tabBar = tabBarController.tabBar as UITabBar
-        
-        var tabBarItemTimeLine = tabBar.items![0] as! UITabBarItem
-        var tabBarItemPerfil = tabBar.items![2] as! UITabBarItem
-        
-        tabBarItemTimeLine.image = UIImage(named: "tabbar_icon_feed")!.imageWithRenderingMode(.AlwaysOriginal)
-        tabBarItemTimeLine.selectedImage = UIImage(named: "tabbar_icon_feed_clique")!.imageWithRenderingMode(.AlwaysOriginal)
-        tabBarItemPerfil.image = UIImage(named: "tabbar_icon_perfil")!.imageWithRenderingMode(.AlwaysOriginal)
-        tabBarItemPerfil.selectedImage = UIImage(named: "tabbar_icon_perfil_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+       
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -137,8 +122,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("StoryGether.sqlite")
         var error: NSError? = nil
+        let mOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true]
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: mOptions, error: &error) == nil {
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()

@@ -42,35 +42,11 @@ class HistoriaViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func saveHistoria(sender: AnyObject) {
         
-        let className = PFUser.currentUser()?.parseClassName
-        
-        var trechos: PFObject = PFObject(className: "Trechos")
-        trechos["trecho"] = self.historiaTextView.text!
-        trechos["escritor"] = PFUser.currentUser()?.valueForKey("profile")
-        
-        var novahistoria:PFObject = PFObject(className: "Historias")
-        novahistoria["titulo"] = self.tituloTextField.text!
-        novahistoria["criador"] = PFUser.currentUser()?.valueForKey("profile")
-        novahistoria["trechoInicial"] = self.historiaTextView.text!
-        
-        let user = PFUser.currentUser()!
-        if var historias = user["historias"] as? [PFObject]{
-            
-            historias.append(novahistoria)
-            user["historias"] = historias
-        } else { user["historias"] = [novahistoria] }
-        
-        user.saveInBackgroundWithBlock({
-            (sucess, error) -> Void in
-            if error != nil {
-                // There was an error.
-                print("erro em salvar historia.")
-            }else {
-                print("historia salva. \(sucess)")
-                trechos["historia"] = novahistoria.objectId!
-                trechos.saveInBackground()
+        if let titulo = self.tituloTextField.text{
+            if let trecho = self.historiaTextView.text{
+                Model.saveParseObjectHistory(titulo, trecho: trecho)
             }
-        })
+        }
         
         (self.tabBarController as! TabBarController).showTabBar(true)
     }

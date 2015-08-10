@@ -18,91 +18,64 @@ class HistoriaTableViewCell: UITableViewCell {
     @IBOutlet weak var tituloHistoria: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var historiaLabel: UILabel!
-    var parseObject:PFObject?
+    var historia: Historias?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.userImage.circularImageView()
         
-        if let historia = self.parseObject{
+        if let historia = self.historia{
             
-            let user:AnyObject = historia["criador"]!
-            let favoritadas = historia["favoritadas"] as? [AnyObject]
+            let user:Usuarios = historia.criador
             
-            //async para pegar foto do usuario
-            self.userImage.getImageAssync(user.valueForKey("urlFoto") as? String)
-            self.tituloHistoria.text = (historia["titulo"] as! String)
-            self.dataCriacao.text = historia.createdAt?.historyCreatedAt()
-            self.historiaLabel.text = historia["trechoInicial"] as? String
-            self.setNumTrechos()
+            let image = UIImage(data: user.foto)
+            self.userImage?.image = image
+            self.tituloHistoria.text = historia.titulo
+            self.dataCriacao.text = historia.createdAt.historyCreatedAt()
+            self.historiaLabel.text = historia.trechoInicial
+            self.numEscritores.text = historia.trechos?.count.description
             
-            if let count = favoritadas?.count{
-                self.numFavoritos.text = "\(count)"
-                if var favoritadas = self.parseObject?["favoritadas"] as? [NSDictionary]{
-                    if let user = PFUser.currentUser(){
-                        let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
-                        if let index = find(favoritadas, profile){
-                            self.buttonFavoritar.selected = true
-                        }
-                    }
-                }
-            }else {
-                self.numFavoritos.text = "0"
-                self.buttonFavoritar.selected = false
+            if let favoritada = historia.favoritada{
+                self.buttonFavoritar.selected = true
             }
+            countFavoritadas(historia.objectId)
         }
         
     }
     @IBAction func favoritar(sender: AnyObject) {
         
-        if var favoritadas = self.parseObject?["favoritadas"] as? [NSDictionary]{
-            if let user = PFUser.currentUser(){
-                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
-                if let index = find(favoritadas, profile){
-                    println("Já foi favoritada")
-                }else{
-                    favoritadas.append(profile)
-                    self.parseObject!["favoritadas"] = favoritadas
-                    self.parseObject!.saveInBackground()
-                    if var favoritas = user["favoritas"] as? [PFObject]{
-                        favoritas.append(self.parseObject!)
-                        user["favoritas"] = favoritas
-                        user.saveInBackground()
-                    }
+        if let numString = self.numFavoritos.text{
+            let num = (numString as NSString).integerValue
+            self.numFavoritos.text = (num + 1).description
+            self.buttonFavoritar.selected = true
+        }
+        
+        self.historia?.favoritada = Usuarios.getCurrent()!
+        Historias.saveOrUpdate()
+        
+        if let objectId = self.historia?.objectId{
+            Model.favoritar(objectId, block: {
+                bool in
+                if bool{
+                    
                 }
-            }
-        }else{
-            if let user = PFUser.currentUser(){
-                let profile:AnyObject = user.valueForKey("profile")!
-                self.parseObject!["favoritadas"] = [profile]
-                self.parseObject!.saveInBackground()
-                
-                user["favoritas"] = [self.parseObject!]
-                user.saveInBackground()
-                self.buttonFavoritar.selected = true
-            }
+            })
         }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        
     }
     
-    func setNumTrechos(){
+    func countFavoritadas(objectId: String){
         
-        var num:Int?
-        var query: PFQuery = PFQuery(className: "Trechos")
-        if let id = self.parseObject?.objectId{
-            query.whereKey("historia", equalTo: id)
-            query.countObjectsInBackgroundWithBlock{
-                (count:Int32, error:NSError?) ->Void in
-                
-                if error == nil{
-                    self.numEscritores.text = "\(count)"
-                }
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("historiaId", equalTo: objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (num, error) in
+            if error == nil{
+                self.numFavoritos.text = num.description
             }
         }
     }

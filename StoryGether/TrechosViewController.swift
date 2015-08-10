@@ -8,13 +8,15 @@
 
 import UIKit
 import Parse
+import CoreData
 
-class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, NSFetchedResultsControllerDelegate {
 
-    var Historia: PFObject?
+    var Historia: Historias?
     var id:String!
-    var trechosList:[PFObject]!
+    var trechosList:[Trechos]!
     var frameView: CGRect!
+    var fetchedResultsController: NSFetchedResultsController!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newTrechoTextView: UITextView!
@@ -22,27 +24,13 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.trechosList = []
-
-        var query: PFQuery = PFQuery(className: "Trechos")
-        self.id = self.Historia?.objectId!
-        query.whereKey("historia", equalTo: id)
+        Model.updateTrecho(self.Historia!)
         
-        query.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?) ->Void in
-            
-            if error == nil{
-                if let trechos = objects as? [PFObject] {
-                    
-                    for trecho in trechos {
-                        let t: PFObject = trecho
-                        
-                        self.trechosList.append(t)
-                    }
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        let objectId = self.Historia?.objectId
+        let predicate = NSPredicate(format: "historia.objectId == %@", objectId!)
+        fetchedResultsController = Trechos.fetchedResultsController("createdAt", ascending: true, predicate: predicate)
+        fetchedResultsController.delegate = self
+        fetchedResultsController.performFetch(nil)
         
         self.frameView = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         
@@ -60,24 +48,45 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBAction func addTrecho(sender: AnyObject) {
         
+        let trechoText = self.newTrechoTextView.text!
+        let user = Usuarios.getCurrent()!
+        
         var trecho: PFObject = PFObject(className: "Trechos")
         trecho["trecho"] = self.newTrechoTextView.text!
         let className = PFUser.currentUser()?.parseClassName
-        trecho["escritor"] = PFUser.currentUser()?.valueForKey("profile")
-        trecho["historia"] = self.id
+        trecho["escritor"] = PFUser.currentUser()!
+        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: self.Historia?.objectId)
+        trecho["historia"] = historia
+        trecho.saveInBackgroundWithBlock{
+            (succeeded, error) in
+            Trechos.createWithTrecho(trechoText, escritor: user, historia: self.Historia!, objectId: trecho.objectId!, createdAt: NSDate())
+            historia.fetchIfNeededInBackgroundWithBlock{
+                (object, error) in
+                if error == nil{
+                    if let historia = object{
+                        if var trechos = historia["trechos"] as? [PFObject]{
+                            trechos.append(trecho)
+                            historia["trechos"] = trechos
+                            historia.saveInBackground()
+                        }else{
+                            historia["trechos"] = [trecho]
+                            historia.saveInBackground()
+                        }
+                    }
+                }
+            }
+        }
         
-        trecho.saveInBackground()
-        
-        trechosList.append(trecho)
         self.tableView.reloadData()
         self.newTrechoTextView.text = ""
     }
     // MARK: - Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.trechosList.count
+        
+        let sec = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
+        
+        return sec[section].numberOfObjects
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -88,8 +97,10 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
-            header.parseObject = self.trechosList[indexPath.row]
-            header.tituloHistoria = self.Historia?["titulo"] as? String
+            header.trecho = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Trechos
+            header.tituloHistoriaText.text = self.Historia?.titulo
+            header.numAmigos.text = self.Historia?.trechos?.count.description
+            header.countFavoritadasHistoria(self.Historia!.objectId)
             header.awakeFromNib()
             
             return header
@@ -97,7 +108,9 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        cell.parseObject = self.trechosList[indexPath.row]
+        let trecho = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Trechos
+        
+        cell.trecho = trecho
         cell.awakeFromNib()
         
         return cell
@@ -116,6 +129,25 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type{
+            
+        case .Insert:
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            print("Trecho inserido")
+            
+        case .Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Top)
+            print("Trecho deletado")
+            
+        case .Update:
+            print("Trecho atualizado")
+            
+        default:
+            print("Tipo desconhecido")
+        }
     }
     
     //---------------------- move up textView ---------------------

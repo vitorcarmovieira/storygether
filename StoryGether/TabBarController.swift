@@ -15,6 +15,21 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var tabBarAppearace = UITabBar.appearance()
+        
+        tabBarAppearace.tintColor = UIColor.whiteColor()
+        tabBarAppearace.barTintColor = UIColor.whiteColor()
+        
+        let tabBar = self.tabBar
+        
+        var tabBarItemTimeLine = tabBar.items![0] as! UITabBarItem
+        var tabBarItemPerfil = tabBar.items![2] as! UITabBarItem
+        
+        tabBarItemTimeLine.image = UIImage(named: "tabbar_icon_feed")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemTimeLine.selectedImage = UIImage(named: "tabbar_icon_feed_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemPerfil.image = UIImage(named: "tabbar_icon_perfil")!.imageWithRenderingMode(.AlwaysOriginal)
+        tabBarItemPerfil.selectedImage = UIImage(named: "tabbar_icon_perfil_clique")!.imageWithRenderingMode(.AlwaysOriginal)
+        
         let buttonImage: UIImage? = UIImage(named: "tabbar_icon_criar")
         let buttonSelectedImage = UIImage(named: "tabbar_icon_clique_07")
         

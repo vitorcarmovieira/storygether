@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Foundation
 
 class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate{
     @IBOutlet weak var svTutorial: UIScrollView!
@@ -119,9 +120,11 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
     
     func setUserData()
     {
-        let userData: NSMutableDictionary = NSMutableDictionary(capacity: 7)
+        var name: NSString!
+        var urlFoto: NSString!
+        var id: NSString!
         
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,picture", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,picture.height(300).weight(300)", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil)
@@ -133,27 +136,48 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
             {
                 print("fetched user: \(result)")
                 
-                if let name = result.valueForKey("name") as? NSString{
-                    
-                    userData.setValue(name, forKey: "name")
+                if let n = result.valueForKey("name") as? NSString{
+                    name = n
                 }
                 
-                if let id = result.valueForKey("id") as? NSString{
-                    
-                    userData.setValue(id, forKey: "id")
+                if let ident = result.valueForKey("id") as? NSString{
+                    id = ident
                 }
                 
                 var pic: AnyObject? = result.valueForKey("picture")
                 var data: AnyObject? = pic?.valueForKey("data")
                 
                 if let url = data?.valueForKey("url") as? NSString{
-                    
-                    userData.setValue(url, forKey: "urlFoto")
+                    urlFoto = url
                 }
                 
-                let user = PFUser.currentUser()
-                user!["profile"] = userData
-                user?.save()
+                let user = PFUser.currentUser()!
+                user["name"] = name
+                user["urlFoto"] = urlFoto
+                user["idFace"] = id
+                user.saveInBackgroundWithBlock{
+                    (successed, error) in
+                    if error == nil{
+                        let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! TabBarController
+                        self.presentViewController(rootView, animated: true, completion: nil)
+                    }
+                }
+                
+                if (urlFoto != nil){
+                    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+                        if let nsurl = NSURL(string: urlFoto as String){
+                            if let data = NSData(contentsOfURL: nsurl){
+                                dispatch_async(dispatch_get_main_queue()){
+                                    let user = Usuarios.createWithName(name as String, foto: data, id: id as String, historias: NSSet(), trechos: NSSet(), favoritas: NSSet())
+                                    let currentUser = NSUserDefaults.standardUserDefaults()
+                                    let uri = user.objectID.URIRepresentation()
+                                    let data = NSKeyedArchiver.archivedDataWithRootObject(uri)
+                                    currentUser.setObject(data, forKey: "user")
+                                }
+                            }
+                        }
+                    }
+                }
             }
         })
         
