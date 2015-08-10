@@ -13,6 +13,7 @@ class trechoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
+    @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var numFavoritadas: UILabel!
     var trecho: Trechos?
     
@@ -31,6 +32,12 @@ class trechoTableViewCell: UITableViewCell {
     }
     
     @IBAction func favoritar(sender: AnyObject) {
+        
+        if let numString = self.numFavoritadas.text{
+            let num = (numString as NSString).integerValue
+            self.numFavoritadas.text = (num + 1).description
+            self.buttonFavoritar.selected = true
+        }
         
         if let objectId = self.trecho?.objectId{
             Model.favoritar(objectId, block: {

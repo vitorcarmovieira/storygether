@@ -18,17 +18,12 @@ class Model {
     
     class func update(){
         
-        hasNewHistory{
-            bool in
-            if bool{
-                if let lastObject = Historias.arrayObject("createdAt", ascending: false).last as? Historias{
-                    let predicate = NSPredicate(format: "createdAt > %@", lastObject.createdAt)
-                    self.fetchParseObjectsWithClassName("Historia", predicate: predicate)
-                }else{
-                    println("Nenhuma historia.")
-                    self.fetchParseObjectsWithClassName("Historia")
-                }
-            }
+        if let lastObject = Historias.arrayObject("createdAt", ascending: false).last as? Historias{
+            let predicate = NSPredicate(format: "createdAt > %@", lastObject.createdAt)
+            self.fetchParseObjectsWithClassName("Historia", predicate: predicate)
+        }else{
+            println("Nenhuma historia.")
+            self.fetchParseObjectsWithClassName("Historia")
         }
     }
     
@@ -43,23 +38,10 @@ class Model {
                     self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
                 }else{
                     println("Nenhuma historia.")
-//                    self.fetchParseObjectsWithClassName("Trechos", historia: historia)
+                    self.fetchParseObjectsWithClassName("Trechos", historia: historia)
                 }
             }
         })
-    }
-    
-    class func hasNewHistory(completion: (bool: Bool) -> ()){
-        
-        var query:PFQuery = PFQuery(className: "Historias")
-        query.countObjectsInBackgroundWithBlock{
-            (count:Int32, error:NSError?)->Void in
-            if error == nil{
-                if let numberLocalObjects = Historias.countObjects(){
-                    completion(bool: !(count == Int32(numberLocalObjects)))
-                }
-            }
-        }
     }
     
     class func hasNewTrecho(parseHistoria:PFObject, historia: Historias, completion: (bool: Bool) -> ()){
@@ -105,7 +87,6 @@ class Model {
             var query:PFQuery = PFQuery(className: className, predicate: predicate)
             query.orderByDescending("createdAt")
             query.includeKey("criador")
-            query.includeKey("trechos")
             queryParse(query)
             
         }else if className == "Trechos"{
@@ -125,13 +106,12 @@ class Model {
             
             let trechoText = object["trecho"] as! String
             let objectId = object.objectId!
-            let user = object["escritor"] as! PFObject
-            saveUserWithParse(user, completition: {
+            let user = object["escritor"] as! PFUser
+            self.saveUserIfNeededWithPFUser(user, completition: {
                 user in
                 if let user = user{
                     println("user : \(user)")
-                    Trechos.createWithTrecho(trechoText, escritor: user, historia: historia, objectId: objectId, createdAt: NSDate())
-                    Trechos.saveOrUpdate()
+                    Trechos.createWithTrecho(trechoText, escritor: user, historia: historia, objectId: objectId, createdAt: object.createdAt!)
                 }
             })
         }
@@ -140,53 +120,21 @@ class Model {
     class func saveInLocalObjects(objects:[PFObject]){
         
         for object in objects{
-            println("\(object)")
-            if let criador = object["criador"] as? PFObject{
+            
+            if let criador = object["criador"] as? PFUser{
                 let idFace = criador["idFace"] as! String
                 
-                if let user = Usuarios.hasValue(idFace, InColum: "id"){
+                self.saveUserIfNeededWithPFUser(criador, completition: {
+                    user in
                     
                     let titulo = object["titulo"] as! String
                     let objectId = object.objectId!
                     let createdAt = object.createdAt!
                     let trechoInicial = object["trechoInicial"] as! String
                     
-                    let historia = Historias.createWithTitle(titulo, createdAt: createdAt, objectId: objectId,trechoInicial: trechoInicial, criador: user, trechos: nil, favoritada: nil)
-                    if let trechos = object["trechos"] as? [PFObject]{
-                        for trecho in trechos{
-                            let trechoText = trecho["trecho"] as! String
-                            let trechoObjectId = trecho.objectId!
-                            Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, objectId: trechoObjectId, createdAt: NSDate())
-                        }
-                    }
-                    
-                }else{
-                    if let urlFoto = criador["urlFoto"] as? String{
-                        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
-                            if let nsurl = NSURL(string: urlFoto){
-                                if let data = NSData(contentsOfURL: nsurl){
-                                    dispatch_async(dispatch_get_main_queue()){
-                                        let user = Usuarios.createWithName(criador["name"] as! String, foto: data, id: criador["idFace"] as! String, historias: NSSet(), trechos: NSSet(), favoritas: NSSet())
-                                        
-                                        let titulo = object["titulo"] as! String
-                                        let objectId = object.objectId!
-                                        let createdAt = object.createdAt!
-                                        let trechoInicial = object["trechoInicial"] as! String
-                                        
-                                        let historia = Historias.createWithTitle(titulo, createdAt: createdAt, objectId: objectId,trechoInicial: trechoInicial, criador: user, trechos: nil, favoritada: nil)
-                                        if let trechos = object["trechos"] as? [PFObject]{
-                                            for trecho in trechos{
-                                                let trechoText = trecho["trecho"] as! String
-                                                let trechoObjectId = trecho.objectId!
-                                                Trechos.createWithTrecho(trechoText, escritor: user, historia: historia!, objectId: trechoObjectId, createdAt: NSDate())
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                    let historia = Historias.createWithTitle(titulo, createdAt: createdAt, objectId: objectId,trechoInicial: trechoInicial, criador: user!, trechos: nil, favoritada: nil)
+                })
+                
             }else{ println("falha em pegar criador") }
         }
     }
@@ -210,35 +158,12 @@ class Model {
                 novoTrecho.saveInBackgroundWithBlock{
                     (succeeded, error) in
                     if error == nil{
-                        println("salvando trecho \(trecho)")
-                        novahistoria["trechos"] = [novoTrecho]
-                        novahistoria.saveInBackgroundWithBlock{
-                            (succeeded, error) in
-                            if error == nil{
-                                println("salvando historia no user")
-                                let currentUser = PFUser.currentUser()!
-                                if var historias = currentUser["historias"] as? [PFObject]{
-                                    historias.append(novahistoria)
-                                    currentUser["historias"] = historias
-                                    currentUser.saveInBackgroundWithBlock{
-                                        (succeeded, error) in
-                                        if error == nil{
-                                            Model.update()
-                                        }
-                                    }
-                                }else{
-                                    currentUser["historias"] = [novahistoria]
-                                    currentUser.saveInBackgroundWithBlock{
-                                        (succeeded, error) in
-                                        if error == nil{
-                                            Model.update()
-                                        }
-                                    }
-                                }
-                                
-                            }
-                        }
                         
+                        self.saveUserIfNeededWithPFUser(PFUser.currentUser()!, completition: {
+                            user in
+                            let historia = Historias.createWithTitle(titulo, createdAt: novahistoria.createdAt!, objectId: novahistoria.objectId!, trechoInicial: trecho, criador: user!, trechos: nil, favoritada: nil)
+                            self.saveInLocalObjectsTrecho([novoTrecho], historia: historia!)
+                        })
                     }
                 }
                 
@@ -246,7 +171,7 @@ class Model {
         }
     }
     
-    class func saveUserWithParse(object:PFObject, completition: (Usuarios?) -> ()){
+    class func saveUserIfNeededWithPFUser(object:PFUser, completition: (Usuarios?) -> ()){
         
         let idFace = object["idFace"] as! String
         

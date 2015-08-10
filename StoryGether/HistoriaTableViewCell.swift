@@ -48,6 +48,7 @@ class HistoriaTableViewCell: UITableViewCell {
         if let numString = self.numFavoritos.text{
             let num = (numString as NSString).integerValue
             self.numFavoritos.text = (num + 1).description
+            self.buttonFavoritar.selected = true
         }
         
         self.historia?.favoritada = Usuarios.getCurrent()!

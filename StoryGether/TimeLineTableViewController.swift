@@ -105,7 +105,7 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if (self.searchActive){
-            let cell = tableView.dequeueReusableCellWithIdentifier("UserCell") as! UserCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
             if let user = self.filtered?[indexPath.row]{
                 cell.parseObjects = user
                 cell.awakeFromNib()
@@ -164,17 +164,19 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
             
         case .Insert:
             self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            print("Item inserido")
+            print("Historia inserido")
             
         case .Delete:
             self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Top)
-            print("Item deletado")
+            print("Historia deletado")
         
         case .Update:
-            print("Item atualizado")
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath!) as! HistoriaTableViewCell
+            cell.numEscritores.text = (anObject as? Historias)?.trechos?.count.description
+            println("Historia atualizado")
             
         default:
-            print("Tipo desconhecido")
+            print("Tipo Historia desconhecido")
         }
     }
 

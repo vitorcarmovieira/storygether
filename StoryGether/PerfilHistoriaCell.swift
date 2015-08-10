@@ -31,15 +31,12 @@ class PerfilHistoriaCell: UITableViewCell {
     
     func countFavoritadas(){
         
-        let parseHistoria:PFObject = PFObject(withoutDataWithClassName: "Historias", objectId: self.historia?.objectId)
-        parseHistoria.fetchIfNeededInBackgroundWithBlock{
-            (object, error) in
+        let query = PFQuery(className: "favoritadas")
+        query.whereKey("historiaId", equalTo: self.historia!.objectId)
+        query.countObjectsInBackgroundWithBlock{
+            (num, error) in
             if error == nil{
-                if let historia = object{
-                    if var favoritadas = historia["favoritadas"] as? [PFObject]{
-                        self.labelNumFavoritos.text = favoritadas.count.description
-                    }
-                }
+                self.labelNumFavoritos.text = num.description
             }
         }
     }

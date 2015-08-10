@@ -18,6 +18,7 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var imagemCriador: UIImageView!
     @IBOutlet weak var numAmigos: UILabel!
     @IBOutlet weak var numFavoritos: UILabel!
+    @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var numFavoritadasTrecho: UILabel!
     var trecho:Trechos?
     
@@ -37,7 +38,20 @@ class HeaderTableViewCell: UITableViewCell {
     }
     @IBAction func favoritar(sender: AnyObject) {
         
+        if let numString = self.numFavoritadasTrecho.text{
+            let num = (numString as NSString).integerValue
+            self.numFavoritadasTrecho.text = (num + 1).description
+            self.buttonFavoritar.selected = true
+        }
         
+        if let objectId = self.trecho?.objectId{
+            Model.favoritar(objectId, block: {
+                bool in
+                if bool{
+                    
+                }
+            })
+        }
     }
 
     @IBAction func finalizar(sender: AnyObject) {

@@ -21,7 +21,7 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var buttonFinalizadas: UIButton!
     @IBOutlet weak var buttonCoop: UIButton!
     @IBOutlet weak var buttonFavoritas: UIButton!
-    var iAmSelected: Int = -1
+    var iAmSelected: Int = 0
     var historias:[Historias]!
     
     override func viewDidLoad() {
@@ -59,7 +59,7 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         
         let header = tableView.dequeueReusableCellWithIdentifier("HeaderCellQuatidades") as! PerfilNumeroHistorias
         
-        header.labelNumHistorias.text = "\(self.historias.count)"
+        header.labelNumHistorias.text = self.historias.count.description
         header.labelDescricao.text = "Historias criadas"
         
         return header
@@ -85,6 +85,9 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.isSomeButtonSelected(self.iAmSelected)
         self.iAmSelected = 0;
         self.buttonHistorias.selected = true
+        
+        self.historias = Usuarios.getCurrent()?.historias.allObjects as! [Historias]
+        self.tableView.reloadData()
     }
     
     @IBAction func changeToFavoritas(sender: AnyObject) {
@@ -94,7 +97,6 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.buttonFavoritas.selected = true
         
         self.historias = Usuarios.getCurrent()?.favoritas.allObjects as! [Historias]
-        println("\(self.historias)")
         self.tableView.reloadData()
     }
     
@@ -117,7 +119,6 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         switch c{
         case 0:
             self.buttonHistorias.selected = false
-            break
         case 1:
             self.buttonFinalizadas.selected = false
         case 2:
