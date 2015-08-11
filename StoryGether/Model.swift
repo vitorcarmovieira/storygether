@@ -20,10 +20,10 @@ class Model {
         
         if let lastObject = Historias.arrayObject("createdAt", ascending: false).last as? Historias{
             let predicate = NSPredicate(format: "createdAt > %@", lastObject.createdAt)
-            self.fetchParseObjectsWithClassName("Historia", predicate: predicate)
+            self.fetchParseObjectsWithClassName("Historias", predicate: predicate)
         }else{
             println("Nenhuma historia.")
-            self.fetchParseObjectsWithClassName("Historia")
+            self.fetchParseObjectsWithClassName("Historias")
         }
     }
     
