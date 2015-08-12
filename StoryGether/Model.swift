@@ -18,7 +18,7 @@ class Model {
     
     class func update(){
         
-        if let lastObject = Historias.arrayObject("createdAt", ascending: false).last as? Historias{
+        if let lastObject = Historias.arrayObject("createdAt", ascending: false).first as? Historias{
             let predicate = NSPredicate(format: "createdAt > %@", lastObject.createdAt)
             self.fetchParseObjectsWithClassName("Historias", predicate: predicate)
         }else{
@@ -34,12 +34,15 @@ class Model {
             bool in
             if bool{
                 if let lastObject = historia.trechos?.allObjects.last as? Trechos{
-                    let predicate = NSPredicate(format: "(createdAt > %@) AND (historia == %@)", lastObject.createdAt, parseHistoria)
+                    println("ultimo trecho \(lastObject) data \(lastObject.createdAt)")
+                    let predicate = NSPredicate(format: "createdAt > %@ && historia == %@", lastObject.createdAt, parseHistoria)
                     self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
                 }else{
-                    println("Nenhuma historia.")
-                    self.fetchParseObjectsWithClassName("Trechos", historia: historia)
+                    let predicate = NSPredicate(format: "historia == %@", parseHistoria)
+                    self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
                 }
+            }else{
+                println("Nenhum trecho novo")
             }
         })
     }
@@ -85,7 +88,7 @@ class Model {
         
         if className == "Historias"{
             var query:PFQuery = PFQuery(className: className, predicate: predicate)
-            query.orderByDescending("createdAt")
+            query.orderByAscending("createdAt")
             query.includeKey("criador")
             queryParse(query)
             
