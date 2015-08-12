@@ -45,6 +45,7 @@
 		4E84AAB91B6BB50100151656 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAB81B6BB50100151656 /* UserCell.swift */; };
 		4E84AABB1B6C4E6800151656 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AABA1B6C4E6800151656 /* Model.swift */; };
 		4E84AAC01B6C566D00151656 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AABF1B6C566D00151656 /* DAO.swift */; };
+		4E8966B21B7BBB24006AED83 /* AmigosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8966B11B7BBB24006AED83 /* AmigosTableViewController.swift */; };
 		4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */; };
 		4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9130471B350D460023C73C /* trechoTableViewCell.swift */; };
 		4EE5FAB71B4337F8006E636A /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */; };
@@ -111,6 +112,7 @@
 		4E84AAB81B6BB50100151656 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		4E84AABA1B6C4E6800151656 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4E84AABF1B6C566D00151656 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		4E8966B11B7BBB24006AED83 /* AmigosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmigosTableViewController.swift; sourceTree = "<group>"; };
 		4E9130451B3508420023C73C /* AddTrechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTrechoTableViewCell.swift; sourceTree = "<group>"; };
 		4E9130471B350D460023C73C /* trechoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trechoTableViewCell.swift; sourceTree = "<group>"; };
 		4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
 				4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */,
 				4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */,
+				4E8966B11B7BBB24006AED83 /* AmigosTableViewController.swift */,
 				245A92141B40A50000A8E647 /* LoginViewController.swift */,
 			);
 			name = Controller;
@@ -416,6 +419,7 @@
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
 				4EF6DF131B7132C70068390F /* Historias.swift in Sources */,
+				4E8966B21B7BBB24006AED83 /* AmigosTableViewController.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
 				4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */,

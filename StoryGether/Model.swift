@@ -199,6 +199,62 @@ class Model {
         }
     }
     
+    class func getAllFollowers(tipo: String, callback: ([PFUser]) -> ()){
+        
+        var allFollows: [PFUser] = []
+        
+        switch tipo{
+            
+        case "followers":
+            
+            if let idUser = PFUser.currentUser(){
+                let query = PFQuery(className: "seguidores")
+                query.whereKey("seguindoId", equalTo: idUser)
+                query.includeKey("seguidoId")
+                query.findObjectsInBackgroundWithBlock{
+                    (objects, error) in
+                    
+                    if error == nil{
+                        if let parseObjects = objects as? [PFObject]{
+                            for followers in parseObjects{
+                                if let user = followers["seguidoId"] as? PFUser{
+                                    allFollows.append(user)
+                                }
+                            }
+                            callback(allFollows)
+                        }
+                    }
+                }
+            }
+            
+        case "following":
+            
+            if let idUser = PFUser.currentUser(){
+                let query = PFQuery(className: "seguidores")
+                query.whereKey("seguidoId", equalTo: idUser)
+                query.includeKey("seguindoId")
+                query.findObjectsInBackgroundWithBlock{
+                    (objects, error) in
+                    
+                    if error == nil{
+                        if let parseObjects = objects as? [PFObject]{
+                            for followers in parseObjects{
+                                if let user = followers["seguindoId"] as? PFUser{
+                                    allFollows.append(user)
+                                }
+                            }
+                            callback(allFollows)
+                        }
+                    }
+                }
+            }
+            
+        default:
+            println("deu merda")
+            
+        }
+    }
+    
     class func wasFavoritada(objectId: String, userObjectId: String, block: (Bool) -> ()){
         
         let query = PFQuery(className: "favoritadas")
@@ -214,7 +270,7 @@ class Model {
         }
     }
     
-    class func hasValueInClass(className: String ,dictionary: [String : String], block: (Bool) -> ()){
+    class func hasValueInClass(className: String ,dictionary: [String : AnyObject], block: (Bool) -> ()){
         
         let query = PFQuery(className: className)
         for (key, value) in dictionary{
@@ -256,10 +312,10 @@ class Model {
         }
     }
     
-    class func seguir(id: String){
+    class func seguir(id: PFUser){
         
-        if let userId = PFUser.currentUser()?.objectId{
-            var dictionary = [String : String]()
+        if let userId = PFUser.currentUser(){
+            var dictionary = [String : AnyObject]()
             dictionary["seguindoId"] = userId
             dictionary["seguidoId"] = id
             

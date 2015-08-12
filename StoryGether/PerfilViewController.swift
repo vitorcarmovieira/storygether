@@ -129,4 +129,17 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
             print("Error")
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "followers"{
+            
+            let view = segue.destinationViewController as? AmigosTableViewController
+            view?.tipo = "followers"
+            
+        }else{
+            let view = segue.destinationViewController as? AmigosTableViewController
+            view?.tipo = "following"
+        }
+    }
 }

@@ -28,8 +28,8 @@ class UserCell: UITableViewCell {
     @IBAction func seguir(sender: AnyObject) {
         
         self.buttonSeguindo.selected = true
-        if let objectId = parseObjects?.objectId{
-            Model.seguir(objectId)
+        if let object = parseObjects as? PFUser{
+            Model.seguir(object)
         }
     }
 }
