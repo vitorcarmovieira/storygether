@@ -35,7 +35,9 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         Model.update()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
-        
+        self.tableView.rowHeight=UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight=130
+        self.tableView.layoutIfNeeded()
     }
     
     func searchButton(){
