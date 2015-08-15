@@ -10,13 +10,14 @@ import UIKit
 import Parse
 import CoreData
 
-class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, NSFetchedResultsControllerDelegate {
+class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+    
+    typealias dic = [String : String?]
 
-    var Historia: Historias?
     var id:String!
-    var trechosList:[Trechos]!
+    var titulo:String!
+    var trechos = [dic]()
     var frameView: CGRect!
-    var fetchedResultsController: NSFetchedResultsController!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newTrechoTextView: UITextView!
@@ -24,13 +25,20 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Model.updateTrecho(self.Historia!)
+        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: id)
+        let predicate = NSPredicate(format: "historia == %@", historia)
         
-        let objectId = self.Historia?.objectId
-        let predicate = NSPredicate(format: "historia.objectId == %@", objectId!)
-        fetchedResultsController = Trechos.fetchedResultsController("createdAt", ascending: true, predicate: predicate)
-        fetchedResultsController.delegate = self
-        fetchedResultsController.performFetch(nil)
+        Model.fetchFromLocalWithClassName("Trechos", predicate: predicate, completion: {
+            objects in
+            self.trechos = objects
+            self.tableView.reloadData()
+        })
+        
+        Model.fetchParseObjectsWithClassName("Trechos", predicate: predicate, completion: {
+            objects in
+            self.trechos = objects
+            self.tableView.reloadData()
+        })
         
         self.frameView = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         
@@ -48,34 +56,34 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBAction func addTrecho(sender: AnyObject) {
         
-        let trechoText = self.newTrechoTextView.text!
-        let user = Usuarios.getCurrent()!
-        
-        var trecho: PFObject = PFObject(className: "Trechos")
-        trecho["trecho"] = self.newTrechoTextView.text!
-        let className = PFUser.currentUser()?.parseClassName
-        trecho["escritor"] = PFUser.currentUser()!
-        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: self.Historia?.objectId)
-        trecho["historia"] = historia
-        trecho.saveInBackgroundWithBlock{
-            (succeeded, error) in
-            Trechos.createWithTrecho(trechoText, escritor: user, historia: self.Historia!, objectId: trecho.objectId!, createdAt: NSDate())
-            historia.fetchIfNeededInBackgroundWithBlock{
-                (object, error) in
-                if error == nil{
-                    if let historia = object{
-                        if var trechos = historia["trechos"] as? [PFObject]{
-                            trechos.append(trecho)
-                            historia["trechos"] = trechos
-                            historia.saveInBackground()
-                        }else{
-                            historia["trechos"] = [trecho]
-                            historia.saveInBackground()
-                        }
-                    }
-                }
-            }
-        }
+//        let trechoText = self.newTrechoTextView.text!
+//        let user = Usuarios.getCurrent()!
+//        
+//        var trecho: PFObject = PFObject(className: "Trechos")
+//        trecho["trecho"] = self.newTrechoTextView.text!
+//        let className = PFUser.currentUser()?.parseClassName
+//        trecho["escritor"] = PFUser.currentUser()!
+//        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: self.Historia?.objectId)
+//        trecho["historia"] = historia
+//        trecho.saveInBackgroundWithBlock{
+//            (succeeded, error) in
+//            Trechos.createWithTrecho(trechoText, escritor: user, historia: self.Historia!, objectId: trecho.objectId!, createdAt: NSDate())
+//            historia.fetchIfNeededInBackgroundWithBlock{
+//                (object, error) in
+//                if error == nil{
+//                    if let historia = object{
+//                        if var trechos = historia["trechos"] as? [PFObject]{
+//                            trechos.append(trecho)
+//                            historia["trechos"] = trechos
+//                            historia.saveInBackground()
+//                        }else{
+//                            historia["trechos"] = [trecho]
+//                            historia.saveInBackground()
+//                        }
+//                    }
+//                }
+//            }
+//        }
         
         self.tableView.reloadData()
         self.newTrechoTextView.text = ""
@@ -84,9 +92,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sec = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
-        
-        return sec[section].numberOfObjects
+        return self.trechos.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -97,10 +103,9 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
-            header.trecho = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Trechos
-            header.tituloHistoriaText.text = self.Historia?.titulo
-            header.numAmigos.text = self.Historia?.trechos?.count.description
-            header.countFavoritadasHistoria(self.Historia!.objectId)
+            header.trecho = self.trechos[indexPath.row]
+            header.tituloHistoriaText.text = titulo
+            header.countFavoritadasHistoria(id)
             header.awakeFromNib()
             
             return header
@@ -108,9 +113,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        let trecho = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Trechos
-        
-        cell.trecho = trecho
+        cell.trecho = self.trechos[indexPath.row]
         cell.awakeFromNib()
         
         return cell
@@ -124,29 +127,6 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         } else{
             
             return 100
-        }
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type{
-            
-        case .Insert:
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            print("Trecho inserido")
-            
-        case .Delete:
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Top)
-            print("Trecho deletado")
-            
-        case .Update:
-            print("Trecho atualizado")
-            
-        default:
-            print("Tipo desconhecido")
         }
     }
     

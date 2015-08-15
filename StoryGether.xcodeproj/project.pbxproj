@@ -36,6 +36,8 @@
 		4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533B1B189634004D346C /* HeaderTableViewCell.swift */; };
 		4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533D1B189696004D346C /* HistoriaTableViewController.swift */; };
 		4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */; };
+		4E7C4DE01B7EEA60002005E9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C4DDE1B7EEA5F002005E9 /* Cache.swift */; };
+		4E7C4DE11B7EEA60002005E9 /* CacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C4DDF1B7EEA5F002005E9 /* CacheObject.swift */; };
 		4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FCE741B212C0E005ADCAA /* TabBarController.swift */; };
 		4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84AAAD1B681B1100151656 /* Extensions.swift */; };
 		4E84AAB01B6954E200151656 /* tipografia_sf in Resources */ = {isa = PBXBuildFile; fileRef = 4E84AAAF1B6954E200151656 /* tipografia_sf */; };
@@ -103,6 +105,8 @@
 		4E38533B1B189634004D346C /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4E38533D1B189696004D346C /* HistoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoriaTableViewController.swift; sourceTree = "<group>"; };
 		4E6AF2E51B372CA200E671EA /* TrechosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrechosViewController.swift; sourceTree = "<group>"; };
+		4E7C4DDE1B7EEA5F002005E9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = StoryGether/Cache.swift; sourceTree = "<group>"; };
+		4E7C4DDF1B7EEA5F002005E9 /* CacheObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CacheObject.swift; path = StoryGether/CacheObject.swift; sourceTree = "<group>"; };
 		4E7FCE741B212C0E005ADCAA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4E84AAAD1B681B1100151656 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4E84AAAF1B6954E200151656 /* tipografia_sf */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tipografia_sf; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 		4E3852B01B136CF4004D346C /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				4E7C4DDE1B7EEA5F002005E9 /* Cache.swift */,
+				4E7C4DDF1B7EEA5F002005E9 /* CacheObject.swift */,
 				4EE5FAB61B4337F8006E636A /* ParseFacebookUtilsV4.framework */,
 				4EEF869C1B43023D00A22534 /* Bolts.framework */,
 				4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */,
@@ -418,6 +424,7 @@
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
 				4EF6DF131B7132C70068390F /* Historias.swift in Sources */,
+				4E7C4DE11B7EEA60002005E9 /* CacheObject.swift in Sources */,
 				4E8966B21B7BBB24006AED83 /* AmigosTableViewController.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
 				4E38526F1B136848004D346C /* StoryGether.xcdatamodeld in Sources */,
@@ -430,6 +437,7 @@
 				4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */,
 				4E84AAB91B6BB50100151656 /* UserCell.swift in Sources */,
 				4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */,
+				4E7C4DE01B7EEA60002005E9 /* Cache.swift in Sources */,
 				4E84AABB1B6C4E6800151656 /* Model.swift in Sources */,
 				4E3852991B136B6C004D346C /* HistoriaTableViewCell.swift in Sources */,
 				4E84AAAE1B681B1100151656 /* Extensions.swift in Sources */,

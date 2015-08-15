@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Parse
 
 class HistoriaTableViewCell: UITableViewCell {
+    
+    typealias dic = [String : String?]
 
     @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var dataCriacao: UILabel!
@@ -18,7 +19,7 @@ class HistoriaTableViewCell: UITableViewCell {
     @IBOutlet weak var tituloHistoria: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var historiaLabel: UILabel!
-    var historia: Historias?
+    var historia: dic?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,19 +28,14 @@ class HistoriaTableViewCell: UITableViewCell {
         
         if let historia = self.historia{
             
-            let user:Usuarios = historia.criador
-            
-            let image = UIImage(data: user.foto)
-            self.userImage?.image = image
-            self.tituloHistoria.text = historia.titulo
-            self.dataCriacao.text = historia.createdAt.historyCreatedAt()
-            self.historiaLabel.text = historia.trechoInicial
-            self.numEscritores.text = historia.trechos?.count.description
-            
-            if let favoritada = historia.favoritada{
-                self.buttonFavoritar.selected = true
+            self.tituloHistoria.text = historia["titulo"]!
+            self.historiaLabel.text = historia["trechoInicial"]!
+            self.dataCriacao.text = historia["createdAt"]!
+            if let url = historia["urlFoto"]{
+                self.userImage.setImageAssync(url)
             }
-            countFavoritadas(historia.objectId)
+            self.countFavoritadas(historia["objectId"]!!)
+            
         }
         
     }
@@ -51,11 +47,8 @@ class HistoriaTableViewCell: UITableViewCell {
             self.buttonFavoritar.selected = true
         }
         
-        self.historia?.favoritada = Usuarios.getCurrent()!
-        Historias.saveOrUpdate()
-        
-        if let objectId = self.historia?.objectId{
-            Model.favoritar(objectId, block: {
+        if let objectId = historia!["objectId"]{
+            Model.favoritar(objectId!, block: {
                 bool in
                 if bool{
                     
@@ -70,13 +63,9 @@ class HistoriaTableViewCell: UITableViewCell {
     
     func countFavoritadas(objectId: String){
         
-        let query = PFQuery(className: "favoritadas")
-        query.whereKey("historiaId", equalTo: objectId)
-        query.countObjectsInBackgroundWithBlock{
-            (num, error) in
-            if error == nil{
-                self.numFavoritos.text = num.description
-            }
-        }
+        Model.countFavoritadas(objectId, completion: {
+            num in
+            self.numFavoritos.text = num
+        })
     }
 }

@@ -24,11 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
+        let cache = Cache<NSData>(name: "avatar")
+        cache.removeExpiredObjects()
+        
+        Parse.enableLocalDatastore()
+        
         // Initialize Parse.
         Parse.setApplicationId("2WJcoDOaxDLDHTIBZimCEaT4vSOGLn6lGKsT7Qql",
             clientKey: "lktTtOZU0p0Yd1tbxwrTDR2zQ4iRdZ56ZK0zM6WN")
-        
-//        PFUser.logOut()
         
         if (PFUser.currentUser() != nil){
             

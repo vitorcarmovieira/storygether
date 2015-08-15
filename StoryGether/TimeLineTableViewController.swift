@@ -8,23 +8,19 @@
 
 import UIKit
 import Parse
-import CoreData
 
-class TimeLineTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class TimeLineTableViewController: UITableViewController {
 
-    var timelineData:[PFObject]?
+    typealias dic = [String : String?]
+    
+    var timelineData = [dic]()
     var searchBar:UISearchBar!
     var filtered:[PFObject]?
     var users:[PFObject]?
     var searchActive: Bool = false
-    var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        fetchedResultsController = Historias.fetchedResultsController("createdAt", ascending: true)
-        fetchedResultsController.delegate = self
-        fetchedResultsController.performFetch(nil)
         
         self.searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.bounds.width-100, 20))
         self.searchBar.delegate = self
@@ -32,7 +28,18 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
         self.navigationItem.rightBarButtonItem = rightButtonNavBar
         
-        Model.update()
+        Model.fetchFromLocalWithClassName("Historias", completion: {
+            objects in
+            self.timelineData = objects
+            self.tableView.reloadData()
+        })
+        
+        Model.fetchParseObjectsWithClassName("Historias", completion: {
+            objects in
+            self.timelineData = objects
+            self.tableView.reloadData()
+        })
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.rowHeight=UITableViewAutomaticDimension
@@ -63,7 +70,6 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     func update(){
         
         print("updating...\n")
-        Model.update()
         self.refreshControl?.endRefreshing()
     }
     
@@ -97,9 +103,8 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
             
             return (self.filtered?.count)!
         }else{
-            let sec = self.fetchedResultsController.sections as! [NSFetchedResultsSectionInfo]
             
-            return sec[section].numberOfObjects
+            return self.timelineData.count
         }
         
     }
@@ -118,7 +123,7 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
-        let historia = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Historias
+        let historia = self.timelineData[indexPath.row]
         
         cell.historia = historia
         cell.awakeFromNib()
@@ -154,32 +159,13 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
             
-            var historiaTVC = segue.destinationViewController as! TrechosViewController
-            let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
-            
-            let historia = self.fetchedResultsController.objectAtIndexPath(index) as! Historias
-            historiaTVC.Historia = historia
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type{
-            
-        case .Insert:
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            print("Historia inserido")
-            
-        case .Delete:
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Top)
-            print("Historia deletado")
+        var historiaTVC = segue.destinationViewController as! TrechosViewController
+        let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
         
-        case .Update:
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath!) as! HistoriaTableViewCell
-            cell.numEscritores.text = (anObject as? Historias)?.trechos?.count.description
-            println("Historia atualizado")
-            
-        default:
-            print("Tipo Historia desconhecido")
-        }
+        let id = self.timelineData[index.row]["objectId"]
+        let titulo = self.timelineData[index.row]["titulo"]
+        historiaTVC.id = id!
+        historiaTVC.titulo = titulo!
     }
 
 }

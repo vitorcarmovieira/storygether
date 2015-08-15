@@ -11,6 +11,7 @@ import Parse
 
 class HeaderTableViewCell: UITableViewCell {
 
+    typealias dic = [String : String?]
     
     @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var tituloHistoriaText: UILabel!
@@ -20,20 +21,21 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var numFavoritos: UILabel!
     @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var numFavoritadasTrecho: UILabel!
-    var trecho:Trechos?
+    var trecho = dic()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.imagemCriador.circularImageView()
-    
-        if let trecho = trecho{
-            
-            self.trechoLabel.text = trecho.trecho
-            let user:Usuarios = trecho.escritor
-            self.imagemCriador.image = UIImage(data: user.foto)
-            self.nomeCriadorLabel.text = user.nome
-            countFavoritadasTrecho(trecho.objectId)
+        
+        if let trechoText = trecho["trecho"]{
+            self.trechoLabel.text = trechoText
+        }
+        if let objectId = trecho["objecId"]{
+            countFavoritadasTrecho(objectId!)
+        }
+        if let url = trecho["urlFoto"]{
+            self.imagemCriador.setImageAssync(url)
         }
     }
     @IBAction func favoritar(sender: AnyObject) {
@@ -44,8 +46,8 @@ class HeaderTableViewCell: UITableViewCell {
             self.buttonFavoritar.selected = true
         }
         
-        if let objectId = self.trecho?.objectId{
-            Model.favoritar(objectId, block: {
+        if let objectId = self.trecho["objectId"]{
+            Model.favoritar(objectId!, block: {
                 bool in
                 if bool{
                     
@@ -67,25 +69,17 @@ class HeaderTableViewCell: UITableViewCell {
     
     func countFavoritadasTrecho(objectId: String){
         
-        let query = PFQuery(className: "favoritadas")
-        query.whereKey("historiaId", equalTo: objectId)
-        query.countObjectsInBackgroundWithBlock{
-            (num, error) in
-            if error == nil{
-                self.numFavoritadasTrecho.text = num.description
-            }
-        }
+        Model.countFavoritadas(objectId, completion: {
+            num in
+            self.numFavoritadasTrecho.text = num
+        })
     }
     
     func countFavoritadasHistoria(objectId: String){
         
-        let query = PFQuery(className: "favoritadas")
-        query.whereKey("historiaId", equalTo: objectId)
-        query.countObjectsInBackgroundWithBlock{
-            (num, error) in
-            if error == nil{
-                self.numFavoritos.text = num.description
-            }
-        }
+        Model.countFavoritadas(objectId, completion: {
+            num in
+            self.numFavoritos.text = num
+        })
     }
 }

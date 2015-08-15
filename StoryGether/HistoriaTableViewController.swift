@@ -11,55 +11,55 @@ import Parse
 
 class HistoriaTableViewController: UITableViewController {
 
-    var idHistoria: String?
-    var trechosList: NSMutableArray = NSMutableArray()
+//    var idHistoria: String?
+//    var trechosList: NSMutableArray = NSMutableArray()
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        var query: PFQuery = PFQuery(className: "Trechos")
+//        
+//        query.whereKey("escritor", equalTo: self.idHistoria!)
+//        
+//        query.findObjectsInBackgroundWithBlock{
+//            (objects:[AnyObject]?, error:NSError?) ->Void in
+//            
+//            if error == nil{
+//                if let trechos = objects as? [PFObject] {
+//                    
+//                    for trecho in trechos {
+//                        
+//                        let t: PFObject = trecho                        
+//                        self.trechosList.addObject(t)
+//                    }
+//                }
+//                
+//                self.tableView.reloadData()
+//            }
+//        }
+//    }
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
+//
+//    // MARK: - Table view data source
+//
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Potentially incomplete method implementation.
+//        // Return the number of sections.
+//        return 1
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete method implementation.
+//        // Return the number of rows in the section.
+//        return self.trechosList.count
+//    }
+//
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        var query: PFQuery = PFQuery(className: "Trechos")
-        
-        query.whereKey("escritor", equalTo: self.idHistoria!)
-        
-        query.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?) ->Void in
-            
-            if error == nil{
-                if let trechos = objects as? [PFObject] {
-                    
-                    for trecho in trechos {
-                        
-                        let t: PFObject = trecho                        
-                        self.trechosList.addObject(t)
-                    }
-                }
-                
-                self.tableView.reloadData()
-            }
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.trechosList.count
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
 //        if indexPath.row == 0{
 //            
 //            let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
@@ -71,13 +71,13 @@ class HistoriaTableViewController: UITableViewController {
 //            return header
 //        }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
-        
-        cell.trecho = self.trechosList[indexPath.row] as? Trechos
-        cell.awakeFromNib()
-
-        return cell
-    }
+//        let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
+//        
+//        cell.trecho = self.trechosList[indexPath.row] as? Trechos
+//        cell.awakeFromNib()
+//
+//        return cell
+//    }
     
 //    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        
@@ -95,18 +95,18 @@ class HistoriaTableViewController: UITableViewController {
 //        return height
 //    }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let footer = tableView.dequeueReusableCellWithIdentifier("footerCell") as! AddTrechoTableViewCell
-        
-        return footer
-    }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        let height = 128 as CGFloat
-        return height
-    }
+//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        
+//        let footer = tableView.dequeueReusableCellWithIdentifier("footerCell") as! AddTrechoTableViewCell
+//        
+//        return footer
+//    }
+//    
+//    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        
+//        let height = 128 as CGFloat
+//        return height
+//    }
 
     /*
     // Override to support conditional editing of the table view.

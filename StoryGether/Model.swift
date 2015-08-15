@@ -11,40 +11,34 @@ import Parse
 
 class Model {
     
+    typealias dic = [String : String?]
+    
     enum ClassTypes{
         case Historia
         case Usuario
     }
     
-    class func update(){
+    class func countFavoritadas(objectId: String, completion: (String) -> ()){
         
-        if let lastObject = Historias.arrayObject("createdAt", ascending: false).first as? Historias{
-            let predicate = NSPredicate(format: "createdAt > %@", lastObject.createdAt)
-            self.fetchParseObjectsWithClassName("Historias", predicate: predicate)
+        let cache = Cache<NSString>(name: "contFavoritadas")
+        
+        if let cont = cache[objectId]{
+            
+            completion(cont as String)
+            println("favoritada no cache \(cont)")
+            
         }else{
-            println("Nenhuma historia.")
-            self.fetchParseObjectsWithClassName("Historias")
-        }
-    }
-    
-    class func updateTrecho(historia: Historias){
         
-        let parseHistoria:PFObject = PFObject(withoutDataWithClassName: "Historias", objectId: historia.objectId)
-        hasNewTrecho(parseHistoria, historia: historia, completion:{
-            bool in
-            if bool{
-                if let lastObject = historia.trechos?.allObjects.last as? Trechos{
-                    println("ultimo trecho \(lastObject) data \(lastObject.createdAt)")
-                    let predicate = NSPredicate(format: "createdAt > %@ && historia == %@", lastObject.createdAt, parseHistoria)
-                    self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
-                }else{
-                    let predicate = NSPredicate(format: "historia == %@", parseHistoria)
-                    self.fetchParseObjectsWithClassName("Trechos", historia: historia, predicate: predicate)
+            let query = PFQuery(className: "favoritadas")
+            query.whereKey("historiaId", equalTo: objectId)
+            query.countObjectsInBackgroundWithBlock{
+                (num, error) in
+                if error == nil{
+                    cache.setObject(num.description as NSString, forKey: objectId, expires: .Date(NSDate().dateByAddingTimeInterval(60*60*24*7)))
+                    completion(num.description)
                 }
-            }else{
-                println("Nenhum trecho novo")
             }
-        })
+        }
     }
     
     class func hasNewTrecho(parseHistoria:PFObject, historia: Historias, completion: (bool: Bool) -> ()){
@@ -61,7 +55,7 @@ class Model {
         }
     }
     
-    class func fetchParseObjectsWithClassName(className:String, historia: Historias? = nil, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123")){
+    class func fetchFromLocalWithClassName(className: String, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completion: ([dic]) -> ()){
         
         var query:PFQuery
         
@@ -74,9 +68,9 @@ class Model {
                         if let className = objects.first?.parseClassName{
                             switch className{
                             case "Historias":
-                                self.saveInLocalObjects(objects)
+                                completion(self.parseToDictionary(className, objects: objects))
                             case "Trechos":
-                                self.saveInLocalObjectsTrecho(objects, historia: historia!)
+                                completion(self.parseToDictionary(className, objects: objects))
                             default:
                                 println("error in className \(className)")
                             }
@@ -88,19 +82,134 @@ class Model {
         
         if className == "Historias"{
             var query:PFQuery = PFQuery(className: className, predicate: predicate)
-            query.orderByAscending("createdAt")
+            query.fromPinWithName(className)
+            query.orderByDescending("createdAt")
             query.includeKey("criador")
             queryParse(query)
             
         }else if className == "Trechos"{
             var query:PFQuery = PFQuery(className: className, predicate: predicate)
+            query.fromPinWithName(className)
+            query.orderByAscending("createdAt")
+            query.includeKey("escritor")
+            query.includeKey("historia")
+            queryParse(query)
+        }
+        
+    }
+    
+    class func fetchParseObjectsWithClassName(className:String, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completion: ([dic]) -> ()){
+        
+        var query:PFQuery
+        
+        func queryParse(query: PFQuery){
+            
+            query.findObjectsInBackgroundWithBlock{
+                (objects:[AnyObject]?, error:NSError?)->Void in
+                if error == nil{
+                    if let objects = objects as? [PFObject]{
+                        if let className = objects.first?.parseClassName{
+                            switch className{
+                            case "Historias":
+                                PFObject.unpinAllObjectsInBackgroundWithName(className, block: {
+                                    (error) in
+                                    PFObject.pinAllInBackground(objects, withName: className)
+                                    completion(self.parseToDictionary(className, objects: objects))
+                                })
+                            case "Trechos":
+                                PFObject.unpinAllObjectsInBackgroundWithName(className, block: {
+                                    (error) in
+                                    PFObject.pinAllInBackground(objects, withName: className)
+                                    completion(self.parseToDictionary(className, objects: objects))
+                                })
+                            default:
+                                println("error in className \(className)")
+                            }
+                        }
+                    }
+                }else{
+                    query.fromPinWithName(className)
+                    query.findObjectsInBackgroundWithBlock{
+                        (objects:[AnyObject]?, error:NSError?)->Void in
+                        if error == nil{
+                            if let objects = objects as? [PFObject]{
+                                if let className = objects.first?.parseClassName{
+                                    switch className{
+                                    case "Historias":
+                                        completion(self.parseToDictionary(className, objects: objects))
+                                    case "Trechos":
+                                        completion(self.parseToDictionary(className, objects: objects))
+                                    default:
+                                        println("error in className \(className)")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if className == "Historias"{
+            var query:PFQuery = PFQuery(className: className, predicate: predicate)
             query.orderByDescending("createdAt")
+            query.includeKey("criador")
+            queryParse(query)
+            
+        }else if className == "Trechos"{
+            var query:PFQuery = PFQuery(className: className, predicate: predicate)
+            query.orderByAscending("createdAt")
             query.includeKey("escritor")
             query.includeKey("historia")
             queryParse(query)
         }
         
         
+    }
+    
+    class func parseToDictionary(className: String, objects: [PFObject]) -> [dic]{
+        
+        var dictionary = [dic]()
+        
+        switch className{
+        case "Historias":
+        
+            for (i, object) in enumerate(objects){
+                
+                var values = dic()
+                values["objectId"] = object.objectId
+                values["titulo"] = object["titulo"] as? String
+                values["trechoInicial"] = object["trechoInicial"] as? String
+                values["createdAt"] = object.createdAt?.historyCreatedAt()
+                if let user = object["criador"] as? PFUser{
+                    values["urlFoto"] = user["urlFoto"] as? String
+                }
+                dictionary.append(values)
+                
+            }
+        
+        case "Trechos":
+            
+            for (i, object) in enumerate(objects){
+                
+                var values = dic()
+                values["objectId"] = object.objectId
+                values["trecho"] = object["trecho"] as? String
+                values["createdAt"] = object.createdAt?.historyCreatedAt()
+                if let user = object["escritor"] as? PFUser{
+                    values["urlFoto"] = user["urlFoto"] as? String
+                    values["nome"] = user["name"] as? String
+                }
+                dictionary.append(values)
+                
+            }
+        
+        default:
+            print("Não foi possivel passar para dicionario a classe \(className)")
+            
+        }
+        
+        return dictionary
     }
     
     class func saveInLocalObjectsTrecho(objects:[PFObject], historia: Historias){
@@ -330,45 +439,6 @@ class Model {
                 }
             })
         }
-    }
-    
-    class func parseObjectToDictionary(object:PFObject, ofType:ClassTypes) -> [ String : AnyObject ]{
-        
-        let historyAtribNames = ["titulo", "objectId", "trechoInicial", "createdAt", "criador", "favoritadas"]
-        let userAtribNames = ["nome", "foto", "id", "historias", "seguindo", "seguido"]
-        var dictionary = [String : AnyObject]()
-        
-        func historiaToDictionary(){
-            
-            for name in historyAtribNames{
-                dictionary[name] = object[name]
-            }
-//            dictionary["titulo"] = object["titulo"] as? String
-//            dictionary["objectId"] = object.objectId
-//            dictionary["trechoInicial"] = object["trechoInicial"] as? String
-//            dictionary["createdAt"] = object["createdAt"] as? NSDate
-//            dictionary["criador"] = object["criador"]
-//            dictionary["favoritadas"] = object["favoritadas"]
-        }
-        
-        func usuarioToDictionary(){
-            
-            for name in userAtribNames{
-                dictionary[name] = object[name]
-            }
-        }
-        
-        switch ofType{
-            
-        case .Historia:
-            historiaToDictionary()
-            
-        case .Usuario:
-            usuarioToDictionary()
-        default:
-            print("error")
-        }
-        return dictionary
     }
     
 }

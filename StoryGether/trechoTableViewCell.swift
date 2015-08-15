@@ -10,24 +10,28 @@ import UIKit
 import Parse
 
 class trechoTableViewCell: UITableViewCell {
+    
+    typealias dic = [String : String?]
 
     @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
     @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var numFavoritadas: UILabel!
-    var trecho: Trechos?
+    var trecho = dic()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.imagemEscritorTrecho.circularImageView()
         
-        if let trecho = self.trecho{
-            
-            let user:Usuarios = trecho.escritor
-            self.trechoLabel.text = trecho.trecho
-            self.imagemEscritorTrecho.image = UIImage(data: user.foto)
-            countFavoritadas(trecho.objectId)
+        if let trechoText = trecho["trecho"]{
+            self.trechoLabel.text = trechoText
+        }
+        if let objectId = trecho["objectId"]{
+            countFavoritadas(objectId!)
+        }
+        if let url = trecho["urlFoto"]{
+            self.imagemEscritorTrecho.setImageAssync(url)
         }
     }
     
@@ -39,7 +43,7 @@ class trechoTableViewCell: UITableViewCell {
             self.buttonFavoritar.selected = true
         }
         
-        if let objectId = self.trecho?.objectId{
+        if let objectId = trecho["objectId"]!{
             Model.favoritar(objectId, block: {
                 bool in
                 if bool{
@@ -51,14 +55,10 @@ class trechoTableViewCell: UITableViewCell {
     
     func countFavoritadas(objectId: String){
         
-        let query = PFQuery(className: "favoritadas")
-        query.whereKey("historiaId", equalTo: objectId)
-        query.countObjectsInBackgroundWithBlock{
-            (num, error) in
-            if error == nil{
-                self.numFavoritadas.text = num.description
-            }
-        }
+        Model.countFavoritadas(objectId, completion: {
+            num in
+            self.numFavoritadas.text = num
+        })
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
