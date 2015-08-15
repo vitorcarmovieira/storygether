@@ -18,9 +18,9 @@ class Model {
         case Usuario
     }
     
-    class func countFavoritadas(objectId: String, completion: (String) -> ()){
+    class func countInClassName(className: String, collum: String, objectId: String, isPointer: Bool, completion: (String) -> ()){
         
-        let cache = Cache<NSString>(name: "contFavoritadas")
+        let cache = Cache<NSString>(name: className)
         
         if let cont = cache[objectId]{
             
@@ -29,27 +29,13 @@ class Model {
             
         }else{
         
-            let query = PFQuery(className: "favoritadas")
-            query.whereKey("historiaId", equalTo: objectId)
+            let query = PFQuery(className: className)
+            query.whereKey(collum, equalTo: (isPointer ? PFObject(withoutDataWithClassName: className, objectId: objectId) : objectId))
             query.countObjectsInBackgroundWithBlock{
                 (num, error) in
                 if error == nil{
                     cache.setObject(num.description as NSString, forKey: objectId, expires: .Date(NSDate().dateByAddingTimeInterval(60*60*24*7)))
                     completion(num.description)
-                }
-            }
-        }
-    }
-    
-    class func hasNewTrecho(parseHistoria:PFObject, historia: Historias, completion: (bool: Bool) -> ()){
-        
-        var query:PFQuery = PFQuery(className: "Trechos")
-        query.whereKey("historia", equalTo: parseHistoria)
-        query.countObjectsInBackgroundWithBlock{
-            (count:Int32, error:NSError?)->Void in
-            if error == nil{
-                if let numberLocalObjects = historia.trechos?.count{
-                    completion(bool: !(count == Int32(numberLocalObjects)))
                 }
             }
         }
@@ -210,45 +196,6 @@ class Model {
         }
         
         return dictionary
-    }
-    
-    class func saveInLocalObjectsTrecho(objects:[PFObject], historia: Historias){
-        
-        for object in objects{
-            
-            let trechoText = object["trecho"] as! String
-            let objectId = object.objectId!
-            let user = object["escritor"] as! PFUser
-            self.saveUserIfNeededWithPFUser(user, completition: {
-                user in
-                if let user = user{
-                    println("user : \(user)")
-                    Trechos.createWithTrecho(trechoText, escritor: user, historia: historia, objectId: objectId, createdAt: object.createdAt!)
-                }
-            })
-        }
-    }
-    
-    class func saveInLocalObjects(objects:[PFObject]){
-        
-        for object in objects{
-            
-            if let criador = object["criador"] as? PFUser{
-                let idFace = criador["idFace"] as! String
-                
-                self.saveUserIfNeededWithPFUser(criador, completition: {
-                    user in
-                    
-                    let titulo = object["titulo"] as! String
-                    let objectId = object.objectId!
-                    let createdAt = object.createdAt!
-                    let trechoInicial = object["trechoInicial"] as! String
-                    
-                    let historia = Historias.createWithTitle(titulo, createdAt: createdAt, objectId: objectId,trechoInicial: trechoInicial, criador: user!, trechos: nil, favoritada: nil)
-                })
-                
-            }else{ println("falha em pegar criador") }
-        }
     }
     
     class func saveParseObjectHistory(titulo: String, trecho: String){

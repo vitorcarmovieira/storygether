@@ -55,7 +55,7 @@ class trechoTableViewCell: UITableViewCell {
     
     func countFavoritadas(objectId: String){
         
-        Model.countFavoritadas(objectId, completion: {
+        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
             num in
             self.numFavoritadas.text = num
         })

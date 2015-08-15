@@ -63,7 +63,7 @@ class HistoriaTableViewCell: UITableViewCell {
     
     func countFavoritadas(objectId: String){
         
-        Model.countFavoritadas(objectId, completion: {
+        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
             num in
             self.numFavoritos.text = num
         })

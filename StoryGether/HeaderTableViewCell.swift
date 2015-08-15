@@ -69,7 +69,7 @@ class HeaderTableViewCell: UITableViewCell {
     
     func countFavoritadasTrecho(objectId: String){
         
-        Model.countFavoritadas(objectId, completion: {
+        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
             num in
             self.numFavoritadasTrecho.text = num
         })
@@ -77,7 +77,7 @@ class HeaderTableViewCell: UITableViewCell {
     
     func countFavoritadasHistoria(objectId: String){
         
-        Model.countFavoritadas(objectId, completion: {
+        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
             num in
             self.numFavoritos.text = num
         })
