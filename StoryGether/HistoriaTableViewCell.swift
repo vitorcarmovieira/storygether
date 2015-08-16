@@ -8,47 +8,45 @@
 
 import UIKit
 
-class HistoriaTableViewCell: UITableViewCell {
+class HistoriaTableViewCell: UITableViewCell, ModelDelegate {
     
-    typealias dic = [String : String?]
+    typealias dic = [String : String]
 
+    @IBOutlet weak var trechoInicial: UILabel!
+    @IBOutlet weak var createdAt: UILabel!
+    @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var buttonFavoritar: UIButton!
-    @IBOutlet weak var dataCriacao: UILabel!
-    @IBOutlet weak var numFavoritos: UILabel!
     @IBOutlet weak var numEscritores: UILabel!
-    @IBOutlet weak var tituloHistoria: UILabel!
-    @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var historiaLabel: UILabel!
+    @IBOutlet weak var favoritadas: UILabel!
+    @IBOutlet weak var urlFoto: UIImageView!
     var historia: dic?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.userImage.circularImageView()
+        Model.sharedStore.delegate = self
+        
+        self.urlFoto.circularImageView()
         
         if let historia = self.historia{
             
-            self.tituloHistoria.text = historia["titulo"]!
-            self.historiaLabel.text = historia["trechoInicial"]!
-            self.dataCriacao.text = historia["createdAt"]!
-            if let url = historia["urlFoto"]{
-                self.userImage.setImageAssync(url)
+            for (key, value) in historia{
+                self.setValue(value, forKeyPath: key + ".text")
             }
-            self.countFavoritadas(historia["objectId"]!!)
             
         }
         
     }
     @IBAction func favoritar(sender: AnyObject) {
         
-        if let numString = self.numFavoritos.text{
+        if let numString = self.favoritadas.text{
             let num = (numString as NSString).integerValue
-            self.numFavoritos.text = (num + 1).description
+            self.favoritadas.text = (num + 1).description
             self.buttonFavoritar.selected = true
         }
         
         if let objectId = historia!["objectId"]{
-            Model.favoritar(objectId!, block: {
+            Model.favoritar(objectId, block: {
                 bool in
                 if bool{
                     
@@ -56,16 +54,19 @@ class HistoriaTableViewCell: UITableViewCell {
             })
         }
     }
+    
+    func didChangeNumFavoritadas(num: String) {
+        
+        self.favoritadas.text = num
+    }
+    
+    func didChangeNumTrechos(num: String) {
+        
+        self.numEscritores.text = num
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func countFavoritadas(objectId: String){
-        
-        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-            num in
-            self.numFavoritos.text = num
-        })
-    }
 }

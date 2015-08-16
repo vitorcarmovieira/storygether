@@ -18,19 +18,18 @@ extension UIImageView{
         
     }
     
-    func setImageAssync(url: String?){
-        
-        let cache = Cache<NSData>(name: "avatar")
-        
-        if let image = cache[url!]{
-            self.image = UIImage(data: image)
-            println("image cachada")
-        }else{
-            if let url = url{
+    var text:String {
+        set{
+            let cache = Cache<NSData>(name: "avatar")
+            
+            if let image = cache[newValue]{
+                self.image = UIImage(data: image)
+                println("image cachada")
+            }else{
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
-                    if let nsurl = NSURL(string: url){
+                    if let nsurl = NSURL(string: newValue){
                         if let data = NSData(contentsOfURL: nsurl){
-                            cache.setObject(data, forKey: url, expires: .Date(NSDate().dateByAddingTimeInterval(60*60*24*7)))
+                            cache.setObject(data, forKey: newValue, expires: .Date(NSDate().dateByAddingTimeInterval(60*60*24*7)))
                             if let image = UIImage(data: data){
                                 dispatch_async(dispatch_get_main_queue()) {
                                     self.image = image
@@ -40,6 +39,10 @@ extension UIImageView{
                     }
                 }
             }
+        }
+        
+        get{
+            return self.text ?? ""
         }
     }
 }

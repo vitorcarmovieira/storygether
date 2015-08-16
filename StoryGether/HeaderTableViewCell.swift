@@ -35,7 +35,7 @@ class HeaderTableViewCell: UITableViewCell {
             countFavoritadasTrecho(objectId!)
         }
         if let url = trecho["urlFoto"]{
-            self.imagemCriador.setImageAssync(url)
+            self.imagemCriador.text = url!
         }
     }
     @IBAction func favoritar(sender: AnyObject) {
@@ -69,17 +69,17 @@ class HeaderTableViewCell: UITableViewCell {
     
     func countFavoritadasTrecho(objectId: String){
         
-        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-            num in
-            self.numFavoritadasTrecho.text = num
-        })
+//        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
+//            num in
+//            self.numFavoritadasTrecho.text = num
+//        })
     }
     
     func countFavoritadasHistoria(objectId: String){
         
-        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-            num in
-            self.numFavoritos.text = num
-        })
+//        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
+//            num in
+//            self.numFavoritos.text = num
+//        })
     }
 }

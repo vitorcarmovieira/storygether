@@ -11,7 +11,7 @@ import Parse
 
 class TimeLineTableViewController: UITableViewController {
 
-    typealias dic = [String : String?]
+    typealias dic = [String : String]
     
     var timelineData = [dic]()
     var searchBar:UISearchBar!
@@ -28,17 +28,19 @@ class TimeLineTableViewController: UITableViewController {
         let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
         self.navigationItem.rightBarButtonItem = rightButtonNavBar
         
-        Model.fetchFromLocalWithClassName("Historias", completion: {
-            objects in
-            self.timelineData = objects
-            self.tableView.reloadData()
-        })
-        
-        Model.fetchParseObjectsWithClassName("Historias", completion: {
-            objects in
-            self.timelineData = objects
-            self.tableView.reloadData()
-        })
+//        let model = Model.sharedStore
+//        
+//        model.fetchFromLocalWithClassName("Historias", completion: {
+//            objects in
+//            self.timelineData = objects
+//            self.tableView.reloadData()
+//        })
+//        
+//        model.fetchParseObjectsWithClassName(.Historia, completion: {
+//            objects in
+//            self.timelineData = objects
+//            self.tableView.reloadData()
+//        })
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
@@ -104,7 +106,7 @@ class TimeLineTableViewController: UITableViewController {
             return (self.filtered?.count)!
         }else{
             
-            return self.timelineData.count
+            return Model.sharedStore.getAllItems().count
         }
         
     }
@@ -123,7 +125,7 @@ class TimeLineTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
-        let historia = self.timelineData[indexPath.row]
+        let historia = Model.sharedStore.getAllItems()[indexPath.row]
         
         cell.historia = historia
         cell.awakeFromNib()

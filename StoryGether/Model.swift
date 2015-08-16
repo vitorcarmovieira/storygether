@@ -9,16 +9,41 @@
 import Foundation
 import Parse
 
-class Model {
+protocol ModelDelegate{
+    func didChangeNumFavoritadas(num: String)
+    func didChangeNumTrechos(num: String)
+}
+
+class Model: NSObject{
     
-    typealias dic = [String : String?]
+    private var myContext = 0
     
-    enum ClassTypes{
-        case Historia
-        case Usuario
+    var delegate: ModelDelegate?
+    
+    typealias dic = [String : String]
+    
+    enum ClassTypes: String{
+        case Historia = "Historias"
+        case Trecho = "Trechos"
     }
     
-    class func countInClassName(className: String, collum: String, objectId: String, isPointer: Bool, completion: (String) -> ()){
+    static let sharedStore = Model()
+    private var items = [dic]()
+    
+    private override init (){
+        super.init()
+        
+        fetchFromLocalWithClassName("Historias", completion: {
+            objects in
+            self.items = objects
+        })
+    }
+    
+    func getAllItems() -> [dic]{
+        return self.items
+    }
+    
+    func countInClassName(className: String, collum: String, objectId: String, isPointer: Bool, classNamePointer: String = "", completion: (String) -> ()){
         
         let cache = Cache<NSString>(name: className)
         
@@ -30,7 +55,7 @@ class Model {
         }else{
         
             let query = PFQuery(className: className)
-            query.whereKey(collum, equalTo: (isPointer ? PFObject(withoutDataWithClassName: className, objectId: objectId) : objectId))
+            query.whereKey(collum, equalTo: (isPointer ? PFObject(withoutDataWithClassName: classNamePointer, objectId: objectId) : objectId))
             query.countObjectsInBackgroundWithBlock{
                 (num, error) in
                 if error == nil{
@@ -41,7 +66,7 @@ class Model {
         }
     }
     
-    class func fetchFromLocalWithClassName(className: String, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completion: ([dic]) -> ()){
+    func fetchFromLocalWithClassName(className: String, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completion: ([dic]) -> ()){
         
         var query:PFQuery
         
@@ -84,7 +109,7 @@ class Model {
         
     }
     
-    class func fetchParseObjectsWithClassName(className:String, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completion: ([dic]) -> ()){
+    func fetchParseObjectsWithClassName(className:ClassTypes, predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123"), completion: ([dic]) -> ()){
         
         var query:PFQuery
         
@@ -114,7 +139,7 @@ class Model {
                         }
                     }
                 }else{
-                    query.fromPinWithName(className)
+                    query.fromPinWithName(className.rawValue)
                     query.findObjectsInBackgroundWithBlock{
                         (objects:[AnyObject]?, error:NSError?)->Void in
                         if error == nil{
@@ -136,14 +161,14 @@ class Model {
             }
         }
         
-        if className == "Historias"{
-            var query:PFQuery = PFQuery(className: className, predicate: predicate)
+        if className.rawValue == "Historias"{
+            var query:PFQuery = PFQuery(className: className.rawValue, predicate: predicate)
             query.orderByDescending("createdAt")
             query.includeKey("criador")
             queryParse(query)
             
-        }else if className == "Trechos"{
-            var query:PFQuery = PFQuery(className: className, predicate: predicate)
+        }else if className.rawValue == "Trechos"{
+            var query:PFQuery = PFQuery(className: className.rawValue, predicate: predicate)
             query.orderByAscending("createdAt")
             query.includeKey("escritor")
             query.includeKey("historia")
@@ -153,23 +178,38 @@ class Model {
         
     }
     
-    class func parseToDictionary(className: String, objects: [PFObject]) -> [dic]{
+    func parseToDictionary(className: String, objects: [PFObject]) -> [dic]{
         
         var dictionary = [dic]()
         
         switch className{
         case "Historias":
         
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "callDelegate:", name: "kvo", object: self)
             for (i, object) in enumerate(objects){
                 
                 var values = dic()
-                values["objectId"] = object.objectId
+                
                 values["titulo"] = object["titulo"] as? String
                 values["trechoInicial"] = object["trechoInicial"] as? String
                 values["createdAt"] = object.createdAt?.historyCreatedAt()
+                values["favoritadas"] = 0.description
+
+                self.countInClassName("favoritadas", collum: "historiaId", objectId: object.objectId!, isPointer: false, completion: {
+                    num in
+                    values["favoritadas"] = num
+                    NSNotificationCenter.defaultCenter().postNotificationName("kvo", object: self, userInfo: ["num" : num])
+                })
+                
+                self.countInClassName("Trechos", collum: "historia", objectId: object.objectId!, isPointer: true, classNamePointer: "Historias", completion: {
+                    num in
+                    self.delegate?.didChangeNumTrechos(num)
+                })
+                
                 if let user = object["criador"] as? PFUser{
                     values["urlFoto"] = user["urlFoto"] as? String
                 }
+                
                 dictionary.append(values)
                 
             }
@@ -198,6 +238,12 @@ class Model {
         return dictionary
     }
     
+    func callDelegate(notification: NSNotification){
+        
+        let userInfo = notification.userInfo as! dic
+        self.delegate?.didChangeNumFavoritadas(userInfo["num"]!)
+    }
+    
     class func saveParseObjectHistory(titulo: String, trecho: String){
         
         let className = PFUser.currentUser()?.parseClassName
@@ -221,7 +267,6 @@ class Model {
                         self.saveUserIfNeededWithPFUser(PFUser.currentUser()!, completition: {
                             user in
                             let historia = Historias.createWithTitle(titulo, createdAt: novahistoria.createdAt!, objectId: novahistoria.objectId!, trechoInicial: trecho, criador: user!, trechos: nil, favoritada: nil)
-                            self.saveInLocalObjectsTrecho([novoTrecho], historia: historia!)
                         })
                     }
                 }

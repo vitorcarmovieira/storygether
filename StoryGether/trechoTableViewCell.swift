@@ -31,7 +31,7 @@ class trechoTableViewCell: UITableViewCell {
             countFavoritadas(objectId!)
         }
         if let url = trecho["urlFoto"]{
-            self.imagemEscritorTrecho.setImageAssync(url)
+            self.imagemEscritorTrecho.text = url!
         }
     }
     
@@ -55,10 +55,10 @@ class trechoTableViewCell: UITableViewCell {
     
     func countFavoritadas(objectId: String){
         
-        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-            num in
-            self.numFavoritadas.text = num
-        })
+//        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
+//            num in
+//            self.numFavoritadas.text = num
+//        })
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

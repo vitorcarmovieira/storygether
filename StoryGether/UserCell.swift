@@ -20,7 +20,7 @@ class UserCell: UITableViewCell {
         
         self.imagemUser.circularImageView()
         if let user = parseObjects{
-            self.imagemUser.setImageAssync(user["urlFoto"] as? String)
+            self.imagemUser.text = user["urlFoto"] as! String
             self.nomeUser.text = user["name"] as? String
         }
     }

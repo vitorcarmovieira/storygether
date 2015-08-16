@@ -12,7 +12,7 @@ import CoreData
 
 class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
-    typealias dic = [String : String?]
+    typealias dic = [String : String]
 
     var id:String!
     var titulo:String!
@@ -28,13 +28,15 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         let historia = PFObject(withoutDataWithClassName: "Historias", objectId: id)
         let predicate = NSPredicate(format: "historia == %@", historia)
         
-        Model.fetchFromLocalWithClassName("Trechos", predicate: predicate, completion: {
+        let model = Model.sharedStore
+        
+        model.fetchFromLocalWithClassName("Trechos", predicate: predicate, completion: {
             objects in
             self.trechos = objects
             self.tableView.reloadData()
         })
         
-        Model.fetchParseObjectsWithClassName("Trechos", predicate: predicate, completion: {
+        model.fetchParseObjectsWithClassName(.Trecho, predicate: predicate, completion: {
             objects in
             self.trechos = objects
             self.tableView.reloadData()
