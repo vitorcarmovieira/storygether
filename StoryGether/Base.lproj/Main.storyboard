@@ -966,10 +966,11 @@
                                         <constraint firstItem="SND-Oe-42b" firstAttribute="leading" secondItem="Vnn-XA-ZXU" secondAttribute="trailing" constant="8" symbolic="YES" id="eRb-Ma-ud5"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Vnn-XA-ZXU" secondAttribute="bottom" constant="1" id="exI-ZL-ksi"/>
                                         <constraint firstItem="WTM-3Y-Wja" firstAttribute="trailing" secondItem="ppg-em-dIT" secondAttribute="trailingMargin" id="gvf-RV-rpH"/>
-                                        <constraint firstAttribute="centerY" secondItem="Vnn-XA-ZXU" secondAttribute="centerY" constant="-0.25" id="oMU-hW-QGp"/>
+                                        <constraint firstAttribute="centerY" secondItem="Vnn-XA-ZXU" secondAttribute="centerY" id="oMU-hW-QGp"/>
                                         <constraint firstItem="SND-Oe-42b" firstAttribute="centerX" secondItem="ppg-em-dIT" secondAttribute="centerX" id="qeN-AR-5Ds"/>
                                         <constraint firstItem="SND-Oe-42b" firstAttribute="top" secondItem="ppg-em-dIT" secondAttribute="topMargin" constant="11" id="rtv-OL-AkG"/>
                                         <constraint firstItem="WTM-3Y-Wja" firstAttribute="leading" secondItem="SND-Oe-42b" secondAttribute="trailing" constant="8" symbolic="YES" id="sgi-y2-apZ"/>
+                                        <constraint firstItem="Vnn-XA-ZXU" firstAttribute="top" secondItem="ppg-em-dIT" secondAttribute="topMargin" constant="7" id="vZQ-ra-RZt"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
