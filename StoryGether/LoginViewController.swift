@@ -13,6 +13,7 @@ import Foundation
 class LoginViewController:   UIViewController/*, FBSDKLoginButtonDelegate*/{
     
     @IBOutlet weak var btLoginFb: UIButton!
+    @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
