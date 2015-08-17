@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A92141B40A50000A8E647 /* LoginViewController.swift */; };
-		245A95041B7FA35500E5C218 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A95031B7FA35500E5C218 /* PageViewController.swift */; };
 		2467281E1B7F834C009AD4C8 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467281D1B7F834C009AD4C8 /* StartViewController.swift */; };
 		249FDC7C1B7E2DD8009CB43D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249FDC7B1B7E2DD8009CB43D /* IntroViewController.swift */; };
 		24B3B2CC1B72E0D300A805B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2CE1B72E0D300A805B9 /* InfoPlist.strings */; };
@@ -72,7 +71,6 @@
 
 /* Begin PBXFileReference section */
 		245A92141B40A50000A8E647 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		245A95031B7FA35500E5C218 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		2467281D1B7F834C009AD4C8 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		249FDC7B1B7E2DD8009CB43D /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		24B3B2C91B72DB3B00A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 				245A92141B40A50000A8E647 /* LoginViewController.swift */,
 				249FDC7B1B7E2DD8009CB43D /* IntroViewController.swift */,
 				2467281D1B7F834C009AD4C8 /* StartViewController.swift */,
-				245A95031B7FA35500E5C218 /* PageViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -424,7 +421,6 @@
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
-				245A95041B7FA35500E5C218 /* PageViewController.swift in Sources */,
 				4E84AAC01B6C566D00151656 /* DAO.swift in Sources */,
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,

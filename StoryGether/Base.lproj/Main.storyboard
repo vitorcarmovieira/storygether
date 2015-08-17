@@ -429,16 +429,6 @@
             </objects>
             <point key="canvasLocation" x="907.5" y="1184.5"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="ydz-h8-UTR">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="bfj-en-0HS" customClass="PageViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zO8-uF-1Bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1932.5" y="1184.5"/>
-        </scene>
         <!--Intro View Controller-->
         <scene sceneID="dUt-OE-LCH">
             <objects>
@@ -614,6 +604,7 @@
                             <constraint firstItem="S1d-jH-wfB" firstAttribute="trailing" secondItem="BKp-qe-yRh" secondAttribute="trailingMargin" id="1fR-Ad-ar8"/>
                             <constraint firstAttribute="centerX" secondItem="VMR-K3-fyY" secondAttribute="centerX" id="8aS-bd-4gi"/>
                             <constraint firstItem="IL3-bQ-Vyo" firstAttribute="top" secondItem="PjH-uI-ggX" secondAttribute="bottom" constant="21" id="CLp-9n-vTt"/>
+                            <constraint firstItem="VMR-K3-fyY" firstAttribute="leading" secondItem="BKp-qe-yRh" secondAttribute="leading" constant="16" id="DVD-ll-c46"/>
                             <constraint firstItem="VMR-K3-fyY" firstAttribute="leading" secondItem="BKp-qe-yRh" secondAttribute="leadingMargin" id="G1V-lB-sde"/>
                             <constraint firstItem="VMR-K3-fyY" firstAttribute="trailing" secondItem="BKp-qe-yRh" secondAttribute="trailingMargin" id="H04-nM-a5c"/>
                             <constraint firstItem="S1d-jH-wfB" firstAttribute="top" secondItem="2f6-Al-aou" secondAttribute="bottom" constant="18" id="HZ8-wT-eIc"/>
@@ -640,6 +631,7 @@
                             <constraint firstItem="itZ-PC-be8" firstAttribute="trailing" secondItem="VMR-K3-fyY" secondAttribute="trailing" id="pgH-Kb-A32"/>
                             <constraint firstItem="p4w-Hb-n5Q" firstAttribute="leading" secondItem="Ss1-rC-dM6" secondAttribute="leading" id="qEq-bj-uwU"/>
                             <constraint firstItem="p4w-Hb-n5Q" firstAttribute="trailing" secondItem="Ss1-rC-dM6" secondAttribute="trailing" id="tCp-Rd-LAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="VMR-K3-fyY" secondAttribute="trailing" constant="16" id="tNa-ti-4FK"/>
                             <constraint firstItem="EfE-QL-TIl" firstAttribute="top" secondItem="9aV-nl-0mJ" secondAttribute="bottom" constant="50" id="tO5-1n-p5t"/>
                             <constraint firstItem="niA-Wa-kf5" firstAttribute="trailing" secondItem="BKp-qe-yRh" secondAttribute="trailingMargin" id="uOC-jx-FPj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="niA-Wa-kf5" secondAttribute="trailing" constant="226" id="wRi-Lx-l2g"/>
@@ -649,6 +641,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="8aS-bd-4gi"/>
+                                <exclude reference="G1V-lB-sde"/>
+                                <exclude reference="H04-nM-a5c"/>
                                 <exclude reference="wRi-Lx-l2g"/>
                                 <exclude reference="Pd7-9I-XWl"/>
                             </mask>
