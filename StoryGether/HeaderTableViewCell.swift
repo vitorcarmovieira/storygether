@@ -10,6 +10,7 @@ import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var quantFav: UILabel!
     @IBOutlet weak var urlFoto: UIImageView!
     @IBOutlet weak var nome: UILabel!
     @IBOutlet weak var titulo: UILabel!
@@ -17,7 +18,6 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var numAmigos: UILabel!
     @IBOutlet weak var numFavoritos: UILabel!
     @IBOutlet weak var buttonFavoritar: UIButton!
-    @IBOutlet weak var numFavoritadasTrecho: UILabel!
     var _trecho: Trecho?
     
     override func awakeFromNib() {
@@ -33,9 +33,9 @@ class HeaderTableViewCell: UITableViewCell {
     }
     @IBAction func favoritar(sender: AnyObject) {
         
-        if let numString = self.numFavoritadasTrecho.text{
+        if let numString = self.quantFav.text{
             let num = (numString as NSString).integerValue
-            self.numFavoritadasTrecho.text = (num + 1).description
+            self.quantFav.text = (num + 1).description
             self.buttonFavoritar.selected = true
         }
         

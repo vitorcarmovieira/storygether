@@ -30,6 +30,9 @@ class trechoTableViewCell: UITableViewCell {
         if let url = trecho?.parseToDictionary()["urlFoto"]{
             self.imagemEscritorTrecho.text = url
         }
+        if let quantFav = trecho?.parseToDictionary()["quantFav"]{
+            self.numFavoritadas.text = quantFav
+        }
     }
     
     @IBAction func favoritar(sender: AnyObject) {

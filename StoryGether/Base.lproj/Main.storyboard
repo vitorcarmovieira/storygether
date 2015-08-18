@@ -997,8 +997,8 @@
                                             <outlet property="buttonFavoritar" destination="UJ2-om-unm" id="tKW-Nj-Fbv"/>
                                             <outlet property="nome" destination="rJV-pn-yGQ" id="llK-r7-R8a"/>
                                             <outlet property="numAmigos" destination="trO-6M-6pc" id="kgf-z5-iTC"/>
-                                            <outlet property="numFavoritadasTrecho" destination="jWg-jm-JEP" id="TnT-R8-Wn7"/>
                                             <outlet property="numFavoritos" destination="CIL-zp-ORF" id="ibP-pH-dic"/>
+                                            <outlet property="quantFav" destination="jWg-jm-JEP" id="OMn-Gu-nbq"/>
                                             <outlet property="titulo" destination="Cae-Ai-grj" id="VBh-BR-RPR"/>
                                             <outlet property="trecho" destination="PXu-EO-qyw" id="lfJ-ca-YUm"/>
                                             <outlet property="urlFoto" destination="WU7-UQ-361" id="z8g-fd-GqM"/>

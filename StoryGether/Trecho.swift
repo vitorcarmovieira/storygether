@@ -28,6 +28,7 @@ class Trecho{
         var dictionary = [String : String]()
         
         dictionary["trecho"] = parseObject["trecho"] as? String
+        dictionary["quantFav"] = (parseObject["quantFav"] as? NSNumber)?.description
         if let user = parseObject["escritor"] as? PFUser{
             dictionary["urlFoto"] = user["urlFoto"] as? String
             dictionary["nome"] = user["name"] as? String
@@ -56,13 +57,13 @@ class Trecho{
         
         if let userObjectId = PFUser.currentUser(){
             var dictionary = [String : AnyObject]()
-            dictionary["userId"] = userObjectId
-            dictionary["historiaId"] = self.parseObject
+            dictionary["user"] = userObjectId
+            dictionary["trecho"] = self.parseObject
             
-            self.hasValueInClass("favoritadas", dictionary: dictionary, block: {
+            self.hasValueInClass("favoritadasTrecho", dictionary: dictionary, block: {
                 bool in
                 if !bool{
-                    let favoritada = PFObject(className: "favoritadas")
+                    let favoritada = PFObject(className: "favoritadasTrecho")
                     for (key, value) in dictionary{
                         favoritada[key] = value
                     }
