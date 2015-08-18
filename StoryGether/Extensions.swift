@@ -103,21 +103,6 @@ extension TimeLineTableViewController: UISearchBarDelegate{
                 }
             }
         }
-        
-//        if let users = self.users{
-//            self.filtered = users.filter({ (user) -> Bool in
-//                let profile:NSDictionary = user.valueForKey("profile")! as! NSDictionary
-//                let tmp: NSString = profile["name"] as! String
-//                let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-//                return range.location != NSNotFound
-//            })
-//            if(self.filtered?.count == 0){
-//                searchActive = false;
-//            } else {
-//                searchActive = true;
-//            }
-//            self.tableView.reloadData()
-//        }
     }
 
 }
