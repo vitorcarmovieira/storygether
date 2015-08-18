@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A92141B40A50000A8E647 /* LoginViewController.swift */; };
+		245A95361B8287A500E5C218 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A95351B8287A500E5C218 /* NewUserViewController.swift */; };
+		2467281E1B7F834C009AD4C8 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467281D1B7F834C009AD4C8 /* StartViewController.swift */; };
+		249FDC7C1B7E2DD8009CB43D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249FDC7B1B7E2DD8009CB43D /* IntroViewController.swift */; };
 		24B3B2CC1B72E0D300A805B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2CE1B72E0D300A805B9 /* InfoPlist.strings */; };
 		24B3B2D11B72E0D300A805B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2D31B72E0D300A805B9 /* InfoPlist.strings */; };
 		24B3B2D71B72E0D300A805B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2D91B72E0D300A805B9 /* Localizable.strings */; };
@@ -69,6 +72,9 @@
 
 /* Begin PBXFileReference section */
 		245A92141B40A50000A8E647 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		245A95351B8287A500E5C218 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		2467281D1B7F834C009AD4C8 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		249FDC7B1B7E2DD8009CB43D /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		24B3B2C91B72DB3B00A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		24B3B2CD1B72E0D300A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		24B3B2D21B72E0D300A805B9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 				4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */,
 				4E8966B11B7BBB24006AED83 /* AmigosTableViewController.swift */,
 				245A92141B40A50000A8E647 /* LoginViewController.swift */,
+				249FDC7B1B7E2DD8009CB43D /* IntroViewController.swift */,
+				2467281D1B7F834C009AD4C8 /* StartViewController.swift */,
+				245A95351B8287A500E5C218 /* NewUserViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -409,9 +418,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */,
+				2467281E1B7F834C009AD4C8 /* StartViewController.swift in Sources */,
+				4EF6DF151B7132C70068390F /* Trechos.swift in Sources */,
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
+				245A95361B8287A500E5C218 /* NewUserViewController.swift in Sources */,
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
 				4E6861C31B82B6C000554CC7 /* Historia.swift in Sources */,
@@ -426,6 +438,7 @@
 				4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */,
 				4E84AAB31B69D37C00151656 /* PerfilHistoriaCell.swift in Sources */,
 				4E84AAB91B6BB50100151656 /* UserCell.swift in Sources */,
+				249FDC7C1B7E2DD8009CB43D /* IntroViewController.swift in Sources */,
 				4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */,
 				4E7C4DE01B7EEA60002005E9 /* Cache.swift in Sources */,
 				4E6861C51B82B6FE00554CC7 /* Trecho.swift in Sources */,

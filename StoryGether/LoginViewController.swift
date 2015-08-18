@@ -10,113 +10,76 @@ import UIKit
 import Parse
 import Foundation
 
-class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate{
-    @IBOutlet weak var svTutorial: UIScrollView!
+class LoginViewController:   UIViewController/*, FBSDKLoginButtonDelegate*/{
     
-    @IBOutlet weak var lbTitle: UILabel!
-    @IBOutlet weak var lbSub: UILabel!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var btLogin: UIButton!
-    var images: NSArray!
-    var titles: NSArray!
-    var subs: NSArray!
+    @IBOutlet weak var btLoginFb: UIButton!
+    @IBOutlet weak var tfName: UITextField!
+    @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.images = NSArray(array: [UIImage(named: "storygether_telainicial1")!,UIImage(named: "storygether_telainicial2")!,UIImage(named: "storygether_telainicial3")!]);
-        
-        self.titles = NSArray(array:
-            [
-                NSLocalizedString("Make stories", comment:"Init of phrase(Make stories with your friends) (Do stories) "),
-                NSLocalizedString("Begin a story", comment:"Init of phrase(Begin a story or continue one) (Start to write a story) "),
-                NSLocalizedString("Have fun", comment:"Init of phrase(Have fun and be creative) (Have fun) ")])
-        self.subs = NSArray(array:
-            [
-                NSLocalizedString("with your friends", comment:"finish of phrase(Make stories with your friends) (with a help from your friends) "),
-                NSLocalizedString("or continue one", comment:"finish of phrase(Begin a story or continue one) (continue a story) "),
-                NSLocalizedString("and be creative", comment:"finish of phrase(Have fun and be creative) (be creative with stories) ")])
         
         
+////        if (FBSDKAccessToken.currentAccessToken() != nil){
+////            println("logado")
+////        }
+////        else{
+//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+//            loginView.delegate = self
+//            loginView.bounds.size = self.btLoginFb.bounds.size
+//            loginView.center = self.btLoginFb.center
+//            self.view.addSubview(loginView)
+////        }
         
-        self.svTutorial.delegate=self
-        
-        for (var i: Int = 0; i < self.images.count; i++) {
-            
-            var image: UIImage  = self.images[i] as! UIImage;
-            var imageview: UIImageView  = UIImageView(image: image)
-            
-            var frame:CGRect = CGRect()
-            
-            frame.origin.x = self.svTutorial.frame.size.width * CGFloat(i)
-            
-            frame.origin.y = 0
-            
-            frame.size = self.svTutorial.frame.size
-            
-            imageview.frame = frame
-            
-            self.svTutorial.addSubview(imageview)
-        }
-        
-        self.svTutorial.contentSize =
-            CGSizeMake(self.svTutorial.frame.size.width * CGFloat(self.images.count), self.svTutorial.frame.size.height)
-        
-//        if (FBSDKAccessToken.currentAccessToken() != nil){
-//            println("logado")
-//        }
-//        else{
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-            loginView.bounds.size = self.btLogin.bounds.size
-            loginView.center = self.btLogin.center
-            self.view.addSubview(loginView)
-//        }
+    }
+
+    @IBAction func forgotPassword(sender: AnyObject) {
+    }
+    @IBAction func login(sender: AnyObject) {
         
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    @IBAction func loginFB(sender: AnyObject) {
+        let loginM = FBSDKLoginManager()
         
-        print("User logged in.")
-        
-        if ((error) != nil){
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email"){
-                
-                let accessToken = FBSDKAccessToken.currentAccessToken()
-                PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block:{
-                    (user: PFUser?, error: NSError?) -> Void in
-                    if user != nil {
-                        println("User logged in through Facebook!")
-                        self.setUserData()
-                    } else {
-                        println("Uh oh. There was an error logging in.")
-                    }
-                })
+        loginM.logInWithReadPermissions(["public_profile", "email", "user_friends"], handler: {
+            result,error in
+            print("User logged in.")
+            
+            if ((error) != nil){
+                // Process error
             }
-        }
+            else if result.isCancelled {
+                // Handle cancellations
+            }
+            else {
+                // If you ask for multiple permissions at once, you
+                // should check if specific permissions missing
+                if result.grantedPermissions.contains("email"){
+                    
+                    let accessToken = FBSDKAccessToken.currentAccessToken()
+                    PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block:{
+                        (user: PFUser?, error: NSError?) -> Void in
+                        if user != nil {
+                            println("User logged in through Facebook!")
+                            self.setUserData()
+                        } else {
+                            println("Uh oh. There was an error logging in.")
+                        }
+                    })
+                }
+            }
+        })
     }
+    
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         
         print("user logout")
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        var pageWidth: CGFloat = self.svTutorial.frame.size.width;
-        
-        var page: Int  = Int(floor((self.svTutorial.contentOffset.x - pageWidth / 2.0) / pageWidth)) + 1;
-        self.lbTitle.text = self.titles[page] as? String
-        self.lbSub.text = self.subs[page] as? String
-        self.pageControl.currentPage = page;
-    }
     
     func setUserData()
     {
@@ -171,4 +134,8 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
         })
         
     }
+    
+    @IBAction func createAccount(sender: AnyObject) {
+    }
+    
 }

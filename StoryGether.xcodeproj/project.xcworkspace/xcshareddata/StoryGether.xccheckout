@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EB3FA3BE-9762-41B7-A91D-3131611A839D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StoryGether</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ABDD728EA692E911C3930FDBBD1F3703AFFE5346</key>
+		<string>https://github.com/vitorcarmovieira/storygether.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>StoryGether.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ABDD728EA692E911C3930FDBBD1F3703AFFE5346</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/vitorcarmovieira/storygether.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ABDD728EA692E911C3930FDBBD1F3703AFFE5346</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ABDD728EA692E911C3930FDBBD1F3703AFFE5346</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Storygether(Swift)</string>
+		</dict>
+	</array>
+</dict>
+</plist>
