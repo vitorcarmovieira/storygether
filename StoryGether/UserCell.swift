@@ -29,7 +29,7 @@ class UserCell: UITableViewCell {
         
         self.buttonSeguindo.selected = true
         if let object = parseObjects as? PFUser{
-            Model.seguir(object)
+//            Model.seguir(object)
         }
     }
 }

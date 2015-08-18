@@ -9,38 +9,25 @@
 import UIKit
 import Parse
 
-class TimeLineTableViewController: UITableViewController {
-
-    typealias dic = [String : String]
+class TimeLineTableViewController: UITableViewController, HistoriaDelegate {
     
-    var timelineData = [dic]()
     var searchBar:UISearchBar!
     var filtered:[PFObject]?
     var users:[PFObject]?
     var searchActive: Bool = false
+    var model: Model!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.model = Model.sharedStore
+        self.model.delegate = self
         
         self.searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.bounds.width-100, 20))
         self.searchBar.delegate = self
         
         let rightButtonNavBar = UIBarButtonItem(image: UIImage(named: "icon_search"), style: UIBarButtonItemStyle.Plain, target: self, action: "searchButton")
         self.navigationItem.rightBarButtonItem = rightButtonNavBar
-        
-//        let model = Model.sharedStore
-//        
-//        model.fetchFromLocalWithClassName("Historias", completion: {
-//            objects in
-//            self.timelineData = objects
-//            self.tableView.reloadData()
-//        })
-//        
-//        model.fetchParseObjectsWithClassName(.Historia, completion: {
-//            objects in
-//            self.timelineData = objects
-//            self.tableView.reloadData()
-//        })
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "update", forControlEvents: UIControlEvents.ValueChanged)
@@ -90,10 +77,12 @@ class TimeLineTableViewController: UITableViewController {
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - Model Delegates Methods
+    
+    func didChangeStories() {
+        println("no delegate")
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -106,7 +95,7 @@ class TimeLineTableViewController: UITableViewController {
             return (self.filtered?.count)!
         }else{
             
-            return Model.sharedStore.getAllItems().count
+            return self.model.getAllItems().count
         }
         
     }
@@ -125,9 +114,7 @@ class TimeLineTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoriaTableViewCell
         
-        let historia = Model.sharedStore.getAllItems()[indexPath.row]
-        
-        cell.historia = historia
+        cell.historia = self.model.getAllItems()[indexPath.row]
         cell.awakeFromNib()
         
         return cell
@@ -164,10 +151,13 @@ class TimeLineTableViewController: UITableViewController {
         var historiaTVC = segue.destinationViewController as! TrechosViewController
         let index: NSIndexPath = self.tableView.indexPathForSelectedRow()!
         
-        let id = self.timelineData[index.row]["objectId"]
-        let titulo = self.timelineData[index.row]["titulo"]
-        historiaTVC.id = id!
-        historiaTVC.titulo = titulo!
+        historiaTVC.historia = Model.sharedStore.getAllItems()[index.row]
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }

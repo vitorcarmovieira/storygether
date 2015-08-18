@@ -8,61 +8,38 @@
 
 import UIKit
 
-class HistoriaTableViewCell: UITableViewCell, ModelDelegate {
-    
-    typealias dic = [String : String]
+class HistoriaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var trechoInicial: UILabel!
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var buttonFavoritar: UIButton!
-    @IBOutlet weak var numEscritores: UILabel!
-    @IBOutlet weak var favoritadas: UILabel!
     @IBOutlet weak var urlFoto: UIImageView!
-    var historia: dic?
+    @IBOutlet weak var quantFav: UILabel!
+    @IBOutlet weak var quantTrechos: UILabel!
+    var historia: Historia?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Model.sharedStore.delegate = self
-        
         self.urlFoto.circularImageView()
         
-        if let historia = self.historia{
-            
-            for (key, value) in historia{
+        if let historia =  self.historia{
+            for (key, value) in historia.parseToDictionary(){
                 self.setValue(value, forKeyPath: key + ".text")
             }
-            
         }
         
     }
     @IBAction func favoritar(sender: AnyObject) {
         
-        if let numString = self.favoritadas.text{
+        if let numString = self.quantFav.text{
             let num = (numString as NSString).integerValue
-            self.favoritadas.text = (num + 1).description
+            self.quantFav.text = (num + 1).description
             self.buttonFavoritar.selected = true
         }
         
-        if let objectId = historia!["objectId"]{
-            Model.favoritar(objectId, block: {
-                bool in
-                if bool{
-                    
-                }
-            })
-        }
-    }
-    
-    func didChangeNumFavoritadas(num: String) {
-        
-        self.favoritadas.text = num
-    }
-    
-    func didChangeNumTrechos(num: String) {
-        
-        self.numEscritores.text = num
+        historia?.favoritar()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

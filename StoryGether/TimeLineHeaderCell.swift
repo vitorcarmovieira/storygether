@@ -21,10 +21,10 @@ class TimeLineHeaderCell: UITableViewCell {
     }
     
     @IBAction func changeToExplorar(sender: AnyObject) {
-        
+        Model.sharedStore
     }
     
     @IBAction func changeToAmigos(sender: AnyObject) {
-        
+        Model.sharedStore.getAllHistoriasAmigos()
     }
 }

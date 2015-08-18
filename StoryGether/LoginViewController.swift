@@ -163,21 +163,10 @@ class LoginViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginBut
                     }
                 }
                 
-                if (urlFoto != nil){
-                    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
-                        if let nsurl = NSURL(string: urlFoto as String){
-                            if let data = NSData(contentsOfURL: nsurl){
-                                dispatch_async(dispatch_get_main_queue()){
-                                    let user = Usuarios.createWithName(name as String, foto: data, id: id as String, historias: NSSet(), trechos: NSSet(), favoritas: NSSet())
-                                    let currentUser = NSUserDefaults.standardUserDefaults()
-                                    let uri = user.objectID.URIRepresentation()
-                                    let data = NSKeyedArchiver.archivedDataWithRootObject(uri)
-                                    currentUser.setObject(data, forKey: "user")
-                                }
-                            }
-                        }
-                    }
-                }
+                let currentUser = NSUserDefaults.standardUserDefaults()
+                currentUser.setValue(name, forKey: "nome")
+                currentUser.setValue(urlFoto, forKey: "urlFoto")
+                currentUser.setValue(id, forKey: "idFace")
             }
         })
         

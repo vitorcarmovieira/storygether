@@ -7,35 +7,28 @@
 //
 
 import UIKit
-import Parse
 
 class HeaderTableViewCell: UITableViewCell {
-
-    typealias dic = [String : String?]
     
-    @IBOutlet weak var trechoLabel: UILabel!
-    @IBOutlet weak var tituloHistoriaText: UILabel!
-    @IBOutlet weak var nomeCriadorLabel: UILabel!
-    @IBOutlet weak var imagemCriador: UIImageView!
+    @IBOutlet weak var urlFoto: UIImageView!
+    @IBOutlet weak var nome: UILabel!
+    @IBOutlet weak var titulo: UILabel!
+    @IBOutlet weak var trecho: UILabel!
     @IBOutlet weak var numAmigos: UILabel!
     @IBOutlet weak var numFavoritos: UILabel!
     @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var numFavoritadasTrecho: UILabel!
-    var trecho = dic()
+    var _trecho: Trecho?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.imagemCriador.circularImageView()
+        self.urlFoto.circularImageView()
         
-        if let trechoText = trecho["trecho"]{
-            self.trechoLabel.text = trechoText
-        }
-        if let objectId = trecho["objecId"]{
-            countFavoritadasTrecho(objectId!)
-        }
-        if let url = trecho["urlFoto"]{
-            self.imagemCriador.text = url!
+        if let _trecho = _trecho{
+            for (key, value) in _trecho.parseToDictionary(){
+                self.setValue(value, forKeyPath: key + ".text")
+            }
         }
     }
     @IBAction func favoritar(sender: AnyObject) {
@@ -46,14 +39,7 @@ class HeaderTableViewCell: UITableViewCell {
             self.buttonFavoritar.selected = true
         }
         
-        if let objectId = self.trecho["objectId"]{
-            Model.favoritar(objectId!, block: {
-                bool in
-                if bool{
-                    
-                }
-            })
-        }
+        _trecho?.favoritar()
     }
 
     @IBAction func finalizar(sender: AnyObject) {
@@ -65,21 +51,5 @@ class HeaderTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func countFavoritadasTrecho(objectId: String){
-        
-//        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-//            num in
-//            self.numFavoritadasTrecho.text = num
-//        })
-    }
-    
-    func countFavoritadasHistoria(objectId: String){
-        
-//        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-//            num in
-//            self.numFavoritos.text = num
-//        })
     }
 }

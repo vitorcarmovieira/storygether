@@ -7,16 +7,12 @@
 //
 
 import UIKit
-import Parse
-import CoreData
 
-class TrechosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+class TrechosViewController: UIViewController, TrechoDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     typealias dic = [String : String]
 
-    var id:String!
-    var titulo:String!
-    var trechos = [dic]()
+    var historia: Historia!
     var frameView: CGRect!
     
     @IBOutlet weak var tableView: UITableView!
@@ -25,35 +21,14 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: id)
-        let predicate = NSPredicate(format: "historia == %@", historia)
-        
-        let model = Model.sharedStore
-        
-        model.fetchFromLocalWithClassName("Trechos", predicate: predicate, completion: {
-            objects in
-            self.trechos = objects
-            self.tableView.reloadData()
-        })
-        
-        model.fetchParseObjectsWithClassName(.Trecho, predicate: predicate, completion: {
-            objects in
-            self.trechos = objects
-            self.tableView.reloadData()
-        })
-        
         self.frameView = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         
+        historia.trechos?.delegate = self
         
         // Keyboard stuff.
         var center: NSNotificationCenter = NSNotificationCenter.defaultCenter()
         center.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         center.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func addTrecho(sender: AnyObject) {
@@ -90,11 +65,18 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.reloadData()
         self.newTrechoTextView.text = ""
     }
+    
+    // MARK: - Trecho Delegate Methods
+    
+    func didChangeStretch() {
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.trechos.count
+        return historia.trechos!.getAll().count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -105,9 +87,10 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
-            header.trecho = self.trechos[indexPath.row]
-            header.tituloHistoriaText.text = titulo
-            header.countFavoritadasHistoria(id)
+            header._trecho = historia.trechos!.getAll()[indexPath.row]
+            header.titulo.text = historia.parseToDictionary()["titulo"]
+            header.numFavoritos.text = historia.parseToDictionary()["quantFav"]
+            header.numAmigos.text = historia.parseToDictionary()["quantTrechos"]
             header.awakeFromNib()
             
             return header
@@ -115,7 +98,7 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("trechoCell", forIndexPath: indexPath) as! trechoTableViewCell
         
-        cell.trecho = self.trechos[indexPath.row]
+        cell.trecho = historia.trechos!.getAll()[indexPath.row]
         cell.awakeFromNib()
         
         return cell
@@ -173,6 +156,12 @@ class TrechosViewController: UIViewController, UITableViewDataSource, UITableVie
             return false
         }
         return true
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }

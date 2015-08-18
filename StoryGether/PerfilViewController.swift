@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import CoreData
 
-class PerfilViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imagemView: UIImageView!
@@ -22,29 +22,33 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var buttonCoop: UIButton!
     @IBOutlet weak var buttonFavoritas: UIButton!
     var iAmSelected: Int = 0
-    var historias:[Historias]!
+    var historias:[Historia]!
+    var usuario: Usuario!
     
     override func viewDidLoad() {
+        
+        self.usuario = Usuario.currentUser
+        self.usuario.delegate = self
         
         self.historias = []
         self.imagemView.circularImageView()
         self.buttonHistorias.selected = true
         self.tableView.delegate = self
-      
-        if let user = Usuarios.getCurrent(){
-            
-            self.imagemView.image = UIImage(data: user.foto)
-            self.nomeLabel.text = user.nome
-            
-            self.historias = user.historias.allObjects as! [Historias]
-        }
+        
+        self.imagemView.text = self.usuario.parseToDictionary()["urlFoto"]!
+        self.nomeLabel.text = self.usuario.parseToDictionary()["nome"]
+        
+    }
+    
+    func didChangeStories() {
+        self.tableView.reloadData()
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! PerfilHistoriaCell
         
-        cell.historia = self.historias[indexPath.row]
+        cell.historia = self.usuario.getAllHistorias()[indexPath.row]
         cell.awakeFromNib()
         
         return cell
@@ -52,7 +56,7 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.historias.count
+        return self.usuario.getAllHistorias().count
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -86,8 +90,8 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.iAmSelected = 0;
         self.buttonHistorias.selected = true
         
-        self.historias = Usuarios.getCurrent()?.historias.allObjects as! [Historias]
-        self.tableView.reloadData()
+//        self.historias = Usuarios.getCurrent()?.historias.allObjects as! [Historias]
+//        self.tableView.reloadData()
     }
     
     @IBAction func changeToFavoritas(sender: AnyObject) {
@@ -96,8 +100,8 @@ class PerfilViewController: UIViewController, UITableViewDataSource, UITableView
         self.iAmSelected = 3;
         self.buttonFavoritas.selected = true
         
-        self.historias = Usuarios.getCurrent()?.favoritas.allObjects as! [Historias]
-        self.tableView.reloadData()
+//        self.historias = Usuarios.getCurrent()?.favoritas.allObjects as! [Historias]
+//        self.tableView.reloadData()
     }
     
     @IBAction func changeToFinalizadas(sender: AnyObject) {

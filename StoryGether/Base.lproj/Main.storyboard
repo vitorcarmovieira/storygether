@@ -269,10 +269,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="labelData" destination="p9d-zZ-wMf" id="O91-Cv-wLd"/>
-                                            <outlet property="labelNumColaboradores" destination="Pdb-vp-DJK" id="fiv-GI-dYd"/>
-                                            <outlet property="labelNumFavoritos" destination="aBn-LX-yd5" id="cOq-wT-cLX"/>
-                                            <outlet property="labelTitulo" destination="Llc-Ah-vuq" id="q0I-8p-2Sd"/>
+                                            <outlet property="createdAt" destination="p9d-zZ-wMf" id="9m8-Zh-vfR"/>
+                                            <outlet property="quantFav" destination="aBn-LX-yd5" id="LU6-E7-za6"/>
+                                            <outlet property="quantTrechos" destination="Pdb-vp-DJK" id="DMw-Gs-zRv"/>
+                                            <outlet property="titulo" destination="Llc-Ah-vuq" id="bFu-k3-eZe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -694,8 +694,8 @@
                                 <connections>
                                     <outlet property="buttonFavoritar" destination="0JF-WP-xf3" id="jdU-Zi-np2"/>
                                     <outlet property="createdAt" destination="W2U-ga-QYb" id="vUy-lo-jdG"/>
-                                    <outlet property="favoritadas" destination="Y3B-Gl-ety" id="cxf-yb-Lo3"/>
-                                    <outlet property="numEscritores" destination="v2C-TW-srU" id="SFI-cP-kDC"/>
+                                    <outlet property="quantFav" destination="Y3B-Gl-ety" id="MSL-TN-mFk"/>
+                                    <outlet property="quantTrechos" destination="v2C-TW-srU" id="Gz8-ZY-HPr"/>
                                     <outlet property="titulo" destination="e9y-a6-hca" id="kY4-Fd-JFr"/>
                                     <outlet property="trechoInicial" destination="bXd-AO-gJa" id="5wx-oe-lD1"/>
                                     <outlet property="urlFoto" destination="ntj-UU-b8U" id="PGz-RI-dgS"/>
@@ -995,13 +995,13 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="buttonFavoritar" destination="UJ2-om-unm" id="tKW-Nj-Fbv"/>
-                                            <outlet property="imagemCriador" destination="WU7-UQ-361" id="mzw-V7-XFf"/>
-                                            <outlet property="nomeCriadorLabel" destination="rJV-pn-yGQ" id="GcS-W8-kCC"/>
+                                            <outlet property="nome" destination="rJV-pn-yGQ" id="llK-r7-R8a"/>
                                             <outlet property="numAmigos" destination="trO-6M-6pc" id="kgf-z5-iTC"/>
                                             <outlet property="numFavoritadasTrecho" destination="jWg-jm-JEP" id="TnT-R8-Wn7"/>
                                             <outlet property="numFavoritos" destination="CIL-zp-ORF" id="ibP-pH-dic"/>
-                                            <outlet property="tituloHistoriaText" destination="Cae-Ai-grj" id="x5N-Bc-dw0"/>
-                                            <outlet property="trechoLabel" destination="PXu-EO-qyw" id="zwR-K8-K7o"/>
+                                            <outlet property="titulo" destination="Cae-Ai-grj" id="VBh-BR-RPR"/>
+                                            <outlet property="trecho" destination="PXu-EO-qyw" id="lfJ-ca-YUm"/>
+                                            <outlet property="urlFoto" destination="WU7-UQ-361" id="z8g-fd-GqM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="trechoCell" rowHeight="100" id="kte-KM-EF5" customClass="trechoTableViewCell" customModule="StoryGether" customModuleProvider="target">

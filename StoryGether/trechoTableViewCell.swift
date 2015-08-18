@@ -11,27 +11,24 @@ import Parse
 
 class trechoTableViewCell: UITableViewCell {
     
-    typealias dic = [String : String?]
+    typealias dic = [String : String]
 
     @IBOutlet weak var trechoLabel: UILabel!
     @IBOutlet weak var imagemEscritorTrecho: UIImageView!
     @IBOutlet weak var buttonFavoritar: UIButton!
     @IBOutlet weak var numFavoritadas: UILabel!
-    var trecho = dic()
+    var trecho: Trecho?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.imagemEscritorTrecho.circularImageView()
         
-        if let trechoText = trecho["trecho"]{
+        if let trechoText = trecho?.parseToDictionary()["trecho"]{
             self.trechoLabel.text = trechoText
         }
-        if let objectId = trecho["objectId"]{
-            countFavoritadas(objectId!)
-        }
-        if let url = trecho["urlFoto"]{
-            self.imagemEscritorTrecho.text = url!
+        if let url = trecho?.parseToDictionary()["urlFoto"]{
+            self.imagemEscritorTrecho.text = url
         }
     }
     
@@ -43,22 +40,7 @@ class trechoTableViewCell: UITableViewCell {
             self.buttonFavoritar.selected = true
         }
         
-        if let objectId = trecho["objectId"]!{
-            Model.favoritar(objectId, block: {
-                bool in
-                if bool{
-                    
-                }
-            })
-        }
-    }
-    
-    func countFavoritadas(objectId: String){
-        
-//        Model.countInClassName("favoritadas", collum: "historiaId", objectId: objectId, isPointer: false, completion: {
-//            num in
-//            self.numFavoritadas.text = num
-//        })
+        trecho?.favoritar()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
