@@ -38,6 +38,7 @@ class LoginViewController:   UIViewController/*, FBSDKLoginButtonDelegate*/{
     @IBAction func forgotPassword(sender: AnyObject) {
     }
     @IBAction func login(sender: AnyObject) {
+        
     }
     
     @IBAction func loginFB(sender: AnyObject) {
