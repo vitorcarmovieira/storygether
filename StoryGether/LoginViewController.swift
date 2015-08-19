@@ -20,25 +20,24 @@ class LoginViewController:   UIViewController/*, FBSDKLoginButtonDelegate*/{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-////        if (FBSDKAccessToken.currentAccessToken() != nil){
-////            println("logado")
-////        }
-////        else{
-//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-//            loginView.delegate = self
-//            loginView.bounds.size = self.btLoginFb.bounds.size
-//            loginView.center = self.btLoginFb.center
-//            self.view.addSubview(loginView)
-////        }
-        
     }
 
     @IBAction func forgotPassword(sender: AnyObject) {
     }
     @IBAction func login(sender: AnyObject) {
         
+        let name = self.tfName.text
+        let password = self.tfPassword.text
+        
+        PFUser.logInWithUsernameInBackground(name , password: password, block: {
+            (usuario, error) in
+            if usuario == nil{
+                println("Falha em logar \(error)")
+            }else{
+                
+                self.callMainScreen()
+            }
+        })
     }
     
     @IBAction func loginFB(sender: AnyObject) {
@@ -136,6 +135,12 @@ class LoginViewController:   UIViewController/*, FBSDKLoginButtonDelegate*/{
     }
     
     @IBAction func createAccount(sender: AnyObject) {
+    }
+    
+    func callMainScreen(){
+        
+        let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! UITabBarController
+        self.presentViewController(rootView, animated: true, completion: nil)
     }
     
 }

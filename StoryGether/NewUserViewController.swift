@@ -19,17 +19,35 @@ class NewUserViewController: UIViewController {
     }
     
     @IBAction func createUser(sender: AnyObject) {
-        self.signUP({
-            (error) in
-            
-        })
+       
+        let user = PFUser()
+        
+        user.username = self.tfEmail.text
+        user.email = self.tfEmail.text
+        user["name"] = self.tfName.text
+        user.password = self.tfPassword.text
+        
+        user.signUpInBackgroundWithBlock{
+            (succeeded, error) in
+            if let error = error{
+                let erroString = error.userInfo?["error"] as? String
+                println("\(erroString)")
+            }else {
+                self.callMainScreen()
+            }
+        }
+        
     }
-    func signUP(onComplete:(NSError?)->Void){
-
-    }
+    
     @IBAction func loginFB(sender: AnyObject) {
     }
     @IBAction func closeView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func callMainScreen(){
+        
+        let rootView = self.storyboard?.instantiateViewControllerWithIdentifier("rootTabBar") as! UITabBarController
+        self.presentViewController(rootView, animated: true, completion: nil)
     }
 }
