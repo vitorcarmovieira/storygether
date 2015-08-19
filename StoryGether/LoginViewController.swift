@@ -10,29 +10,29 @@ import UIKit
 import Parse
 import Foundation
 
-class LoginViewController:   UIViewController/*, FBSDKLoginButtonDelegate*/{
+class LoginViewController:   UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var btLoginFb: UIButton!
-    @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tfEmail.delegate=self
+        tfPassword.delegate=self
         
-        
-////        if (FBSDKAccessToken.currentAccessToken() != nil){
-////            println("logado")
-////        }
-////        else{
-//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-//            loginView.delegate = self
-//            loginView.bounds.size = self.btLoginFb.bounds.size
-//            loginView.center = self.btLoginFb.center
-//            self.view.addSubview(loginView)
-////        }
-        
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        var nextTag = textField.tag + 1;
+        // Try to find next responder
+        if let nextResponder = textField.superview?.viewWithTag(nextTag){
+            // Found next responder, so set it.
+            nextResponder.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        return false
     }
 
     @IBAction func forgotPassword(sender: AnyObject) {
