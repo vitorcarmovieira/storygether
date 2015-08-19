@@ -1,0 +1,22 @@
+/* Init of phrase(Begin a story or continue one) (Start to write a story) 
+   placeholder for textfield to new story */
+"Begin a story" = "Crie uma história";
+
+/* Init of phrase(Have fun and be creative) (Have fun) */
+"Have fun" = "Divirta-se";
+
+/* Init of phrase(Make stories with your friends) (Do stories) */
+"Make stories" = "Faça histórias";
+
+/* title to show story created by you */
+"Stories created" = "Histórias creadas";
+
+/* finish of phrase(Have fun and be creative) (be creative with stories) */
+"and be creative" = "e seja creativo";
+
+/* finish of phrase(Begin a story or continue one) (continue a story) */
+"or continue one" = "ou continue uma";
+
+/* finish of phrase(Make stories with your friends) (with a help from your friends) */
+"with your friends" = "com seus amigos";
+
