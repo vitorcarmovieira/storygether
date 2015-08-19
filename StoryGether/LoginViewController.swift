@@ -22,12 +22,25 @@ class LoginViewController:   UIViewController,UITextFieldDelegate{
         tfPassword.delegate=self
         
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        var nextTag = textField.tag + 1;
+        // Try to find next responder
+        if let nextResponder = textField.superview?.viewWithTag(nextTag){
+            // Found next responder, so set it.
+            nextResponder.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        return false
+    }
 
     @IBAction func forgotPassword(sender: AnyObject) {
     }
     @IBAction func login(sender: AnyObject) {
         
-        let name = self.tfName.text
+        let name = self.tfEmail.text
         let password = self.tfPassword.text
         
         PFUser.logInWithUsernameInBackground(name , password: password, block: {

@@ -35,7 +35,7 @@ class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSo
         self.buttonHistorias.selected = true
         self.tableView.delegate = self
         
-        self.imagemView.text = self.usuario.parseToDictionary()["urlFoto"]!
+        self.imagemView.text = self.usuario.parseToDictionary()["urlFoto"] ?? ""
         self.nomeLabel.text = self.usuario.parseToDictionary()["nome"]
         
     }
