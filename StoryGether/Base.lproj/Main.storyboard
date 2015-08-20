@@ -138,7 +138,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeG-1a-mJW">
                                 <rect key="frame" x="208" y="180" width="101" height="37"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
-                                <state key="normal" title="editar perfil" backgroundImage="button_editarperfil">
+                                <state key="normal" title="edit profile" backgroundImage="button_editarperfil">
                                     <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -148,7 +148,7 @@
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Histórias criadas" image="icon_historiascriadas">
+                                <state key="normal" title="Stories created" image="icon_historiascriadas">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" image="icon_historiascriadas"/>
@@ -164,7 +164,7 @@
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Finalizadas" image="icon_historiasfinalizadas">
+                                <state key="normal" title="Ended" image="icon_historiasfinalizadas">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" image="icon_historiascriadas"/>
@@ -180,11 +180,11 @@
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Colaborações" image="icon_historiascolaborativas">
+                                <state key="normal" title="Collaborations" image="icon_historiascolaborativas">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" image="icon_historiascriadas"/>
-                                <state key="selected" title="Colaborações" image="icon_historiascolaborativas_clique">
+                                <state key="selected" title="Colaborativas" image="icon_historiascolaborativas_clique">
                                     <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -196,7 +196,7 @@
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="-60" minY="37" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Favoritas" image="icon_fav">
+                                <state key="normal" title="Favorites" image="icon_fav">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" image="icon_historiascriadas"/>
@@ -244,7 +244,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBn-LX-yd5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBn-LX-yd5">
                                                     <rect key="frame" x="336" y="19" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,13 +256,13 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Título da História" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llc-Ah-vuq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of Story" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llc-Ah-vuq">
                                                     <rect key="frame" x="21" y="10" width="233" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Criado em: %@" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-zZ-wMf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create at: %@" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-zZ-wMf">
                                                     <rect key="frame" x="37" y="26" width="217" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -295,7 +295,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_configuracao" translatesAutoresizingMaskIntoConstraints="NO" id="VOW-ra-cwj">
                                 <rect key="frame" x="174" y="186" width="26" height="26"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome sobrenome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aer-Sz-R4d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name lastname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aer-Sz-R4d">
                                 <rect key="frame" x="3" y="213" width="138" height="21"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -304,7 +304,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-3P-wds">
                                 <rect key="frame" x="144" y="139" width="86" height="30"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
-                                <state key="normal" title="Seguidores">
+                                <state key="normal" title="Followers">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -315,7 +315,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC4-m3-UEs">
                                 <rect key="frame" x="243" y="139" width="87" height="30"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
-                                <state key="normal" title="Seguindo">
+                                <state key="normal" title="Following">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -443,7 +443,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Umh-H5-dai">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swR-Ih-esk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swR-Ih-esk">
                                 <rect key="frame" x="16" y="402" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7Bw-er-Y06"/>
@@ -540,7 +540,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Rhj-sg-Vrb"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p4w-Hb-n5Q">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p4w-Hb-n5Q">
                                 <rect key="frame" x="16" y="345" width="343" height="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="17"/>
@@ -554,7 +554,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niA-Wa-kf5">
                                 <rect key="frame" x="16" y="396" width="343" height="34"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="18"/>
-                                <state key="normal" title="esqueci a senha">
+                                <state key="normal" title="forgot password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -566,7 +566,7 @@
                                 <rect key="frame" x="16" y="477" width="343" height="40"/>
                                 <color key="backgroundColor" red="0.062745098039215685" green="0.51372549019607838" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="19"/>
-                                <state key="normal" title="entrar">
+                                <state key="normal" title="login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -586,7 +586,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Q9S-wm-cOu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="19"/>
-                                <state key="normal" title="entrar com facebook" backgroundImage="storygether_facebook">
+                                <state key="normal" title="login with facebook" backgroundImage="storygether_facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -603,7 +603,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-nl-0mJ">
                                 <rect key="frame" x="16" y="583" width="343" height="34"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="18"/>
-                                <state key="normal" title="criar conta">
+                                <state key="normal" title="create account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -786,7 +786,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsB-6Z-pGa">
                                             <rect key="frame" x="66" y="5" width="96" height="30"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="23"/>
-                                            <state key="normal" title="Amigos">
+                                            <state key="normal" title="Friends">
                                                 <color key="titleColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.64313725490196083" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -797,7 +797,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21Y-vM-XzH">
                                             <rect key="frame" x="215" y="0.0" width="96" height="40"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="23"/>
-                                            <state key="normal" title="Explorar">
+                                            <state key="normal" title="Explore">
                                                 <color key="titleColor" red="0.062745098039215685" green="0.4823529411764706" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -878,8 +878,8 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Título da História" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9y-a6-hca">
-                                            <rect key="frame" x="56" y="12" width="311" height="16.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Title of Story" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9y-a6-hca">
+                                            <rect key="frame" x="56" y="12" width="311" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="311" id="Zka-D4-e8D"/>
                                             </constraints>
@@ -892,14 +892,14 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Criado: %@" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2U-ga-QYb">
-                                            <rect key="frame" x="80" y="33" width="287" height="13"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Created at: %@" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2U-ga-QYb">
+                                            <rect key="frame" x="80" y="33" width="287" height="14"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_quandofoicriada" translatesAutoresizingMaskIntoConstraints="NO" id="lJg-Rf-7Wi">
-                                            <rect key="frame" x="56" y="28" width="22" height="22"/>
+                                            <rect key="frame" x="56" y="29" width="22" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="F5w-0d-3eL"/>
                                                 <constraint firstAttribute="width" constant="22" id="fxQ-61-PQS"/>
@@ -975,7 +975,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fulano" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SND-Oe-42b">
-                                            <rect key="frame" x="56" y="26" width="263" height="16.5"/>
+                                            <rect key="frame" x="56" y="26" width="263" height="17"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1059,7 +1059,7 @@
             </objects>
             <point key="canvasLocation" x="-673.5" y="-519.5"/>
         </scene>
-        <!--Criar uma história-->
+        <!--Create a story-->
         <scene sceneID="lSC-uH-snm">
             <objects>
                 <viewController storyboardIdentifier="criaHistoria" id="cv4-j3-LiI" customClass="HistoriaViewController" customModule="StoryGether" customModuleProvider="target" sceneMemberID="viewController">
@@ -1071,7 +1071,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Título" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Titulo" minimumFontSize="17" background="box_novahistoria_comeco" translatesAutoresizingMaskIntoConstraints="NO" id="19U-l2-jNO">
                                 <rect key="frame" x="16" y="156" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7kR-sr-dBr"/>
@@ -1098,7 +1098,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_novahistoria_balao" translatesAutoresizingMaskIntoConstraints="NO" id="sJU-I2-iv4">
                                 <rect key="frame" x="84" y="88" width="275" height="40"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="É sempre bom ter uma nova história" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nx-Z4-SKp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always good to have a new story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nx-Z4-SKp">
                                 <rect key="frame" x="84" y="88" width="275" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KJH-EB-Jj2"/>
@@ -1130,7 +1130,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="dBX-8V-Zpn"/>
-                    <navigationItem key="navigationItem" title="Criar uma história" id="YAJ-Jv-ese">
+                    <navigationItem key="navigationItem" title="Create a story" id="YAJ-Jv-ese">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="r7E-hu-wMT">
                             <connections>
                                 <action selector="cancelarNovaHistoria:" destination="cv4-j3-LiI" id="Rpk-OY-Wmo"/>
@@ -1196,7 +1196,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-Wf-CHk">
                                                     <rect key="frame" x="298" y="4" width="62" height="30"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="12"/>
-                                                    <state key="normal" title="Fim" backgroundImage="button_editarperfil">
+                                                    <state key="normal" title="End" backgroundImage="button_editarperfil">
                                                         <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1204,7 +1204,7 @@
                                                         <action selector="finalizar:" destination="Pdf-DY-FeX" eventType="touchUpInside" id="nWw-Y6-2Un"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Título da história" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cae-Ai-grj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of Story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cae-Ai-grj">
                                                     <rect key="frame" x="62" y="37" width="251" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFCompactDisplay-Semibold" family="SF Compact Display" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1383,7 +1383,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNk-OX-0if">
                                 <rect key="frame" x="16" y="531" width="343" height="34"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="18"/>
-                                <state key="normal" title="entrar com usário existente">
+                                <state key="normal" title="login with existing account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1397,7 +1397,7 @@
                                     <constraint firstAttribute="height" constant="40" id="yiq-Xc-QZJ"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o4w-N6-fla">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o4w-N6-fla">
                                 <rect key="frame" x="16" y="391" width="343" height="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="17"/>
@@ -1411,7 +1411,7 @@
                                     <outlet property="delegate" destination="thG-s4-rE6" id="6jM-7i-aOd"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="91C-wx-KY2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="91C-wx-KY2">
                                 <rect key="frame" x="16" y="300" width="343" height="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="17"/>
@@ -1432,7 +1432,7 @@
                                     <constraint firstAttribute="height" constant="40" id="piy-fC-5kU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="22"/>
-                                <state key="normal" title="criar">
+                                <state key="normal" title="create">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

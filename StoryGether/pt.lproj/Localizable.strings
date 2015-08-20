@@ -2,6 +2,9 @@
    placeholder for textfield to new story */
 "Begin a story" = "Crie uma história";
 
+/* Init of phrase created at {Date} */
+"Created at: %@" = "Criado em: %@";
+
 /* Init of phrase(Have fun and be creative) (Have fun) */
 "Have fun" = "Divirta-se";
 
@@ -9,7 +12,7 @@
 "Make stories" = "Faça histórias";
 
 /* title to show story created by you */
-"Stories created" = "Histórias creadas";
+"Stories created" = "Histórias criadas";
 
 /* finish of phrase(Have fun and be creative) (be creative with stories) */
 "and be creative" = "e seja creativo";
