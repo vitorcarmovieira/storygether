@@ -1,0 +1,171 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "0C0-Gu-ITn"; */
+"0C0-Gu-ITn.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Ended"; ObjectID = "0SJ-17-tft"; */
+"0SJ-17-tft.normalTitle" = "Ended";
+
+/* Class = "UIButton"; selectedTitle = "Finalizadas"; ObjectID = "0SJ-17-tft"; */
+"0SJ-17-tft.selectedTitle" = "Ended";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "0Xk-BM-4Bc"; */
+"0Xk-BM-4Bc.placeholder" = "email";
+
+/* Class = "UILabel"; text = "Historias favoritas"; ObjectID = "0fk-jv-KOH"; */
+"0fk-jv-KOH.text" = "Favorites Stories";
+
+/* Class = "UIButton"; normalTitle = "Followers"; ObjectID = "0gc-3P-wds"; */
+"0gc-3P-wds.normalTitle" = "Followers";
+
+/* Class = "UITextField"; placeholder = "Titulo"; ObjectID = "19U-l2-jNO"; */
+"19U-l2-jNO.placeholder" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Explore"; ObjectID = "21Y-vM-XzH"; */
+"21Y-vM-XzH.normalTitle" = "Explore";
+
+/* Class = "UIButton"; normalTitle = "login"; ObjectID = "2f6-Al-aou"; */
+"2f6-Al-aou.normalTitle" = "login";
+
+/* Class = "UIButton"; normalTitle = "create"; ObjectID = "4bF-pQ-wa9"; */
+"4bF-pQ-wa9.normalTitle" = "create";
+
+/* Class = "UIButton"; normalTitle = "End"; ObjectID = "6xk-Wf-CHk"; */
+"6xk-Wf-CHk.normalTitle" = "End";
+
+/* Class = "UITextField"; placeholder = "name"; ObjectID = "91C-wx-KY2"; */
+"91C-wx-KY2.placeholder" = "name";
+
+/* Class = "UILabel"; text = "Always good to have a new story"; ObjectID = "9Nx-Z4-SKp"; */
+"9Nx-Z4-SKp.text" = "Always good to have a new story";
+
+/* Class = "UIButton"; normalTitle = "create account"; ObjectID = "9aV-nl-0mJ"; */
+"9aV-nl-0mJ.normalTitle" = "create account";
+
+/* Class = "UIButton"; normalTitle = "login with existing account"; ObjectID = "BNk-OX-0if"; */
+"BNk-OX-0if.normalTitle" = "login with existing account";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "CIL-zp-ORF"; */
+"CIL-zp-ORF.text" = "0";
+
+/* Class = "UILabel"; text = "Title of Story"; ObjectID = "Cae-Ai-grj"; */
+"Cae-Ai-grj.text" = "Title of Story";
+
+/* Class = "UIButton"; normalTitle = "edit profile"; ObjectID = "EeG-1a-mJW"; */
+"EeG-1a-mJW.normalTitle" = "edit profile";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "HKi-3T-H8b"; */
+"HKi-3T-H8b.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Collaborations"; ObjectID = "K1F-Tt-N6e"; */
+"K1F-Tt-N6e.normalTitle" = "Collaborations";
+
+/* Class = "UIButton"; selectedTitle = "Colaborativas"; ObjectID = "K1F-Tt-N6e"; */
+"K1F-Tt-N6e.selectedTitle" = "Collaborations";
+
+/* Class = "UINavigationItem"; title = "Perfil"; ObjectID = "Kt2-Ds-TDm"; */
+"Kt2-Ds-TDm.title" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "Following"; ObjectID = "LC4-m3-UEs"; */
+"LC4-m3-UEs.normalTitle" = "Following";
+
+/* Class = "UILabel"; text = "Title of Story"; ObjectID = "Llc-Ah-vuq"; */
+"Llc-Ah-vuq.text" = "Title of Story";
+
+/* Class = "UILabel"; text = "Fulano"; ObjectID = "M8Z-Ph-oem"; */
+"M8Z-Ph-oem.text" = "Fulano";
+
+/* Class = "UILabel"; text = "Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre"; ObjectID = "PXu-EO-qyw"; */
+"PXu-EO-qyw.text" = "Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "Pdb-vp-DJK"; */
+"Pdb-vp-DJK.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "login with facebook"; ObjectID = "S1d-jH-wfB"; */
+"S1d-jH-wfB.normalTitle" = "login with facebook";
+
+/* Class = "UILabel"; text = "Fulano"; ObjectID = "SND-Oe-42b"; */
+"SND-Oe-42b.text" = "Fulano";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "TcI-96-A2H"; */
+"TcI-96-A2H.text" = "12";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "VMR-K3-fyY"; */
+"VMR-K3-fyY.placeholder" = "email";
+
+/* Class = "UILabel"; text = "Created at: %@"; ObjectID = "W2U-ga-QYb"; */
+"W2U-ga-QYb.text" = "Created at: %@";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "Wh5-fY-XIs"; */
+"Wh5-fY-XIs.normalTitle" = "Ok";
+
+/* Class = "UIButton"; normalTitle = "Friends"; ObjectID = "WsB-6Z-pGa"; */
+"WsB-6Z-pGa.normalTitle" = "Friends";
+
+/* Class = "UITabBarItem"; title = " "; ObjectID = "WtK-Qo-Ikj"; */
+"WtK-Qo-Ikj.title" = " ";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Y3B-Gl-ety"; */
+"Y3B-Gl-ety.text" = "0";
+
+/* Class = "UINavigationItem"; title = "Create a story"; ObjectID = "YAJ-Jv-ese"; */
+"YAJ-Jv-ese.title" = "Create a story";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "aBn-LX-yd5"; */
+"aBn-LX-yd5.text" = "0";
+
+/* Class = "UILabel"; text = "Name lastname"; ObjectID = "aer-Sz-R4d"; */
+"aer-Sz-R4d.text" = "Name lastname";
+
+/* Class = "UILabel"; text = "Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempreEra uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre"; ObjectID = "bXd-AO-gJa"; */
+"bXd-AO-gJa.text" = "Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempreEra uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "d2j-va-Y8B"; */
+"d2j-va-Y8B.text" = "0";
+
+/* Class = "UILabel"; text = "Title of Story"; ObjectID = "e9y-a6-hca"; */
+"e9y-a6-hca.text" = "Title of Story";
+
+/* Class = "UIButton"; normalTitle = "Stories created"; ObjectID = "fbz-ZU-8TK"; */
+"fbz-ZU-8TK.normalTitle" = "Stories created";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "jWg-jm-JEP"; */
+"jWg-jm-JEP.text" = "0";
+
+/* Class = "UINavigationItem"; title = "storygether"; ObjectID = "lfB-h8-hcY"; */
+"lfB-h8-hcY.title" = "storygether";
+
+/* Class = "UIButton"; normalTitle = "forgot password"; ObjectID = "niA-Wa-kf5"; */
+"niA-Wa-kf5.normalTitle" = "forgot password";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "o4w-N6-fla"; */
+"o4w-N6-fla.placeholder" = "password";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "p4w-Hb-n5Q"; */
+"p4w-Hb-n5Q.placeholder" = "password";
+
+/* Class = "UILabel"; text = "Create at: %@"; ObjectID = "p9d-zZ-wMf"; */
+"p9d-zZ-wMf.text" = "Created at: %@";
+
+/* Class = "UILabel"; text = "nome do autor"; ObjectID = "rJV-pn-yGQ"; */
+"rJV-pn-yGQ.text" = "nome do autor";
+
+/* Class = "UILabel"; text = "sub"; ObjectID = "sUh-WQ-5nI"; */
+"sUh-WQ-5nI.text" = "sub";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "swR-Ih-esk"; */
+"swR-Ih-esk.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Favorites"; ObjectID = "tWv-1x-93T"; */
+"tWv-1x-93T.normalTitle" = "Favorites";
+
+/* Class = "UIButton"; selectedTitle = "Favoritas"; ObjectID = "tWv-1x-93T"; */
+"tWv-1x-93T.selectedTitle" = "Favorites";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "trO-6M-6pc"; */
+"trO-6M-6pc.text" = "1";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "v2C-TW-srU"; */
+"v2C-TW-srU.text" = "1";
+
+/* Class = "UILabel"; text = "Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre"; ObjectID = "x4a-cF-JwX"; */
+"x4a-cF-JwX.text" = "Era uma vez uma galinha pintadinha, essa galinha conheceu a pestalozzi e isso mudou sua vida para sempre";

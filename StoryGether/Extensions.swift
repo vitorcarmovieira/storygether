@@ -64,10 +64,9 @@ extension NSDate{
     
     func historyCreatedAt() -> String{
         
-        let dateFormat = NSDateFormatter()
-        dateFormat.dateFormat = "dd/MM/yyyy"
-        
-        return "Criada em: " + dateFormat.stringFromDate(self)
+        let dateConverter = NSDateFormatter()
+        dateConverter.dateStyle = .ShortStyle
+        return String.localizedStringWithFormat( NSLocalizedString("Created at: %@", comment:"Init of phrase created at {Date}"), dateConverter.stringFromDate(self))
     }
 }
 
