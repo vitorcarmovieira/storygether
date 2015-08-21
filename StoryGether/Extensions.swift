@@ -47,6 +47,19 @@ extension UIImageView{
     }
 }
 
+extension UIButton{
+    
+    var text: Bool{
+        set{
+            self.selected = newValue
+        }
+        get{
+            return self.text ?? false
+        }
+    }
+    
+}
+
 extension NSDate{
     
     func historyCreatedAt() -> String{

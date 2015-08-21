@@ -25,21 +25,58 @@ class Historia{
         
     }
     
-    func add(){
+    class func add(titulo: String, trecho: String){
         
-        
+        var novahistoria:PFObject = PFObject(className: "Historias")
+        novahistoria["titulo"] = titulo
+        novahistoria["criador"] = PFUser.currentUser()!
+        novahistoria["trechoInicial"] = trecho
+        novahistoria.saveInBackgroundWithBlock{
+            (succeeded, error) in
+            if error == nil{
+                var novoTrecho: PFObject = PFObject(className: "Trechos")
+                novoTrecho["trecho"] = trecho
+                novoTrecho["escritor"] = PFUser.currentUser()!
+                novoTrecho["historia"] = novahistoria
+                novoTrecho.saveInBackgroundWithBlock{
+                    (succeeded, error) in
+                    if error == nil{
+                        novahistoria.pinInBackgroundWithName("Historias")
+                        novoTrecho.pinInBackgroundWithName("Trechos")
+                        Model.sharedStore.update()
+                    }
+                }
+                
+            }
+        }
         
     }
     
-    func parseToDictionary() -> [String : String]{
+    func addTrecho(trechoText: String){
         
-        var dictionary = [String : String]()
+        var trecho: PFObject = PFObject(className: "Trechos")
+        trecho["trecho"] = trechoText
+        trecho["escritor"] = PFUser.currentUser()!
+        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: self.parseObject.objectId!)
+        trecho["historia"] = historia
+        trecho.saveInBackgroundWithBlock{
+            (succeeded, error) in
+            trecho.pinInBackgroundWithName("Trechos")
+            Model.sharedStore.update()
+        }
+        
+    }
+    
+    func parseToDictionary() -> [String : AnyObject]{
+        
+        var dictionary = [String : AnyObject]()
         
         dictionary["titulo"] = parseObject["titulo"] as? String
         dictionary["trechoInicial"] = parseObject["trechoInicial"] as? String
         dictionary["createdAt"] = parseObject.createdAt?.historyCreatedAt()
         dictionary["quantFav"] = (parseObject["quantFav"] as? NSNumber)?.description
         dictionary["quantTrechos"] = (parseObject["quantTrechos"] as? NSNumber)?.description
+        dictionary["buttonFavoritar"] = Usuario.currentUser.hasUserFavThisStory(parseObject.objectId!)
         
         if let user = parseObject["criador"] as? PFUser{
             dictionary["urlFoto"] = user["urlFoto"] as? String
@@ -66,27 +103,24 @@ class Historia{
     
     func favoritar(){
         
-        if let userObjectId = PFUser.currentUser(){
-            var dictionary = [String : AnyObject]()
-            dictionary["userId"] = userObjectId
-            dictionary["historiaId"] = self.parseObject
-            
-            self.hasValueInClass("favoritadas", dictionary: dictionary, block: {
-                bool in
-                if !bool{
-                    let favoritada = PFObject(className: "favoritadas")
-                    for (key, value) in dictionary{
-                        favoritada[key] = value
-                    }
-                    
-                    favoritada.saveInBackgroundWithBlock{
-                        (succeeded, error) in
-                        if error == nil{
-                            //salvar no local tambem
-                        }
-                    }
-                }
-            })
+        if Usuario.currentUser.hasUserFavThisStory(self.parseObject.objectId!){
+            //alertar o usuario que ele ja favoritou
+            return
+        }
+        
+        var dictionary = [String : AnyObject]()
+        dictionary["userId"] = PFUser.currentUser()!
+        dictionary["historiaId"] = self.parseObject
+        
+        let favoritada = PFObject(className: "favoritadas")
+        for (key, value) in dictionary{
+            favoritada[key] = value
+        }
+        favoritada.saveInBackgroundWithBlock{
+            (succeeded, error) in
+            if error == nil{
+                Usuario.currentUser.addFav(self.parseObject.objectId!)
+            }
         }
     }
     

@@ -36,7 +36,6 @@
 		4E3852B51B136E50004D346C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3852B31B136E50004D346C /* Bolts.framework */; };
 		4E3852B61B136E50004D346C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3852B41B136E50004D346C /* Parse.framework */; };
 		4E38533C1B189634004D346C /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533B1B189634004D346C /* HeaderTableViewCell.swift */; };
-		4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38533D1B189696004D346C /* HistoriaTableViewController.swift */; };
 		4E6861C31B82B6C000554CC7 /* Historia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6861C21B82B6C000554CC7 /* Historia.swift */; };
 		4E6861C51B82B6FE00554CC7 /* Trecho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6861C41B82B6FE00554CC7 /* Trecho.swift */; };
 		4E6861C71B836D0C00554CC7 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6861C61B836D0C00554CC7 /* Usuario.swift */; };
@@ -106,7 +105,6 @@
 		4E3852B31B136E50004D346C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		4E3852B41B136E50004D346C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		4E38533B1B189634004D346C /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
-		4E38533D1B189696004D346C /* HistoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoriaTableViewController.swift; sourceTree = "<group>"; };
 		4E6861C21B82B6C000554CC7 /* Historia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historia.swift; sourceTree = "<group>"; };
 		4E6861C41B82B6FE00554CC7 /* Trecho.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trecho.swift; sourceTree = "<group>"; };
 		4E6861C61B836D0C00554CC7 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 		4E84AABD1B6C4E8400151656 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4E38533D1B189696004D346C /* HistoriaTableViewController.swift */,
 				4E3852941B136A42004D346C /* TimeLineTableViewController.swift */,
 				4E7FCE741B212C0E005ADCAA /* TabBarController.swift */,
 				4E3852961B136B3E004D346C /* HistoriaViewController.swift */,
@@ -419,9 +416,7 @@
 			files = (
 				245A92151B40A50000A8E647 /* LoginViewController.swift in Sources */,
 				2467281E1B7F834C009AD4C8 /* StartViewController.swift in Sources */,
-				4EF6DF151B7132C70068390F /* Trechos.swift in Sources */,
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
-				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
 				245A95361B8287A500E5C218 /* NewUserViewController.swift in Sources */,
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,

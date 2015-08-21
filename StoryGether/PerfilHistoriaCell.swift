@@ -22,10 +22,10 @@ class PerfilHistoriaCell: UITableViewCell {
         
         if let historia = historia{
             
-            self.titulo.text = historia.parseToDictionary()["titulo"]
-            self.createdAt.text = historia.parseToDictionary()["createdAt"]
-            self.quantFav.text = historia.parseToDictionary()["quantFav"]
-            self.quantTrechos.text = historia.parseToDictionary()["quantFav"]
+            self.titulo.text = historia.parseToDictionary()["titulo"] as? String
+            self.createdAt.text = historia.parseToDictionary()["createdAt"] as? String
+            self.quantFav.text = historia.parseToDictionary()["quantFav"] as? String
+            self.quantTrechos.text = historia.parseToDictionary()["quantFav"] as? String
             
         }
     }
