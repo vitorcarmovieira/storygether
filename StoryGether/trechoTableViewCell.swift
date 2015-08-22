@@ -24,14 +24,17 @@ class trechoTableViewCell: UITableViewCell {
         
         self.imagemEscritorTrecho.circularImageView()
         
-        if let trechoText = trecho?.parseToDictionary()["trecho"]{
+        if let trechoText = trecho?.parseToDictionary()["trecho"] as? String{
             self.trechoLabel.text = trechoText
         }
-        if let url = trecho?.parseToDictionary()["urlFoto"]{
+        if let url = trecho?.parseToDictionary()["urlFoto"] as? String{
             self.imagemEscritorTrecho.text = url
         }
-        if let quantFav = trecho?.parseToDictionary()["quantFav"]{
+        if let quantFav = trecho?.parseToDictionary()["quantFav"] as? String{
             self.numFavoritadas.text = quantFav
+        }
+        if let bool = trecho?.parseToDictionary()["buttonFavoritar"] as? Bool{
+            self.buttonFavoritar.text = bool
         }
     }
     

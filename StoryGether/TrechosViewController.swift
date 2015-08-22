@@ -32,35 +32,10 @@ class TrechosViewController: UIViewController, TrechoDelegate, UITableViewDataSo
     }
     
     @IBAction func addTrecho(sender: AnyObject) {
-        
-//        let trechoText = self.newTrechoTextView.text!
-//        let user = Usuarios.getCurrent()!
-//        
-//        var trecho: PFObject = PFObject(className: "Trechos")
-//        trecho["trecho"] = self.newTrechoTextView.text!
-//        let className = PFUser.currentUser()?.parseClassName
-//        trecho["escritor"] = PFUser.currentUser()!
-//        let historia = PFObject(withoutDataWithClassName: "Historias", objectId: self.Historia?.objectId)
-//        trecho["historia"] = historia
-//        trecho.saveInBackgroundWithBlock{
-//            (succeeded, error) in
-//            Trechos.createWithTrecho(trechoText, escritor: user, historia: self.Historia!, objectId: trecho.objectId!, createdAt: NSDate())
-//            historia.fetchIfNeededInBackgroundWithBlock{
-//                (object, error) in
-//                if error == nil{
-//                    if let historia = object{
-//                        if var trechos = historia["trechos"] as? [PFObject]{
-//                            trechos.append(trecho)
-//                            historia["trechos"] = trechos
-//                            historia.saveInBackground()
-//                        }else{
-//                            historia["trechos"] = [trecho]
-//                            historia.saveInBackground()
-//                        }
-//                    }
-//                }
-//            }
-//        }
+    
+        if self.newTrechoTextView.text != ""{
+            self.historia.addTrecho(self.newTrechoTextView.text)
+        }
         
         self.tableView.reloadData()
         self.newTrechoTextView.text = ""
@@ -88,9 +63,10 @@ class TrechosViewController: UIViewController, TrechoDelegate, UITableViewDataSo
             let header = tableView.dequeueReusableCellWithIdentifier("trechoHeaderCell") as! HeaderTableViewCell
             
             header._trecho = historia.trechos!.getAll()[indexPath.row]
-            header.titulo.text = historia.parseToDictionary()["titulo"]
-            header.numFavoritos.text = historia.parseToDictionary()["quantFav"]
-            header.numAmigos.text = historia.parseToDictionary()["quantTrechos"]
+            header.titulo.text = historia.parseToDictionary()["titulo"] as? String
+            header.numFavoritos.text = historia.parseToDictionary()["quantFav"] as? String
+            header.numAmigos.text = historia.parseToDictionary()["quantTrechos"] as? String
+            header.buttonFavoritar.text = historia.parseToDictionary()["buttonFavoritar"] as! Bool
             header.awakeFromNib()
             
             return header

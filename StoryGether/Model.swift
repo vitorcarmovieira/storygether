@@ -39,6 +39,18 @@ class Model{
     
     private init (){
 
+        self.update()
+    }
+    
+    //-----------------------------------------
+    
+    
+    func getAllItems() -> [Historia]{
+        return self.items
+    }
+    
+    func update(){
+        
         fetchFromLocalWithClassName(completion: {
             objects in
             self.items = objects
@@ -49,13 +61,6 @@ class Model{
             self.items = objects
             self.delegate?.didChangeStories()
         })
-    }
-    
-    //-----------------------------------------
-    
-    
-    func getAllItems() -> [Historia]{
-        return self.items
     }
     
     func getAllHistoriasAmigos(){
@@ -141,34 +146,6 @@ class Model{
             }
         }
         
-    }
-    
-    class func saveParseObjectHistory(titulo: String, trecho: String){
-        
-        let className = PFUser.currentUser()?.parseClassName
-        
-        var novahistoria:PFObject = PFObject(className: "Historias")
-        novahistoria["titulo"] = titulo
-        novahistoria["criador"] = PFUser.currentUser()!
-        novahistoria["trechoInicial"] = trecho
-        novahistoria.saveInBackgroundWithBlock{
-            (succeeded, error) in
-            if error == nil{
-                println("salvando historia \(titulo)")
-                var novoTrecho: PFObject = PFObject(className: "Trechos")
-                novoTrecho["trecho"] = trecho
-                novoTrecho["escritor"] = PFUser.currentUser()!
-                novoTrecho["historia"] = novahistoria
-                novoTrecho.saveInBackgroundWithBlock{
-                    (succeeded, error) in
-                    if error == nil{
-                        novahistoria.pinInBackgroundWithName("Historias")
-                        novoTrecho.pinInBackgroundWithName("Trechos")
-                    }
-                }
-                
-            }
-        }
     }
     
     class func getAllFollowers(tipo: String, callback: ([PFUser]) -> ()){
@@ -280,6 +257,16 @@ class TrechosStore{
     
     init(object: PFObject){
         
+        self.update(object)
+        
+    }
+    
+    func getAll() -> [Trecho]{
+        return self.items
+    }
+    
+    func update(object: PFObject){
+        
         let predicate = NSPredicate(format: "historia == %@", object)
         fetchFromLocalWithClassName(predicate: predicate, completion: {
             objects in
@@ -292,11 +279,6 @@ class TrechosStore{
             self.items = objects
             self.delegate?.didChangeStretch()
         })
-        
-    }
-    
-    func getAll() -> [Trecho]{
-        return self.items
     }
     
     func fetchFromLocalWithClassName(predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123") ,completion: ([Trecho]) -> ()){

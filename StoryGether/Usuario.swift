@@ -19,12 +19,14 @@ class Usuario{
     
     private var pfuser: PFUser!
     private var historias: [Historia]
+    private var historiasFav: [String]
     
     static let currentUser = Usuario()
     
     private init(){
         
         self.historias = []
+        self.historiasFav = NSUserDefaults.standardUserDefaults().valueForKey("historiasFav") as? [String] ?? []
         self.pfuser = PFUser.currentUser()
         
         fetchFromLocalWithClassName{
@@ -44,12 +46,26 @@ class Usuario{
         return self.historias
     }
     
+    func addFav(id: String){
+        
+        self.historiasFav.append(id)
+        NSUserDefaults.standardUserDefaults().setValue(self.historiasFav, forKey: "historiasFav")
+    }
+    
+    func hasUserFavThisStory(id: String) -> Bool{
+        
+        if contains(self.historiasFav, id){
+            return true
+        }
+        return false
+    }
+    
     func parseToDictionary() -> [String : String]{
         
         var dictionary = [String : String]()
         
         dictionary["nome"] = self.pfuser["name"] as? String
-        dictionary["urlFoto"] = self.pfuser["urlFoto"] as? String
+        dictionary["urlFoto"] = self.pfuser["urlFoto"] as? String ?? ""
         
         return dictionary
     }

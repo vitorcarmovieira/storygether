@@ -19,16 +19,13 @@ class Trecho{
         
     }
     
-    func add(){
+    func parseToDictionary() -> [String : AnyObject]{
         
-    }
-    
-    func parseToDictionary() -> [String : String]{
-        
-        var dictionary = [String : String]()
+        var dictionary = [String : AnyObject]()
         
         dictionary["trecho"] = parseObject["trecho"] as? String
         dictionary["quantFav"] = (parseObject["quantFav"] as? NSNumber)?.description
+        dictionary["buttonFavoritar"] = Usuario.currentUser.hasUserFavThisStory(parseObject.objectId!)
         if let user = parseObject["escritor"] as? PFUser{
             dictionary["urlFoto"] = user["urlFoto"] as? String
             dictionary["nome"] = user["name"] as? String
@@ -55,27 +52,24 @@ class Trecho{
     
     func favoritar(){
         
-        if let userObjectId = PFUser.currentUser(){
-            var dictionary = [String : AnyObject]()
-            dictionary["user"] = userObjectId
-            dictionary["trecho"] = self.parseObject
-            
-            self.hasValueInClass("favoritadasTrecho", dictionary: dictionary, block: {
-                bool in
-                if !bool{
-                    let favoritada = PFObject(className: "favoritadasTrecho")
-                    for (key, value) in dictionary{
-                        favoritada[key] = value
-                    }
-                    
-                    favoritada.saveInBackgroundWithBlock{
-                        (succeeded, error) in
-                        if error == nil{
-                            //salvar no local tambem
-                        }
-                    }
-                }
-            })
+        if Usuario.currentUser.hasUserFavThisStory(self.parseObject.objectId!){
+            //alertar o usuario que ele ja favoritou
+            return
+        }
+        
+        var dictionary = [String : AnyObject]()
+        dictionary["user"] = PFUser.currentUser()!
+        dictionary["trecho"] = self.parseObject
+        
+        let favoritada = PFObject(className: "favoritadasTrecho")
+        for (key, value) in dictionary{
+            favoritada[key] = value
+        }
+        favoritada.saveInBackgroundWithBlock{
+            (succeeded, error) in
+            if error == nil{
+                Usuario.currentUser.addFav(self.parseObject.objectId!)
+            }
         }
     }
     
