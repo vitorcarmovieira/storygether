@@ -621,7 +621,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/vitor/Documents/IOSProjects/pictrust,
 					"$(PROJECT_DIR)/StoryGether",
 				);
 				INFOPLIST_FILE = StoryGether/Info.plist;
@@ -644,7 +643,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/vitor/Documents/IOSProjects/pictrust,
 					"$(PROJECT_DIR)/StoryGether",
 				);
 				INFOPLIST_FILE = StoryGether/Info.plist;
