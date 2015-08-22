@@ -65,31 +65,38 @@ class Model{
     
     func getAllHistoriasAmigos(){
         
-//        let queryAmigos = PFQuery(className: ClassTypes.Seguidores.rawValue)
-//        queryAmigos.whereKey("seguindoId", equalTo: PFUser.currentUser()!)
-//        queryAmigos.includeKey("seguidoId")
-//        
-//        queryAmigos.findObjectsInBackgroundWithBlock{
-//            (objects, error) in
-//            if error == nil{
-//                var amigos:[PFUser] = []
-//                for obj in objects as! [PFObject]{
-//                    amigos.append(obj["seguidoId"] as! PFUser)
-//                }
-//                
-//                let query = PFQuery(className: ClassTypes.Historia.rawValue)
-//                query.whereKey("criador", containedIn: amigos)
-//                query.orderByDescending("createdAt")
-//                query.includeKey("criador")
-//                query.findObjectsInBackgroundWithBlock{
-//                    (objects, error) in
-//                    if error == nil{
-//                        self.items = objects as! [PFObject]
-//                        self.delegate?.didChangeHistorias!()
-//                    }
-//                }
-//            }
-//        }
+        let queryAmigos = PFQuery(className: ClassTypes.Seguidores.rawValue)
+        queryAmigos.whereKey("seguindoId", equalTo: PFUser.currentUser()!)
+        queryAmigos.includeKey("seguidoId")
+        
+        queryAmigos.findObjectsInBackgroundWithBlock{
+            (objects, error) in
+            if error == nil{
+                var amigos:[PFUser] = []
+                for obj in objects as! [PFObject]{
+                    amigos.append(obj["seguidoId"] as! PFUser)
+                }
+                
+                let query = PFQuery(className: ClassTypes.Historia.rawValue)
+                query.whereKey("criador", containedIn: amigos)
+                query.orderByDescending("createdAt")
+                query.includeKey("criador")
+                query.findObjectsInBackgroundWithBlock{
+                    (objects, error) in
+                    if error == nil{
+                        if let objects = objects as? [PFObject]{
+                            var historias: [Historia] = []
+                            for obj in objects{
+                                let historia = Historia(parseObject: obj)
+                                historias.append(historia)
+                            }
+                            self.items = historias
+                        }
+                        self.delegate?.didChangeStories()
+                    }
+                }
+            }
+        }
     }
     
     func fetchFromLocalWithClassName(predicate:NSPredicate = NSPredicate(format: "objectId != %@", "123") ,completion: ([Historia]) -> ()){

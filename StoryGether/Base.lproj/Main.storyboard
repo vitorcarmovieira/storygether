@@ -790,6 +790,10 @@
                                                 <color key="titleColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.64313725490196083" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <state key="selected">
+                                                <color key="titleColor" red="0.058823529409999999" green="0.45882352939999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="changeToAmigos:" destination="kOz-Tn-Znr" eventType="touchUpInside" id="V3G-zU-56t"/>
                                             </connections>
@@ -798,8 +802,12 @@
                                             <rect key="frame" x="215" y="0.0" width="96" height="40"/>
                                             <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="23"/>
                                             <state key="normal" title="Explore">
-                                                <color key="titleColor" red="0.062745098039215685" green="0.4823529411764706" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" red="0.058823529411764705" green="0.45882352941176469" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="changeToExplorar:" destination="kOz-Tn-Znr" eventType="touchUpInside" id="PN6-QN-Whl"/>
