@@ -14,6 +14,8 @@
 		24A0E5F21B8671050057A4C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24A0E5F41B8671050057A4C5 /* InfoPlist.strings */; };
 		24A0E5F71B8671050057A4C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24A0E5F91B8671050057A4C5 /* InfoPlist.strings */; };
 		24B3B2D71B72E0D300A805B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24B3B2D91B72E0D300A805B9 /* Localizable.strings */; };
+		24F16A131B883C9900716F41 /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F16A111B883C9900716F41 /* SMSegment.swift */; };
+		24F16A141B883C9900716F41 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F16A121B883C9900716F41 /* SMSegmentView.swift */; };
 		4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */; };
 		4E38526C1B136848004D346C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38526B1B136848004D346C /* AppDelegate.swift */; };
 		4E3852741B136848004D346C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3852721B136848004D346C /* Main.storyboard */; };
@@ -83,6 +85,8 @@
 		24A0E5EF1B866D7C0057A4C5 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
 		24A0E5F31B8671050057A4C5 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24A0E5F81B8671050057A4C5 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24F16A111B883C9900716F41 /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
+		24F16A121B883C9900716F41 /* SMSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentView.swift; sourceTree = "<group>"; };
 		4E0C7C351B5D70710067CD5D /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		4E3852661B136848004D346C /* StoryGether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E38526A1B136848004D346C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -167,6 +171,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24F16A151B883C9F00716F41 /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				24F16A111B883C9900716F41 /* SMSegment.swift */,
+				24F16A121B883C9900716F41 /* SMSegmentView.swift */,
+			);
+			name = Segment;
+			sourceTree = "<group>";
+		};
 		4E38525D1B136848004D346C = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +270,7 @@
 		4E6AF2E71B372D4E00E671EA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24F16A151B883C9F00716F41 /* Segment */,
 				4E84AAB11B69D31700151656 /* Cells */,
 				4E3852721B136848004D346C /* Main.storyboard */,
 				4E3852751B136848004D346C /* Images.xcassets */,
@@ -425,6 +439,7 @@
 				4E9130461B3508420023C73C /* AddTrechoTableViewCell.swift in Sources */,
 				4E38533E1B189696004D346C /* HistoriaTableViewController.swift in Sources */,
 				4E7FCE751B212C0E005ADCAA /* TabBarController.swift in Sources */,
+				24F16A131B883C9900716F41 /* SMSegment.swift in Sources */,
 				245A95361B8287A500E5C218 /* NewUserViewController.swift in Sources */,
 				4E84AAB51B69D3DC00151656 /* PerfilNumeroHistorias.swift in Sources */,
 				4E0C7C361B5D70710067CD5D /* PerfilViewController.swift in Sources */,
@@ -442,6 +457,7 @@
 				4E84AAB91B6BB50100151656 /* UserCell.swift in Sources */,
 				249FDC7C1B7E2DD8009CB43D /* IntroViewController.swift in Sources */,
 				4E84AAB71B6A5FF300151656 /* TimeLineHeaderCell.swift in Sources */,
+				24F16A141B883C9900716F41 /* SMSegmentView.swift in Sources */,
 				4E7C4DE01B7EEA60002005E9 /* Cache.swift in Sources */,
 				4E6861C51B82B6FE00554CC7 /* Trecho.swift in Sources */,
 				4E84AABB1B6C4E6800151656 /* Model.swift in Sources */,
