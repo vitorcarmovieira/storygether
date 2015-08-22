@@ -36,10 +36,6 @@
             <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
             <string>SFCompactDisplay-Medium</string>
-            <string>SFCompactDisplay-Medium</string>
-            <string>SFCompactDisplay-Medium</string>
-            <string>SFCompactDisplay-Medium</string>
-            <string>SFCompactDisplay-Medium</string>
         </mutableArray>
         <mutableArray key="SF-Compact-Display-Regular.otf">
             <string>SFCompactDisplay-Regular</string>
@@ -142,70 +138,6 @@
                                     <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbz-ZU-8TK">
-                                <rect key="frame" x="0.0" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
-                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Stories created" image="icon_historiascriadas">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled" image="icon_historiascriadas"/>
-                                <state key="selected" image="icon_historiascriadas_clique">
-                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="changeToHistorias:" destination="tkj-fB-eFg" eventType="touchUpInside" id="vjI-wA-GHU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-17-tft">
-                                <rect key="frame" x="93" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
-                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Ended" image="icon_historiasfinalizadas">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled" image="icon_historiascriadas"/>
-                                <state key="selected" title="Finalizadas" image="icon_historiasfinaliadas_clique">
-                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="changeToFinalizadas:" destination="tkj-fB-eFg" eventType="touchUpInside" id="hbc-tW-sB2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-Tt-N6e">
-                                <rect key="frame" x="189" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
-                                <inset key="titleEdgeInsets" minX="-82" minY="37" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Collaborations" image="icon_historiascolaborativas">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled" image="icon_historiascriadas"/>
-                                <state key="selected" title="Colaborativas" image="icon_historiascolaborativas_clique">
-                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="changeToCoop:" destination="tkj-fB-eFg" eventType="touchUpInside" id="7Eg-nV-usk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWv-1x-93T">
-                                <rect key="frame" x="282" y="274" width="93" height="61"/>
-                                <fontDescription key="fontDescription" name="SFCompactDisplay-Medium" family="SF Compact Display" pointSize="11"/>
-                                <inset key="titleEdgeInsets" minX="-60" minY="37" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="20" maxY="15"/>
-                                <state key="normal" title="Favorites" image="icon_fav">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled" image="icon_historiascriadas"/>
-                                <state key="selected" title="Favoritas" image="icon_fav_selecionado">
-                                    <color key="titleColor" red="0.062745098040000002" green="0.4823529412" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="changeToFavoritas:" destination="tkj-fB-eFg" eventType="touchUpInside" id="Lo7-6y-cdy"/>
-                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-Rf-bWx">
                                 <rect key="frame" x="0.0" y="343" width="375" height="275"/>
@@ -323,19 +255,28 @@
                                     <segue destination="RtX-hc-jic" kind="show" identifier="following" id="Rrt-Sj-1uE"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toA-YH-5EZ">
+                                <rect key="frame" x="0.0" y="270" width="375" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="JdM-xO-lS9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="toA-YH-5EZ" secondAttribute="trailing" constant="-16" id="3DR-m7-9kJ"/>
+                            <constraint firstItem="toA-YH-5EZ" firstAttribute="leading" secondItem="rq9-i2-F9m" secondAttribute="leadingMargin" constant="-16" id="O0D-b4-waM"/>
+                            <constraint firstAttribute="centerY" secondItem="toA-YH-5EZ" secondAttribute="centerY" constant="28.5" id="fCR-B2-9hR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Perfil" id="Kt2-Ds-TDm"/>
                     <connections>
-                        <outlet property="buttonCoop" destination="K1F-Tt-N6e" id="8BG-a0-0jE"/>
-                        <outlet property="buttonFavoritas" destination="tWv-1x-93T" id="Xe2-nq-ikE"/>
-                        <outlet property="buttonFinalizadas" destination="0SJ-17-tft" id="WGM-tJ-Sc8"/>
-                        <outlet property="buttonHistorias" destination="fbz-ZU-8TK" id="Ofi-Jh-BRI"/>
                         <outlet property="imagemView" destination="fej-2C-yI6" id="w18-EH-Wfy"/>
                         <outlet property="nomeLabel" destination="aer-Sz-R4d" id="sf0-oJ-vaA"/>
                         <outlet property="numSeguidores" destination="HKi-3T-H8b" id="3S1-xl-7Gt"/>
                         <outlet property="numSeguindo" destination="0C0-Gu-ITn" id="ZOb-pb-YHq"/>
+                        <outlet property="spaceSegment" destination="toA-YH-5EZ" id="uQe-z6-NdJ"/>
                         <outlet property="tableView" destination="1gH-Rf-bWx" id="Ate-CV-0bw"/>
                     </connections>
                 </viewController>
@@ -1523,16 +1464,8 @@
         <image name="cover" width="1562" height="383"/>
         <image name="icon_avatar" width="545" height="545"/>
         <image name="icon_configuracao" width="45" height="45"/>
-        <image name="icon_fav" width="27" height="57"/>
-        <image name="icon_fav_selecionado" width="37" height="65"/>
         <image name="icon_favoritar" width="208" height="208"/>
         <image name="icon_favoritar_clique" width="208" height="208"/>
-        <image name="icon_historiascolaborativas" width="74" height="61"/>
-        <image name="icon_historiascolaborativas_clique" width="74" height="61"/>
-        <image name="icon_historiascriadas" width="78" height="61"/>
-        <image name="icon_historiascriadas_clique" width="78" height="61"/>
-        <image name="icon_historiasfinaliadas_clique" width="81" height="65"/>
-        <image name="icon_historiasfinalizadas" width="81" height="65"/>
         <image name="icon_novahistoria_balao" width="626" height="86"/>
         <image name="icon_novahistoria_castelo" width="1047" height="938"/>
         <image name="icon_quandofoicriada" width="22" height="22"/>
