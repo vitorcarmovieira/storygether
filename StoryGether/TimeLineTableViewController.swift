@@ -58,8 +58,8 @@ class TimeLineTableViewController: UITableViewController, HistoriaDelegate {
     
     func update(){
         
-        print("updating...\n")
-        self.refreshControl?.endRefreshing()
+        self.model.update()
+        self.refreshControl?.beginRefreshing()
     }
     
     func fetchUsers(){
@@ -81,8 +81,12 @@ class TimeLineTableViewController: UITableViewController, HistoriaDelegate {
     // MARK: - Model Delegates Methods
     
     func didChangeStories() {
-        println("no delegate")
+        self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
+    }
+    
+    func willChangeStories(){
+        self.refreshControl?.beginRefreshing()
     }
 
     // MARK: - Table view data source

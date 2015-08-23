@@ -41,6 +41,7 @@ class Historia{
                 novoTrecho.saveInBackgroundWithBlock{
                     (succeeded, error) in
                     if error == nil{
+                        
                         novahistoria.pinInBackgroundWithName("Historias")
                         novoTrecho.pinInBackgroundWithName("Trechos")
                         Model.sharedStore.update()
@@ -62,7 +63,7 @@ class Historia{
         trecho.saveInBackgroundWithBlock{
             (succeeded, error) in
             trecho.pinInBackgroundWithName("Trechos")
-            Model.sharedStore.update()
+            self.trechos?.update(self.parseObject)
         }
         
     }

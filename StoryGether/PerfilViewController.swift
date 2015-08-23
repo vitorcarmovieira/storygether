@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import CoreData
 
 class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSource, UITableViewDelegate, SMSegmentViewDelegate{
     
@@ -51,6 +50,8 @@ class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSo
         // Set segment with index 0 as selected by default
         segmentView.selectSegmentAtIndex(0)
         
+        self.usuario.getAllHistorias()
+        
         self.view.addSubview(self.segmentView)
     }
     
@@ -60,6 +61,7 @@ class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSo
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
         println("Select segment at index: \(index)")
+        
     }
     
     override func supportedInterfaceOrientations() -> Int {

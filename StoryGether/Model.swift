@@ -11,6 +11,7 @@ import Parse
 
 protocol HistoriaDelegate{
     func didChangeStories()
+    func willChangeStories()
 }
 
 class Model{
@@ -56,6 +57,7 @@ class Model{
             self.items = objects
             self.delegate?.didChangeStories()
         })
+        self.delegate?.willChangeStories()
         fetchParseObjectsWithClassName(completion: {
             objects in
             self.items = objects
