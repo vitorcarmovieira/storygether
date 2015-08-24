@@ -25,6 +25,10 @@ class TrechosViewController: UIViewController, TrechoDelegate, UITableViewDataSo
         
         historia.trechos?.delegate = self
         
+        let amountOfLinesToBeShown:CGFloat = 6
+        let maxHeight:CGFloat = newTrechoTextView.font.lineHeight * amountOfLinesToBeShown
+        self.newTrechoTextView.sizeThatFits(CGSizeMake(self.newTrechoTextView.frame.size.width, maxHeight))
+        
         // Keyboard stuff.
         var center: NSNotificationCenter = NSNotificationCenter.defaultCenter()
         center.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)

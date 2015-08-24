@@ -59,6 +59,7 @@
 		4EEF869F1B43023D00A22534 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869C1B43023D00A22534 /* Bolts.framework */; };
 		4EEF86A01B43023D00A22534 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */; };
 		4EEF86A11B43023D00A22534 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */; };
+		4EF3822C1B8B628B00EC9BB4 /* customSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3822B1B8B628B00EC9BB4 /* customSegment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		4EEF869D1B43023D00A22534 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = StoryGether/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4EEF869E1B43023D00A22534 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = StoryGether/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4EEF86A31B4302E900A22534 /* StoryGether-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StoryGether-Bridging-Header.h"; sourceTree = "<group>"; };
+		4EF3822B1B8B628B00EC9BB4 /* customSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customSegment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 		24F16A151B883C9F00716F41 /* Segment */ = {
 			isa = PBXGroup;
 			children = (
+				4EF3822B1B8B628B00EC9BB4 /* customSegment.swift */,
 				24F16A111B883C9900716F41 /* SMSegment.swift */,
 				24F16A121B883C9900716F41 /* SMSegmentView.swift */,
 			);
@@ -445,6 +448,7 @@
 				4E6861C71B836D0C00554CC7 /* Usuario.swift in Sources */,
 				4E8966B21B7BBB24006AED83 /* AmigosTableViewController.swift in Sources */,
 				4E6AF2E61B372CA200E671EA /* TrechosViewController.swift in Sources */,
+				4EF3822C1B8B628B00EC9BB4 /* customSegment.swift in Sources */,
 				4E9130481B350D460023C73C /* trechoTableViewCell.swift in Sources */,
 				4E3852971B136B3E004D346C /* HistoriaViewController.swift in Sources */,
 				4E38526C1B136848004D346C /* AppDelegate.swift in Sources */,

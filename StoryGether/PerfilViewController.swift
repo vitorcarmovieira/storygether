@@ -17,10 +17,10 @@ class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSo
     @IBOutlet weak var numSeguidores: UILabel!
     @IBOutlet weak var numSeguindo: UILabel!
     @IBOutlet weak var spaceSegment: UIView!
+    var segmentView: SMSegmentView!
     var iAmSelected: Int = 0
     var historias:[Historia]!
     var usuario: Usuario!
-    var segmentView: SMSegmentView!
     var margin: CGFloat = 10.0
     
     override func viewDidLoad() {
@@ -34,23 +34,12 @@ class PerfilViewController: UIViewController, UsuarioDelegate, UITableViewDataSo
         
         self.imagemView.text = self.usuario.parseToDictionary()["urlFoto"] ?? ""
         self.nomeLabel.text = self.usuario.parseToDictionary()["nome"]
-        self.segmentView = SMSegmentView(frame:self.spaceSegment.frame , separatorColour: UIColor(white: 0.4, alpha: 1.0), separatorWidth: 0.5, segmentProperties: [keySegmentOnSelectionTextColour: UIColor().colorWithHexString("1083B1"),keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor.whiteColor(), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: Float(10.0)])
-        
-        self.segmentView.delegate = self
-        
-        self.segmentView.layer.cornerRadius = 5.0
-        self.segmentView.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).CGColor
-        self.segmentView.layer.borderWidth = 1.0
-        
-        // Add segments
-        self.segmentView.addSegmentWithTitle("Histórias Criadas", onSelectionImage: UIImage(named: "criada_selec"), offSelectionImage: UIImage(named: "criada"))
-        self.segmentView.addSegmentWithTitle("Colaborações", onSelectionImage: UIImage(named: "colabora_selec"), offSelectionImage: UIImage(named: "colabora"))
-        self.segmentView.addSegmentWithTitle("Favoritadas", onSelectionImage: UIImage(named: "fav_selec"), offSelectionImage: UIImage(named: "fav"))
-        
-        // Set segment with index 0 as selected by default
-        segmentView.selectSegmentAtIndex(0)
         
         self.usuario.getAllHistorias()
+        
+        let space = self.spaceSegment.frame
+        self.segmentView = customSegment(spaceSegment: space).segment()
+        self.segmentView.delegate = self
         
         self.view.addSubview(self.segmentView)
     }
